@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://xmlns.oracle.com/GetCompositesInfo/GetCompositesInfo/GetCompositeInfo"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="process">
+		<complexType>
+			<sequence>
+				<element name="input" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="processResponse">
+		<complexType>
+			<sequence>
+				
+							<element name="Composite">
+								<complexType>
+									<sequence>
+										<element type="string" name="Name"/>
+										<element type="string" name="Revision"/>
+										<element type="string" name="State"/>
+										<element type="string" name="Mode"/>
+										<element type="boolean" name="Default"/>
+										<element type="dateTime" name="DeployedTime"/>
+									</sequence>
+								</complexType>
+							</element>
+						
+			</sequence>
+		</complexType>
+	</element>
+	
+  <element name="deployed-composites">
+    <complexType>
+      <sequence>
+        <element name="composite-series" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="composite-revision" maxOccurs="unbounded" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element name="composite">
+                      <complexType>
+                        <simpleContent>
+                          <extension base="string">
+                            <attribute type="string" name="dn" use="optional"/>
+                            <attribute type="dateTime" name="deployedTime" use="optional"/>
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                  </sequence>
+                  <attribute type="string" name="dn" use="optional"/>
+                  <attribute type="string" name="state" use="optional"/>
+                  <attribute type="string" name="mode" use="optional"/>
+                  <attribute type="string" name="location" use="optional"/>
+                </complexType>
+              </element>
+            </sequence>
+            <attribute type="string" name="name" use="optional"/>
+            <attribute type="string" name="default" use="optional"/>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+
+</schema>
