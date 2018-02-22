@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAConfigPlan xmlns:jca="http://platform.integration.oracle/blocks/adapter/fw/metadata" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns:edl="http://schemas.oracle.com/events/edl" xmlns="http://schemas.oracle.com/soa/configplan">
+   <composite name="GetCompositeInfo">
+       <import>
+         <searchReplace>
+            <search/>
+            <replace/>
+         </searchReplace>
+      </import>
+      <service name="getcompositeinfo_client_ep">
+         <binding type="ws">
+            <attribute name="port">
+               <replace>http://xmlns.oracle.com/GetCompositesInfo/GetCompositesInfo/GetCompositeInfo#wsdl.endpoint(getcompositeinfo_client_ep/GetCompositeInfo_pt)</replace>
+            </attribute>
+         </binding>
+      </service>
+      <property name="productVersion">
+         <replace>11.1.1.7.8</replace>
+      </property>
+      <component name="GetCompositeInfo">
+         <property name="bpel.config.transaction">
+            <replace>required</replace>
+         </property>
+         <property name="bpel.config.oneWayDeliveryPolicy">
+            <replace>async.persist</replace>
+         </property>
+         <property name="bpel.preference.jndiVar">
+            <replace>eis/DB/MDS_CONNECT</replace>
+         </property>
+      </component>
+      <reference name="DB_Database">
+         <property name="jca.retry.count">
+            <replace>4</replace>
+         </property>
+         <property name="jca.retry.interval">
+            <replace>1</replace>
+         </property>
+         <property name="jca.retry.backoff">
+            <replace>2</replace>
+         </property>
+         <property name="jca.retry.maxInterval">
+            <replace>120</replace>
+         </property>
+         <binding type="jca"/>
+      </reference>
+   </composite>
+   <wsdlAndSchema name="DB_Database.wsdl|DB_Database_db.jca|GetCompositeInfo.wsdl|xsd/DB_Adapter_sp.xsd|xsd/DB_Database_sp.xsd|xsd/GetCompositeInfo.xsd">
+      <searchReplace>
+         <search/>
+         <replace/>
+      </searchReplace>
+   </wsdlAndSchema>
+</SOAConfigPlan>
