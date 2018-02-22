@@ -1,0 +1,24 @@
+29.11.2017 13:50:18 oracle.mds
+NOTIFICATION: Ёкземпл€р PManager создан без возможности поддержки нескольких участников, т. к. не установлен флаг JVM "oracle.multitenant.enabled" дл€ поддержки нескольких участников.
+29.11.2017 13:50:18 oracle.security.jps.internal.config.xml.XmlConfigurationFactory initDefaultConfiguration
+SEVERE: java.io.FileNotFoundException: .\config\jps-config.xml (—истеме не удаетс€ найти указанный путь)
+29.11.2017 13:50:18 oracle.mds
+NOTIFICATION: јудит отключен дл€ компонента MDS.
+29.11.2017 13:50:18 oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+29.11.2017 13:50:18 com.collaxa.cube.CubeLogger info
+INFO: validating "GetCompositeInfo.bpel" ...
+29.11.2017 13:50:18 oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+29.11.2017 13:50:18 oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+29.11.2017 13:50:19 com.collaxa.cube.CubeLogger info
+INFO: Composed "GetCompositeInfo" in 26,8 milliseconds [nodes 13=0+13, 484,2 nodes/sec]
+29.11.2017 13:50:20 com.collaxa.cube.CubeLogger info
+INFO: Compiled "GetCompositeInfo" in 942,0 milliseconds
+29.11.2017 13:50:20 com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0,3 milliseconds
+
+29.11.2017 13:50:20 com.collaxa.cube.CubeLogger info
+INFO: Packaged "GetCompositeInfo" in 4,4 milliseconds
+
