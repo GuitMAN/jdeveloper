@@ -180,6 +180,11 @@
       <hash n="internalDefinitions">
          <list n="libraryDefinitions"/>
       </hash>
+      <hash n="jdkReference">
+         <url n="id" path="../../../jdev/system11.1.1.9.40.66.73/o.jdeveloper/1.8.0_151.jdk"/>
+         <value n="isJDK" v="true"/>
+         <value n="jdkVersion" v="1.6.0_29"/>
+      </hash>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>
