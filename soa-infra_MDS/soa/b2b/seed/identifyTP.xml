@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<IdentifyTP>
+<DocumentProtocol name="EDI_X12">
+<ExchangeProtocol name="Generic File">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS2">
+<IdentificationType>AS2 Identifier</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS1">
+<IdentificationType>AS1 Identifier</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+<DocumentProtocol name="EDI_EDIFACT">
+<ExchangeProtocol name="Generic File">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS">
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS2">
+<IdentificationType>AS2 Identifier</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS1">
+<IdentificationType>AS1 Identifier</IdentificationType>
+<IdentificationType>EDI Interchange ID</IdentificationType>
+<IdentificationType>EDI Group ID</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+<DocumentProtocol name="HL7">
+<ExchangeProtocol name="Generic File">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email">
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP">
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS">
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS">
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>Name</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="MLLP">
+<IdentificationType>HL7 Message Application ID</IdentificationType>
+<IdentificationType>HL7 Message Facility ID</IdentificationType>
+<IdentificationType>MLLP ID</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+<DocumentProtocol name="Custom">
+<ExchangeProtocol name="Generic File">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email">
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP">
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS">
+<IdentificationType>Name</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS">
+<IdentificationType>Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS2">
+<IdentificationType>AS2 Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS1">
+<IdentificationType>AS1 Identifier</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+<DocumentProtocol name="OAG">
+<ExchangeProtocol name="Generic File">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP">
+<IdentificationType>TP Profile Name</IdentificationType>
+<IdentificationType>File Name</IdentificationType>
+<IdentificationType>Folder Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email">
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP">
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS">
+<IdentificationType>Name</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS">
+<IdentificationType>Name</IdentificationType>
+<IdentificationType>Generic Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS2">
+<IdentificationType>AS2 Identifier</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS1">
+<IdentificationType>AS1 Identifier</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+<DocumentProtocol name="RosettaNet">
+<ExchangeProtocol name="RNIF_11">
+<IdentificationType>DUNS</IdentificationType>
+</ExchangeProtocol>
+<ExchangeProtocol name="RNIF_20">
+<IdentificationType>DUNS</IdentificationType>
+</ExchangeProtocol>
+</DocumentProtocol>
+</IdentifyTP>

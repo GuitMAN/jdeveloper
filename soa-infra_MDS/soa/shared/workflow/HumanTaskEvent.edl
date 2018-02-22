@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.oracle.com/events/edl" targetNamespace="http://xmlns.oracle.com/bpel/workflow/taskEvent">
+<schema-import namespace="http://xmlns.oracle.com/bpel/workflow/taskService" location="TaskService.xsd"/>
+<schema-import namespace="http://xmlns.oracle.com/bpel/workflow/task" location="WorkflowTask.xsd"/>
+<event-definition name="OnTaskAssigned">
+<content xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskService" element="ns1:taskAssignedMessage"/>
+</event-definition>
+<event-definition name="OnTaskCompleted">
+<content xmlns:ns0="http://xmlns.oracle.com/bpel/workflow/task" element="ns0:task"/>
+</event-definition>
+<event-definition name="OnStageCompleted">
+<content xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskService" element="ns1:stageCompleteMessage"/>
+</event-definition>
+<event-definition name="OnSubTaskUpdated">
+<content xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskService" element="ns1:subTaskUpdatedMessage"/>
+</event-definition>
+<event-definition name="OnTaskUpdated">
+<content xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskService" element="ns1:taskUpdatedMessage"/>
+</event-definition>
+</definitions>

@@ -1,0 +1,490 @@
+<?xml version="1.0"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://xmlns.oracle.com/bpm/case" targetNamespace="http://xmlns.oracle.com/bpm/case"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+	jaxb:extensionBindingPrefixes="xjc" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"	
+	xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+	xmlns:common="http://xmlns.oracle.com/bpm/case/metadata/common"
+	elementFormDefault="qualified" blockDefault="#all">
+	<annotation>
+		<documentation>XML Schema for Case Instance</documentation>
+		<appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.metadata.caseinstance.model"/>
+      </jaxb:schemaBindings>
+    </appinfo>
+	</annotation>
+ 	<import namespace="http://xmlns.oracle.com/bpm/case/metadata/common"
+		schemaLocation="CaseMetadataCommon.xsd" />
+	<import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+		schemaLocation="ExtensibleElements.xsd" />
+	<!-- Root Elements -->
+	<element name="case" type="tns:tCase" />
+	<element name="comment" type="tns:tComment" />
+	<element name="milestone" type="tns:tMilestone" />
+	<complexType name="tCase">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseHeader" type="tns:tCaseHeader" />
+					<!-- Stake holders -->
+					<element name="stakeHolders" type="tns:tStakeHolders"
+						minOccurs="0" maxOccurs="1" />
+					<!-- Milestones -->
+					<element name="milestones" type="tns:tMilestones"
+						minOccurs="0" maxOccurs="1" />
+					<!-- Data -->
+					<element name="data" type="tns:tData"
+						minOccurs="0" maxOccurs="unbounded" />
+					<!-- Comments -->
+					<element name="comments" type="tns:tComments"
+						minOccurs="0" maxOccurs="1" />
+					<element name="caseFabricHeaderProperty" type="tns:tCaseFabricHeaderProperty"
+						minOccurs="0" maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tCaseHeader">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<!-- Header -->
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseNumber" type="integer"
+						minOccurs="1" maxOccurs="1" />
+					<element name="caseName" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseDisplayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="title" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="priority" type="tns:tPriority"
+						minOccurs="1" maxOccurs="1" />
+					<element name="createdBy" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="createdByDisplayName" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="createdDate" type="dateTime"
+						minOccurs="1" maxOccurs="1" />
+					<element name="endDate" type="dateTime" nillable="true"
+						minOccurs="0" maxOccurs="1" />
+					<element name="expirationDate" type="dateTime" nillable="true"
+						minOccurs="0" maxOccurs="1" />
+                                        <element name="dueDate" type="dateTime" nillable="true"
+                                                minOccurs="0" maxOccurs="1" />
+					<element name="state" type="tns:tStateEnum" minOccurs="1"
+						maxOccurs="1" />
+					<element name="stateDisplayName" type="string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="ecmFolder" type="string" minOccurs="0"
+						maxOccurs="1"/>
+					<!-- Identifiers -->
+					<element name="caseDefinitionId" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="caseDefinitionName" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="caseNamespace" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="identificationKey" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<!-- Category -->
+					<element name="category" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="categoryDisplayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="outcome" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="outcomeDisplayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+                    <!-- SCA -->
+					<element name="sca" type="tns:tSca" minOccurs="1"
+						 maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+                    <element name="caseSummaryFormURI" type="string"
+						minOccurs="0" maxOccurs="1" /> 						
+                                        <!-- List of completed activitites for rules -->
+					<element name="completedCaseActivityList" type="tns:tCompletedCaseActivityList" minOccurs="0" maxOccurs="1"/>
+
+					<!-- Permissions -->
+	 			        <element name="userPermissions" type="tns:tUserPermissions"  minOccurs="0" maxOccurs="1" />
+					<!-- Global Actions -->
+					<element name="userActions" type="tns:tUserActions"  minOccurs="0" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+        <complexType name="tUserActions">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+				     <element name ="actionsPermittedForCaseObject" type="tns:tActionsPermittedForCaseObject" minOccurs="0" maxOccurs="unbounded" />
+		                </sequence>
+                        </extension>
+                </complexContent>
+       </complexType>
+       <complexType name="tActionsPermittedForCaseObject">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+                                     <element name ="caseObjectType" type="string" minOccurs="1" maxOccurs="1"/>
+				      <sequence>
+                                	  <element name="permittedAction" type="string" minOccurs="0" maxOccurs="unbounded" />	
+				      </sequence>
+                                </sequence>
+                        </extension>
+                </complexContent>
+       </complexType>
+       <complexType name="tCompletedCaseActivityList">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+                                        <element name ="completedCaseActivity" type="tns:tCompletedCaseActivity" minOccurs="0" maxOccurs="unbounded" />
+                                </sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+        <complexType name="tCompletedCaseActivity">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+                                        <element name ="name" type="string" minOccurs="1" maxOccurs="1" />
+                                </sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+	<complexType name="tUserPermissions">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+				        <element name ="userId" type="string" minOccurs="0" maxOccurs="1" />
+					<sequence>
+						<element name ="caseObjectPermission" type="tns:tCaseObjectPermission"  minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+	<complexType name="tCaseObjectPermission">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+                                          <element name="caseObject" type="string" minOccurs="0" maxOccurs="1" />
+					  <sequence>
+						  <element name="actionUserCanPerform" type="tns:tActionUserCanPerform" minOccurs="0" maxOccurs="unbounded" />
+	                                </sequence>
+				</sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+	 <complexType name="tActionUserCanPerform">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+					  
+                                          <element name="action" type="string" minOccurs="0" maxOccurs="1" />
+					  <sequence>
+	                                          <element name="permissionTag" type="tns:tPermissionTag" minOccurs="0" maxOccurs="unbounded" />
+	                                   </sequence>	
+				</sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+	<complexType name="tPermissionTag">
+                <complexContent>
+                        <extension base="extension:tExtensibleElements">
+                                <sequence>
+                                          <sequence>
+					   	<element name="name" type="string" minOccurs="0" maxOccurs="1" />
+		 			        <element name="displayName" type="string" minOccurs="0" maxOccurs="1" />
+					</sequence>
+				</sequence>
+                        </extension>
+                </complexContent>
+        </complexType>
+
+	<complexType name="tIdentity">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="0" />
+					<element name="displayName" type="string"
+						minOccurs="0" />
+					<element name="type" type="tns:tIdentityTypeEnum"
+						minOccurs="0" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+        <simpleType name="tPriority">
+                <restriction base="integer">
+                        <minInclusive value="1"/>
+                        <maxInclusive value="5"/>
+                </restriction>
+        </simpleType>
+	<simpleType name="tIdentityTypeEnum">
+		<restriction base="NMTOKEN">
+			<enumeration value="user" />
+			<enumeration value="group" />
+			<enumeration value="application_role" />
+		</restriction>
+	</simpleType>
+	<complexType name="tCategory">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="name" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="displayName" type="string"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tStakeHolders">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="stakeHolder" type="tns:tStakeHolder"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tStakeHolder">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="name" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="displayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="dateAdded" type="dateTime" nillable="true"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="addedBy" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="addedByDisplayName" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="isContextUserInRole" type="boolean"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="permissionMemberRole" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="applicationContext" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="stakeHolderMembers" type="tns:tStakeHolderMembers"
+						minOccurs="0" maxOccurs="1" />
+					<element name="comment" type="tns:tComment"
+						minOccurs="0" maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tStakeHolderMembers">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="stakeHolderMember" type="tns:tStakeHolderMember"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tStakeHolderMember">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="stakeHolderId" type="string" 
+						minOccurs="1" maxOccurs="1" />
+					<element name="stakeHolder" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="stakeHolderDisplayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="stakeHolderType" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="applicationContext" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="isContextUserInRole" type="boolean"
+						 minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<simpleType name="tStateEnum">
+		<restriction base="NMTOKEN">
+			<enumeration value="ABORTED" />
+			<enumeration value="ACTIVE" />
+			<enumeration value="CLOSED" />
+			<enumeration value="EXPIRED" />
+			<enumeration value="SUSPENDED" />
+		</restriction>
+	</simpleType>
+	<complexType name="tMilestones">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="milestone" type="tns:tMilestone"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tMilestone">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="name" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="displayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="state" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="dateAchieved" type="dateTime" nillable="true"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="achievedBy" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="achievedByDisplayName" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="comment" type="tns:tComment"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tComments">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="comment" type="tns:tComment" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tComment">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="comment" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="caseObjectId" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="caseObjectType" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="isSystemComment" type="boolean"
+						minOccurs="1" />
+					<element name="dateAdded" type="dateTime" nillable="true"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="addedBy" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="addedByDisplayName" type="string"
+						 minOccurs="1" maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tData">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="id" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="caseId" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="name" type="string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="displayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="external" type="boolean"
+						minOccurs="0" maxOccurs="1" />
+					<element name="state" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="data" type="anyType"
+						minOccurs="1" maxOccurs="1" />
+					<!--  TODO: updatedDate cannot be empty -->
+					<element name="updatedDate" type="dateTime"
+						minOccurs="1" maxOccurs="1" nillable="true"/>
+					<element name="updatedBy" type="string"
+						minOccurs="1" maxOccurs="1" />
+					<element name="updatedByDisplayName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="comment" type="tns:tComment"
+						minOccurs="0" maxOccurs="1" />
+					<element name="actions" type="string"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="caseDataFormUrl" type="string"
+						minOccurs="0" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tSca">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<element name="applicationName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="componentName" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="compositeDN" type="string"
+						minOccurs="0" maxOccurs="1" />
+					<element name="compositeInstanceId" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="compositeName" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="compositeVersion" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="ecid" type="string" minOccurs="0"
+						 maxOccurs="1" />
+					<element name="parentComponentInstanceId" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="parentComponentInstRefId" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="headerProperties" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<element name="invokedComponent" type="string"
+						 minOccurs="0" maxOccurs="1" />
+					<!--  TODO: compositeCreatedTime cannot be empty -->
+					<element name="compositeCreatedTime" type="dateTime"
+						 minOccurs="0" maxOccurs="1" nillable="true"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="tCaseFabricHeaderProperty">
+		<complexContent>
+			<extension base="extension:tExtensibleElements">
+				<sequence>
+					<!-- TODO: compositeCreatedTime cannot be empty -->
+					<element name="compositeCreatedTime" type="dateTime"
+						minOccurs="0" maxOccurs="1" nillable="true" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>

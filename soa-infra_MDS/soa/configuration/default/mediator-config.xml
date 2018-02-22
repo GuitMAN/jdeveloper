@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mediator-config version="11.0.1" xmlns="http://xmlns.oracle.com/sca/config/mediator">
+<DeferredWorkerThreadCount>4</DeferredWorkerThreadCount>
+<DeferredMaxRowsRetrieved>200</DeferredMaxRowsRetrieved>
+<DeferredLockerThreadSleep>2</DeferredLockerThreadSleep>
+<ErrorLockerThreadSleep>5</ErrorLockerThreadSleep>
+<ResequencerLockerThreadSleep>10</ResequencerLockerThreadSleep>
+<ResequencerWorkerThreadCount>4</ResequencerWorkerThreadCount>
+<ResequencerMaxGroupsLocked>4</ResequencerMaxGroupsLocked>
+<ContainerIdInitRetries>5</ContainerIdInitRetries>
+<ContainerIdLeaseRefresh>60</ContainerIdLeaseRefresh>
+<ContainerIdLeaseTimeout>300</ContainerIdLeaseTimeout>
+<Parameters/>
+<auditLevel>Inherit</auditLevel>
+<metricsLevel>Enabled</metricsLevel>
+</mediator-config>

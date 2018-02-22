@@ -1,0 +1,835 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Protocols xmlns="http://xmlns.oracle.com/integration/b2b/protocol">
+<ExchangeProtocols>
+<ExchangeProtocol name="AS2" version="1.1" implementationClass="oracle.tip.b2b.exchange.as2.AS2ExchangePlugin" packagingProtocolRef="MIME20" default="false" id="AS2">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA256-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+<Parameter name="Receipt-Delivery-Option" parameterType="string" mandatory="false" id="as2-param-Receipt-Delivery-Option" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Signed-and-Compressed" parameterType="boolean" mandatory="false" id="as2-param-Signed-And-Compressed" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Filename-Format" parameterType="string" mandatory="false" id="as2-param-Filename-Format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="MLLP" version="1.0" implementationClass="oracle.tip.b2b.exchange.mllp.MLLPExchangePlugin" packagingProtocolRef="MIME20" default="false" id="MLLP">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="TCP"/>
+</SupportedTransportProtocols>
+<Parameter name="Start Block Character" parameterType="hex" hidden="false" mandatory="false" groupName="mllp-group-BlockCharacters" id="mllp-param-Start-Block-Char" defaultValue="0x0B" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="End Block Character" parameterType="hex" hidden="false" mandatory="false" groupName="mllp-group-BlockCharacters" id="mllp-param-End-Block-Char" defaultValue="0x1C" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Carriage Return Character" parameterType="hex" hidden="false" mandatory="false" groupName="mllp-group-BlockCharacters" id="mllp-param-Carriage-Return-Char" defaultValue="0x0D" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ImmediateACK" parameterType="list" listValue="None,Default,Simple,Custom,Negative" groupName="mllp-group-Advanced" id="mllp-param-ImmediateACK" overrideLevel="tp" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="MLLP ImmediateACK Custom File" parameterType="SO" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-ImmediateACK-Custom-File" overrideLevel="tp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="MapImmACKControlID" parameterType="boolean" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-ImmediateACK-mapAckControlID" overrideLevel="tp" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="MapImmTriggerEvt" parameterType="boolean" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-ImmediateACK-MapImmTriggerEvt" overrideLevel="tp" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DiscardHL7ACK" parameterType="list" listValue="None,AA,AE,AR,CA,CE,CR" groupName="mllp-group-Advanced" id="mllp-param-DiscardHL7ACK" overrideLevel="tp" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="PersistHL7Ack" parameterType="boolean" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-PersistHL7ACK" overrideLevel="tp" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-Identify-TP-by-delivery-channel" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SequencingMode" parameterType="list" listValue="None,OneToOneMapping,OneToOne" groupName="mllp-group-Advanced" id="mllp-param-Sequencing-Mode" overrideLevel="tp" defaultValue="OneToOne" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterfaceSequencing" parameterType="boolean" hidden="false" mandatory="false" groupName="mllp-group-Advanced" id="mllp-param-InterfaceSequencing" overrideLevel="tp" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ServerFailureAction" parameterType="list" groupName="mllp-group-ErrorActions" id="mllp-param-ServerFailureAction" listValue="None,Default,ResetConnection,PauseEndpoint" overrideLevel="tp" defaultValue="Default" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ClientFailureAction" parameterType="list" groupName="mllp-group-ErrorActions" id="mllp-param-ClientFailureAction" listValue="None,Default,SkipMessage,PauseEndpoint" overrideLevel="tp" defaultValue="Default" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Parse Failure Count" parameterType="integer" groupName="mllp-group-ErrorActions" id="mllp-param-ParseFailureCount" overrideLevel="tp" defaultValue="0" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Validation Failure Count" parameterType="integer" hidden="false" defaultValue="0" mandatory="false" groupName="mllp-group-ErrorActions" id="mllp-param-ValidationFailureCount" overrideLevel="tp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Skip Messages Count" parameterType="integer" hidden="false" mandatory="false" groupName="mllp-group-ErrorActions" id="mllp-param-SkipMessagesCount" overrideLevel="tp" defaultValue="0" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Start Block" parameterType="string" hidden="true" id="mllp-param-gtcp-StartBlock" groupName="MLLP-group-gtcp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="End Block" parameterType="string" hidden="true" id="mllp-param-gtcp-EndBlock" groupName="MLLP-group-gtcp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Header Size" parameterType="integer" hidden="true" id="mllp-param-gtcp-HeaderSize" groupName="MLLP-group-gtcp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Message Length Index" parameterType="string" hidden="true" id="mllp-param-gtcp-MessageLengthIndex" groupName="MLLP-group-gtcp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Retain Header" parameterType="boolean" hidden="true" id="mllp-param-gtcp-RetainHeader" groupName="MLLP-group-gtcp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="MLLP" version="2.0" implementationClass="oracle.tip.b2b.exchange.mllp.MLLPExchangePlugin" packagingProtocolRef="MIME20" default="false" id="MLLP20">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="TCP"/>
+</SupportedTransportProtocols>
+<Parameter name="Start Block Character" parameterType="hex" groupName="mllp20-group-BlockCharacters" id="mllp20-param-Start-Block-Char" defaultValue="0x0B" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="End Block Character" parameterType="hex" groupName="mllp20-group-BlockCharacters" id="mllp20-param-End-Block-Char" defaultValue="0x1C" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Carriage Return Character" parameterType="hex" groupName="mllp20-group-BlockCharacters" id="mllp20-param-Carriage-Return-Char" defaultValue="0x0D" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Positive ACK" parameterType="hex" groupName="mllp20-group-Advanced" id="mllp20-param-Pack" defaultValue="0x06" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Negative ACK" parameterType="hex" groupName="mllp20-group-Advanced" id="mllp20-param-Nack" defaultValue="0x15" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" groupName="mllp20-group-Advanced" id="mllp20-param-Identify-TP-by-delivery-channel" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic TCP" version="1.0" implementationClass="oracle.tip.b2b.exchange.mllp.MLLPExchangePlugin" packagingProtocolRef="MIME20" default="false" id="Generic-TCP">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="TCP"/>
+</SupportedTransportProtocols>
+<Parameter name="Start Block" parameterType="string" id="gtcp-param-StartBlock" groupName="gtcp-group-BlockCharacters" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="End Block" parameterType="string" id="gtcp-param-EndBlock" groupName="gtcp-group-BlockCharacters" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Header Size" parameterType="integer" id="gtcp-param-HeaderSize" groupName="gtcp-group-BlockCharacters" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Message Length Index" parameterType="string" id="gtcp-param-MessageLengthIndex" groupName="gtcp-group-BlockCharacters" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Retain Header" parameterType="boolean" id="gtcp-param-RetainHeader" groupName="gtcp-group-BlockCharacters" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" id="gtcp-param-Identify-TP-by-delivery-channel" defaultValue="false" groupName="gtcp-group-Advanced" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="HLLP" version="1.0" implementationClass="oracle.tip.b2b.exchange.mllp.MLLPExchangePlugin" packagingProtocolRef="MIME20" default="false" id="HLLP10">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="TCP"/>
+</SupportedTransportProtocols>
+<Parameter name="Start Block Character" parameterType="hex" groupName="hllp10-group-BlockCharacters" id="hllp10-param-Start-Block-Char" defaultValue="0x0B" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="End Block Character" parameterType="hex" groupName="hllp10-group-BlockCharacters" id="hllp10-param-End-Block-Char" defaultValue="0x1C" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Carriage Return Character" parameterType="hex" groupName="hllp10-group-BlockCharacters" id="hllp10-param-Carriage-Return-Char" defaultValue="0x0D" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" groupName="hllp10-group-Advanced" id="hllp10-param-Identify-TP-by-delivery-channel" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="ebMS" version="2.0" default="false" implementationClass="oracle.tip.b2b.exchange.ebms.EBMSExchangePlugin" packagingProtocolRef="GENERIC" id="ebMS2">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-DSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-3DES-RSA-V1_5"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES128-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES192-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES256-RSA-OAEP"/>
+</SupportedSecuritySpecifications>
+<Parameter name="Duplicate-Elimination" parameterType="boolean" mandatory="false" id="ebMS_2-param-Duplicate-Elimination" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="messageOrderSemantics" parameterType="string" hidden="false" mandatory="false" id="ebMS_2-param-messageOrderSemantics" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="PersistDuration" parameterType="string" hidden="false" mandatory="false" id="ebMS_2-param-PersistDuration" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SendPartyTypeAndValue" parameterType="boolean" hidden="false" mandatory="false" id="ebMS_2-param-SendPartyTypeAndValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="ebMS" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.ebms.EBMSExchangePlugin" packagingProtocolRef="GENERIC" id="ebMS1">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-DSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-3DES-RSA-V1_5"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES128-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES192-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES256-RSA-OAEP"/>
+</SupportedSecuritySpecifications>
+<Parameter name="Duplicate-Elimination" parameterType="boolean" mandatory="false" id="ebMS_1-param-Duplicate-Elimination" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SendPartyTypeAndValue" parameterType="boolean" hidden="false" mandatory="false" id="ebMS_1-param-SendPartyTypeAndValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="RosettaNet" version="V02.00" default="false" implementationClass="oracle.tip.b2b.exchange.rnif20.RNExchangePlugin" packagingProtocolRef="MIME10" packagingDataMO="/soa/b2b/seed/rnif20pack.xml" id="RNIF20">
+<ProtocolElement id="RNIF20_Preamble" name="Preamble" definitionMO="/soa/b2b/seed/Preamble_MS_V02_00.dtd"/>
+<ProtocolElement id="RNIF20_DeliveryHeader" name="DeliveryHeader" definitionMO="/soa/b2b/seed/DeliveryHeader_MS_V02_00.dtd"/>
+<ProtocolElement id="RNIF20_ServiceHeader" name="ServiceHeader" definitionMO="/soa/b2b/seed/ServiceHeader_MS_V02_00.dtd"/>
+<BusinessSignal id="RNIF20_ReceiptAcknowledgement" name="Receipt Acknowledgment" definitionMO="/soa/b2b/seed/AcknowledgmentOfReceipt_MS_V02_00.dtd"/>
+<BusinessSignal id="RNIF20_GeneralException" name="General Exception" definitionMO="/soa/b2b/seed/Exception_MS_V02_00.dtd"/>
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLDSIG-1_0-SHA-DSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-RC2-128"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-3DES-RSA-V1_5"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES128-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES192-RSA-OAEP"/>
+<SecuritySpecificationRef securitySpecificationRef="XMLENC-1_0-AES256-RSA-OAEP"/>
+</SupportedSecuritySpecifications>
+</ExchangeProtocol>
+<ExchangeProtocol name="RosettaNet" version="01.10" implementationClass="oracle.tip.b2b.exchange.rnif11.RNExchangePlugin" packagingProtocolRef="RNIF11_PKG" packagingDataMO="/soa/b2b/seed/rnif11pack.xml" default="false" id="RNIF11">
+<ProtocolElement id="RNIF11_Preamble" name="Preamble" definitionMO="/soa/b2b/seed/PreamblePartMessageGuideline.dtd"/>
+<ProtocolElement id="RNIF11_ServiceHeader" name="ServiceHeader" definitionMO="/soa/b2b/seed/ServiceHeaderPartMessageGuideline.dtd"/>
+<BusinessSignal id="RNIF11_ReceiptAcknowledgement" name="Receipt Acknowledgment" definitionMO="/soa/b2b/seed/ReceiptAcknowledgementMessageGuideline.dtd"/>
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-2_0-SHA-RSA"/>
+</SupportedSecuritySpecifications>
+</ExchangeProtocol>
+<ExchangeProtocol name="AS1" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.as1.AS1ExchangePlugin" packagingProtocolRef="MIME20" id="AS1">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="Email"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+<Parameter name="Signed-and-Compressed" parameterType="boolean" mandatory="false" id="as1-param-Signed-And-Compressed" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic WS" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.soap.SOAPExchangePlugin" packagingProtocolRef="SOAP" id="Generic-WS">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="WS-HTTP"/>
+</SupportedTransportProtocols>
+<SupportedPolicySpecifications>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wsmtom_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wsrm10_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wsrm11_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss_username_token_client_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss10_message_protection_client_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss10_username_token_with_message_protection_client_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss10_x509_token_with_message_protection_client_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss11_message_protection_client_policy"/>
+<PolicySpecificationRef policySpecificationRef="/soa/b2b/seed/ws_policy.xml#wss11_x509_token_with_message_protection_client_policy"/>
+</SupportedPolicySpecifications>
+<Parameter name="SOAP Headers" parameterType="string" groupName="gws-group-Advanced" mandatory="false" id="soap_header" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="true" id="gws-param-IdentifyTPbydeliverychannel" defaultValue="false" groupName="gws-group-hidden" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="payloadXPath" parameterType="string" overrideLevel="admin" groupName="gws-group-Advanced" id="gws-param-payloadXPath" mandatory="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic File" version="1.0" default="true" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-File">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="File"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="true" id="gfile-param-Identify-TP-by-delivery-channel" defaultValue="false" groupName="gfile-group-hidden" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic AQ" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-AQ">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="AQ"/>
+</SupportedTransportProtocols>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic FTP" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-FTP">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="FTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="true" id="gftp-param-Identify-TP-by-delivery-channel" defaultValue="false" groupName="gftp-group-hidden" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic SFTP" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-SFTP">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="SFTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="true" id="gsftp-param-Identify-TP-by-delivery-channel" defaultValue="false" groupName="gsftp-group-hidden" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic JMS" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-JMS">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="JMS"/>
+</SupportedTransportProtocols>
+<Parameter name="IdentifyTPbydeliverychannel" parameterType="boolean" hidden="true" id="gjms-param-Identify-TP-by-delivery-channel" defaultValue="false" groupName="gjms-group-hidden" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic HTTP" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-HTTP">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="HTTP"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+</ExchangeProtocol>
+<ExchangeProtocol name="Generic Email" version="1.0" default="false" implementationClass="oracle.tip.b2b.exchange.generic.GenericExchangePlugin" packagingProtocolRef="MIME20" id="Generic-Email">
+<SupportedTransportProtocols>
+<TransportProtocolRef transportProtocolRef="Email"/>
+</SupportedTransportProtocols>
+<SupportedSecuritySpecifications>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-3DES"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-40"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-64"/>
+<SecuritySpecificationRef securitySpecificationRef="SMIME-3_0-RC2-128"/>
+</SupportedSecuritySpecifications>
+</ExchangeProtocol>
+</ExchangeProtocols>
+<PackagingProtocols>
+<PackagingProtocol name="MIME" version="2.0" implementationClass="oracle.tip.b2b.packaging.mime.MimePackaging" id="MIME20"/>
+<PackagingProtocol name="MIME" version="1.0" implementationClass="oracle.tip.b2b.packaging.MimePackaging" id="MIME10"/>
+<PackagingProtocol name="RNIF1.1" version="1.0" implementationClass="oracle.tip.b2b.packaging.RosettaNet11Packaging" id="RNIF11_PKG"/>
+<PackagingProtocol name="GENERIC" version="1.0" implementationClass="oracle.tip.b2b.packaging.GenericPackaging" id="GENERIC"/>
+<PackagingProtocol name="SOAP" version="1.0" implementationClass="oracle.tip.b2b.packaging.SOAPPackaging" id="SOAP"/>
+</PackagingProtocols>
+<TransportProtocols>
+<TransportProtocol name="HTTP" version="1.1" id="HTTP">
+<Parameter name="url" parameterType="string" groupName="http-group-Basic" id="http-param-url" mandatory="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="user" parameterType="string" groupName="http-group-Basic" id="http-param-user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" groupName="http-group-Basic" id="http-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="additionalHeaders" parameterType="string" groupName="http-group-Basic" id="http-param-additional_headers" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="useProxy" parameterType="boolean" groupName="http-group-Basic" id="http-param-use_proxy" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="WS-HTTP" version="1.0" id="WS-HTTP">
+<Parameter name="wsdl" parameterType="SO" groupName="wshttp-group-Basic" id="wshttp-param-wsdl" hidden="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="url" parameterType="string" groupName="wshttp-group-Basic" id="wshttp-param-url" mandatory="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="service" parameterType="string" groupName="wshttp-group-Basic" id="wshttp-param-service" mandatory="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="port" parameterType="string" groupName="wshttp-group-Basic" id="wshttp-param-port" mandatory="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="action" parameterType="string" groupName="wshttp-group-Basic" id="wshttp-param-action" mandatory="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="omit.wsa" parameterType="boolean" defaultValue="false" groupName="wshttp-group-Basic" id="wshttp-param-omit_wsa" mandatory="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="omitOracleSOAPHeaders" parameterType="boolean" defaultValue="false" groupName="wshttp-group-Basic" id="wshttp-param-omitOracleSOAPHeaders" mandatory="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="additionalHeaders" parameterType="string" groupName="wshttp-group-Basic" id="wshttp-param-additional_headers" mandatory="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="File" version="1.0" id="File">
+<Parameter name="polling_interval" defaultValue="5" overrideLevel="admin" groupName="file-group-Basic" parameterType="integer" mandatory="false" id="file-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="folder" parameterType="string" mandatory="true" groupName="file-group-Basic" id="file-param-folder" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="minimum_age" parameterType="integer" mandatory="false" groupName="file-group-Advanced" id="file-param-minimum_age" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="archive_dir" parameterType="string" mandatory="false" groupName="file-group-Advanced" id="file-param-archive_dir" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="preserve_filename" parameterType="boolean" mandatory="false" groupName="file-group-Advanced" id="file-param-preserve_filename" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="is_binary" parameterType="boolean" hidden="true" description="DEPRECATED" id="file-param-is_binary" groupName="file-group-Advanced" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="marker" parameterType="boolean" mandatory="false" groupName="file-group-Advanced" id="file-param-marker" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" id="file-param-Sequencing" defaultValue="false" groupName="file-group-Advanced" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_format" parameterType="string" mandatory="false" groupName="file-group-Format" id="file-param-filename_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="directoryname_format" parameterType="string" id="file-param-directoryname_format" groupName="file-group-Format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_separator" parameterType="string" id="file-param-filename_separator" groupName="file-group-Format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="headerfile_extn" parameterType="string" overrideLevel="admin" id="file-param-headerfile_extn" xmlns="http://xmlns.oracle.com/integration/b2b/common" groupName="file-group-Advanced"/>
+<Parameter name="message_splitter" parameterType="string" id="file-param-message_splitter" groupName="file-group-Format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="tp_profile_name" parameterType="string" mandatory="false" id="file-param-tp_profile_name" groupName="file-group-Basic" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="AQ" version="1.0" id="AQ">
+<Parameter name="queue_name" parameterType="string" groupName="aq-group-Basic" id="aq-param-queue_name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="datasource" parameterType="string" groupName="aq-group-Basic" id="aq-param-datasource" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_interval" parameterType="integer" groupName="aq-group-Basic" id="aq-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Recipient" parameterType="string" groupName="aq-group-Advanced" id="aq-param-recipient" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Consumer" parameterType="string" groupName="aq-group-Advanced" id="aq-param-consumer" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="host" parameterType="string" groupName="aq-group-Advanced" id="aq-param-host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Port" defaultValue="1521" parameterType="integer" groupName="aq-group-Advanced" id="aq-param-port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SID" defaultValue="orcl" parameterType="string" groupName="aq-group-Advanced" id="aq-param-sid" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="schema" parameterType="string" groupName="aq-group-Advanced" id="aq-param-schema" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" groupName="aq-group-Advanced" id="aq-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" groupName="aq-group-Advanced" id="aq-param-Sequencing" overrideLevel="admin" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="JMS" version="1.0" id="JMS">
+<Parameter name="queue_name" parameterType="string" groupName="jms-group-Basic" id="jms-param-queue_name" mandatory="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Connection Factory Location" mandatory="true" defaultValue="jms/b2b/B2BQueueConnectionFactory" parameterType="string" groupName="jms-group-Basic" id="jms-param-jndi_connection_factory_location" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="isTopic" defaultValue="false" parameterType="boolean" groupName="jms-group-Basic" id="jms-param-is_topic" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_threads" parameterType="integer" defaultValue="1" mandatory="false" groupName="jms-group-Basic" id="jms-param-polling_threads" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_interval" parameterType="integer" defaultValue="5" mandatory="false" groupName="jms-group-Basic" id="jms-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="isMapMessage" defaultValue="BYTES" parameterType="list" listValue="BYTES,TEXT,MAP" groupName="jms-group-Advanced" id="jms-param-is_map_message" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="isMapPayloadAlone" defaultValue="false" parameterType="boolean" groupName="jms-group-Advanced" id="jms-param-is_map_payload_alone" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="useJMSId" defaultValue="false" parameterType="boolean" mandatory="false" groupName="jms-group-Advanced" id="jms-param-use_jms_id" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Destination Provider Properties" parameterType="string" groupName="jms-group-Advanced" id="jms-param-DestinationProviderProperties" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="user" parameterType="string" groupName="jms-group-Advanced" id="jms-param-user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" groupName="jms-group-Advanced" id="jms-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Subscriber ID" parameterType="string" groupName="jms-group-Advanced" id="jms-param-Subscriber_ID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" groupName="jms-group-Advanced" id="jms-param-Sequencing" overrideLevel="admin" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Message count" parameterType="integer" defaultValue="0" mandatory="false" groupName="jms-group-Advanced" id="jms-param-Message_count" overrideLevel="admin" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Flow Trace EM URL" parameterType="string" mandatory="false" groupName="jms-group-Advanced" id="jms-param-Flow_Trace_EM_URL" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="FTP" version="1.0" id="FTP">
+<Parameter name="host" parameterType="string" mandatory="true" groupName="ftp-group-Basic" id="ftp-param-host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_interval" defaultValue="5" overrideLevel="admin" parameterType="integer" mandatory="false" groupName="ftp-group-Basic" id="ftp-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="folder" parameterType="string" mandatory="true" groupName="ftp-group-Basic" id="ftp-param-folder" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="user" parameterType="string" mandatory="true" groupName="ftp-group-Basic" id="ftp-param-user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" groupName="ftp-group-Basic" id="ftp-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="control_port" parameterType="integer" groupName="ftp-group-Basic" id="ftp-param-control_port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="data_port" parameterType="string" groupName="ftp-group-Basic" id="ftp-param-data_port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="type" parameterType="list" listValue="binary,ascii" defaultValue="binary" mandatory="false" groupName="ftp-group-Basic" id="ftp-param-type" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="channel_mask" parameterType="list" listValue="None,Both,Control,Data" defaultValue="None" groupName="ftp-group-Advanced" id="ftp-param-channel_mask" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="cipher_suites" parameterType="string" groupName="ftp-group-Advanced" id="ftp-param-cipher_suites" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="useProxy" parameterType="boolean" groupName="ftp-group-Advanced" id="ftp-param-use_proxy" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="sourcefile_encoding" parameterType="string" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-sourcefile_encoding" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="minimum_age" parameterType="integer" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-minimum_age" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="archive_dir" parameterType="string" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-archive_dir" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="preserve_filename" parameterType="boolean" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-preserve_filename" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="van" parameterType="boolean" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-van" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ccc" parameterType="boolean" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-ccc" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="keep_connections" parameterType="boolean" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-keep_connections" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="marker" parameterType="boolean" mandatory="false" groupName="ftp-group-Advanced" id="ftp-param-marker" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" groupName="ftp-group-Advanced" id="ftp-param-Sequencing" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_format" parameterType="string" mandatory="false" groupName="ftp-group-Format" id="ftp-param-filename_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="directoryname_format" parameterType="string" groupName="ftp-group-Format" id="ftp-param-directoryname_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_separator" parameterType="string" groupName="ftp-group-Format" id="ftp-param-filename_separator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="timestamp_format" parameterType="string" groupName="ftp-group-Format" id="ftp-param-timestamp_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="timestamp_offset" parameterType="string" groupName="ftp-group-Format" id="ftp-param-timestamp_offset" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="timestamp_source" parameterType="string" groupName="ftp-group-Format" id="ftp-param-timestamp_source" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="message_splitter" parameterType="string" groupName="ftp-group-Format" id="ftp-param-message_splitter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="is_binary" parameterType="boolean" hidden="true" description="DEPRECATED" id="ftp-param-is_binary" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="tp_profile_name" parameterType="string" mandatory="false" id="ftp-param-tp_profile_name" groupName="ftp-group-Basic" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="SFTP" version="1.0" id="SFTP">
+<Parameter name="host" parameterType="string" mandatory="true" groupName="sftp-group-Basic" id="sftp-param-host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="port" defaultValue="22" mandatory="true" groupName="sftp-group-Basic" id="sftp-param-port" parameterType="integer" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_interval" defaultValue="5" overrideLevel="admin" parameterType="integer" mandatory="false" groupName="sftp-group-Basic" id="sftp-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="folder" parameterType="string" mandatory="true" groupName="sftp-group-Basic" id="sftp-param-folder" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="user" parameterType="string" mandatory="true" groupName="sftp-group-Basic" id="sftp-param-user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" mandatory="false" groupName="sftp-group-Basic" id="sftp-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="privateKey" parameterType="string" groupName="sftp-group-Advanced" id="sftp-param-private_key" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="passPhrase" parameterType="credential" groupName="sftp-group-Advanced" id="sftp-param-pass_phrase" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="useProxy" parameterType="boolean" groupName="sftp-group-Advanced" id="sftp-param-use_proxy" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="proxyHost" parameterType="string" groupName="sftp-group-Advanced" id="sftp-param-proxy_host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="proxyPort" parameterType="integer" groupName="sftp-group-Advanced" id="sftp-param-proxy_port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="proxyUser" parameterType="string" groupName="sftp-group-Advanced" id="sftp-param-proxy_user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="proxyPassword" parameterType="credential" groupName="sftp-group-Advanced" id="sftp-param-proxy_password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="MinimumAge" parameterType="string" mandatory="false" groupName="sftp-group-Advanced" id="sftp-param-MinimumAge" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="archive_dir" parameterType="string" mandatory="false" groupName="sftp-group-Advanced" id="sftp-param-archive_dir" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="preserve_filename" parameterType="boolean" mandatory="false" groupName="sftp-group-Advanced" id="sftp-param-preserve_filename" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="marker" parameterType="boolean" mandatory="false" groupName="sftp-group-Advanced" id="sftp-param-marker" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" hidden="false" groupName="sftp-group-Advanced" id="sftp-param-Sequencing" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_format" parameterType="string" mandatory="false" groupName="sftp-group-Format" id="sftp-param-filename_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="directoryname_format" parameterType="string" groupName="sftp-group-Format" id="sftp-param-directoryname_format" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="filename_separator" parameterType="string" groupName="sftp-group-Format" id="sftp-param-filename_separator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="is_binary" parameterType="boolean" hidden="true" description="DEPRECATED" id="sftp-param-is_binary" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="tp_profile_name" parameterType="string" mandatory="false" id="sftp-param-tp_profile_name" groupName="sftp-group-Basic" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="TCP" version="1.0" id="TCP">
+<Parameter name="SocketType" parameterType="list" listValue="Server,Client" groupName="tcp-group-Basic" id="tcp-param-sockettype" overrideLevel="tp" defaultValue="Client" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="host" parameterType="string" mandatory="true" defaultValue="localhost" groupName="tcp-group-Basic" id="tcp-param-host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="port" parameterType="integer" mandatory="true" groupName="tcp-group-Basic" id="tcp-param-port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Permanent Connection Type" parameterType="boolean" groupName="tcp-group-Basic" id="tcp-param-PermanentConnectionType" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SecurityProtocol" parameterType="list" hidden="false" mandatory="false" listValue="NONE,SSLv3,TLSv1" groupName="tcp-group-Basic" id="tcp-param-securityprotocol" defaultValue="NONE" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ClientAuthentication" parameterType="boolean" hidden="false" groupName="tcp-group-Basic" id="tcp-param-clientauthentication" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="pollinterval" parameterType="integer" hidden="false" groupName="tcp-group-Advanced" id="tcp-param-pollinterval" defaultValue="10" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="timeout" parameterType="integer" hidden="false" groupName="tcp-group-Advanced" id="tcp-param-timeout" defaultValue="300" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Sequencing" parameterType="boolean" hidden="false" groupName="tcp-group-Advanced" id="tcp-param-Sequencing" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+<TransportProtocol name="Email" version="1.0" id="Email">
+<Parameter name="email-id" parameterType="string" mandatory="true" groupName="email-group-Basic" id="email-param-email-id" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="host" parameterType="string" mandatory="true" groupName="email-group-Basic" id="email-param-host" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="port" parameterType="integer" mandatory="false" groupName="email-group-Basic" id="email-param-port" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="user" parameterType="string" mandatory="false" groupName="email-group-Basic" id="email-param-user" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" groupName="email-group-Basic" id="email-param-password" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="polling_interval" overrideLevel="admin" parameterType="integer" mandatory="false" groupName="email-group-Basic" id="email-param-polling_interval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="folder" parameterType="string" groupName="email-group-Advanced" id="email-param-folder" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="subject" overrideLevel="tp" parameterType="string" groupName="email-group-Advanced" id="email-param-subject" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="content-type" overrideLevel="tp" parameterType="string" groupName="email-group-Advanced" id="email-param-content-type" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="send as attachment" overrideLevel="tp" groupName="email-group-Advanced" id="email-param-send_as_attachment" parameterType="string" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="dateformat" overrideLevel="tp" parameterType="string" groupName="email-group-Advanced" id="email-param-dateformat" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="eMail-server" overrideLevel="admin" parameterType="list" listValue="IMAP,PoP3" mandatory="true" groupName="email-group-Advanced" id="email-param-server" defaultValue="IMAP" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Enable SSL" parameterType="boolean" mandatory="true" groupName="email-group-Advanced" id="email-param-enable_SSL" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</TransportProtocol>
+</TransportProtocols>
+<SecuritySpecifications>
+<SecuritySpecification name="SMIME" hashFunction="MD5" version="3.0" signatureAlgorithm="RSA" specificationType="signature" displayName="SMIME 3.0 with MD5 - RSA" id="SMIME-3_0-MD5-RSA"/>
+<SecuritySpecification name="SMIME" hashFunction="SHA256" version="3.0" signatureAlgorithm="RSA" specificationType="signature" displayName="SMIME 3.0 with SHA256 - RSA" id="SMIME-3_0-SHA256-RSA"/>
+<SecuritySpecification name="SMIME" hashFunction="SHA1" version="3.0" signatureAlgorithm="RSA" specificationType="signature" displayName="SMIME 3.0 with SHA1 - RSA" id="SMIME-3_0-SHA-RSA"/>
+<SecuritySpecification name="SMIME" hashFunction="MD5" version="2.0" signatureAlgorithm="RSA" specificationType="signature" displayName="SMIME 2.0 with MD5 - RSA" id="SMIME-2_0-MD5-RSA"/>
+<SecuritySpecification name="SMIME" hashFunction="SHA1" version="2.0" signatureAlgorithm="RSA" specificationType="signature" displayName="SMIME 2.0 with SHA1 - RSA" id="SMIME-2_0-SHA-RSA"/>
+<SecuritySpecification name="XMLDSIG" hashFunction="SHA1" version="1.0" signatureAlgorithm="DSA" specificationType="signature" displayName="XMLDSIG with SHA1 - DSA" id="XMLDSIG-1_0-SHA-DSA"/>
+<SecuritySpecification name="XMLDSIG" hashFunction="SHA1" version="1.0" signatureAlgorithm="RSA" specificationType="signature" displayName="XMLDSIG with SHA1 - RSA" id="XMLDSIG-1_0-SHA-RSA"/>
+<SecuritySpecification name="SMIME" version="3.0" encryptionAlgorithm="DES" specificationType="encryption" displayName="SMIME 3.0 with DES" id="SMIME-3_0-DES"/>
+<SecuritySpecification name="SMIME" version="3.0" encryptionAlgorithm="3DES" specificationType="encryption" displayName="SMIME 3.0 With 3DES" id="SMIME-3_0-3DES"/>
+<SecuritySpecification name="SMIME" version="3.0" encryptionAlgorithm="RC2-40" specificationType="encryption" displayName="SMIME 3.0 with RC2-40" id="SMIME-3_0-RC2-40"/>
+<SecuritySpecification name="SMIME" version="3.0" encryptionAlgorithm="RC2-64" specificationType="encryption" displayName="SMIME 3.0 with RC2-64" id="SMIME-3_0-RC2-64"/>
+<SecuritySpecification name="SMIME" version="3.0" encryptionAlgorithm="RC2-128" specificationType="encryption" displayName="SMIME 3.0 with RC2-128" id="SMIME-3_0-RC2-128"/>
+<SecuritySpecification name="SMIME" version="2.0" encryptionAlgorithm="DES" specificationType="encryption" displayName="SMIME 2.0 with DES" id="SMIME-2_0-DES"/>
+<SecuritySpecification name="SMIME" version="2.0" encryptionAlgorithm="3DES" specificationType="encryption" displayName="SMIME 2.0 With 3DES" id="SMIME-2_0-3DES"/>
+<SecuritySpecification name="SMIME" version="2.0" encryptionAlgorithm="RC2-40" specificationType="encryption" displayName="SMIME 2.0 with RC2-40" id="SMIME-2_0-RC2-40"/>
+<SecuritySpecification name="SMIME" version="2.0" encryptionAlgorithm="RC2-64" specificationType="encryption" displayName="SMIME 2.0 with RC2-64" id="SMIME-2_0-RC2-64"/>
+<SecuritySpecification name="SMIME" version="2.0" encryptionAlgorithm="RC2-128" specificationType="encryption" displayName="SMIME 2.0 with RC2-128" id="SMIME-2_0-RC2-128"/>
+<SecuritySpecification name="XMLENC" version="1.0" encryptionAlgorithm="3DES" specificationType="encryption" displayName="XMLENC with 3DES - RSA-v1.5" id="XMLENC-1_0-3DES-RSA-V1_5"/>
+<SecuritySpecification name="XMLENC" version="1.0" encryptionAlgorithm="AES-128" specificationType="encryption" displayName="XMLENC with AES-128 - RSA-OAEP" id="XMLENC-1_0-AES128-RSA-OAEP"/>
+<SecuritySpecification name="XMLENC" version="1.0" encryptionAlgorithm="AES-192" specificationType="encryption" displayName="XMLENC with AES-192 - RSA-OAEP" id="XMLENC-1_0-AES192-RSA-OAEP"/>
+<SecuritySpecification name="XMLENC" version="1.0" encryptionAlgorithm="AES-256" specificationType="encryption" displayName="XMLENC with AES-256 - RSA-OAEP" id="XMLENC-1_0-AES256-RSA-OAEP"/>
+</SecuritySpecifications>
+<DocumentProtocols>
+<DocumentProtocol name="EDI_X12" default="false" custom="false" implementationClass="oracle.tip.b2b.document.edi.EDIDocumentPlugin" CNRequired="true" CNType1="Interchange" CNType2="Group" CNType3="Transaction" id="EDI_X12">
+<DocumentProtocolParameters>
+<Parameter name="InterchangeAuthorizationInfoQual" parameterType="string" hidden="false" mandatory="false" defaultValue="00" groupName="EDI_X12-group-Interchange" description="ISA01" id="x12-param-InterchangeAuthorizationInfoQual" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeAuthorizationInfo" parameterType="string" hidden="false" groupName="EDI_X12-group-Interchange" mandatory="false" description="ISA02" id="x12-param-InterchangeAuthorizationInfo" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeSecurityInfoQual" parameterType="string" hidden="false" mandatory="false" defaultValue="00" groupName="EDI_X12-group-Interchange" description="ISA03" id="x12-param-InterchangeSecurityInfoQual" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeSecurityInfo" parameterType="string" hidden="false" mandatory="false" id="x12-param-InterchangeSecurityInfo" groupName="EDI_X12-group-Interchange" description="ISA04" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeDate" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemDate(YYMMDD)#" groupName="EDI_X12-group-Interchange" description="ISA09" id="x12-param-InterchangeDate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeTime" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemTime(HHMM)#" groupName="EDI_X12-group-Interchange" description="ISA10" id="x12-param-InterchangeTime" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeControlStandard_RepeatingSeparator" parameterType="string" hidden="false" mandatory="false" defaultValue="U" groupName="EDI_X12-group-Interchange" description="ISA11" id="x12-param-InterchangeControlStandard_RepeatingSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeControlVersion" parameterType="string" hidden="false" mandatory="true" defaultValue="00401" groupName="EDI_X12-group-Interchange" description="ISA12" id="x12-param-InterchangeControlVersion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeAckRequested" parameterType="string" mandatory="true" defaultValue="0" groupName="EDI_X12-group-Interchange" description="ISA14" id="x12-param-InterchangeAckRequested" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgementOption" parameterType="list" groupName="EDI_X12-group-Interchange" defaultValue="Always" id="x12-param-AcknowledgementOption" listValue="Always,OnError,None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeUsageIndicator" parameterType="string" hidden="false" mandatory="false" defaultValue="P" groupName="EDI_X12-group-Interchange" description="ISA15" id="x12-param-InterchangeUsageIndicator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeECSFileBlob" parameterType="SO" hidden="false" groupName="EDI_X12-group-Interchange" mandatory="false" id="x12-param-InterchangeECSFileBlob" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgementType" parameterType="string" hidden="true" groupName="EDI_X12-group-Interchange" defaultValue="997" mandatory="false" id="x12-param-AcknowledgementType" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Standard" parameterType="string" hidden="true" groupName="EDI_X12-group-Interchange" defaultValue="X12" mandatory="false" id="x12-param-Standard" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupDate" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemDate(CCYYMMDD)#" groupName="EDI_X12-group-Group" id="x12-param-GroupDate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupTime" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemTime(HHMM)#" groupName="EDI_X12-group-Group" id="x12-param-GroupTime" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupAgencyCode" parameterType="string" hidden="false" mandatory="false" defaultValue="X" groupName="EDI_X12-group-Group" id="x12-param-GroupAgencyCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupVersionNumber" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-Group" id="x12-param-GroupVersionNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupECSFileBlob" parameterType="SO" hidden="false" groupName="EDI_X12-group-Group" mandatory="false" id="x12-param-GroupECSFileBlob" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SegmentDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x7e" groupName="EDI_X12-group-Delimiters" id="x12-param-SegmentDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ElementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x2a" groupName="EDI_X12-group-Delimiters" id="x12-param-ElementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SubelementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x5c" groupName="EDI_X12-group-Delimiters" id="x12-param-SubelementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DecimalSeparator" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x2e" groupName="EDI_X12-group-Delimiters" id="x12-param-DecimalSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ReplacementChar" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x7c" groupName="EDI_X12-group-Delimiters" id="x12-param-ReplacementChar" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="RepeatingSeparator" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x5e" groupName="EDI_X12-group-Delimiters" id="x12-param-RepeatingSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CheckDuplicateControlNum" parameterType="boolean" defaultValue="false" groupName="EDI_X12-group-Miscellaneous" id="x12-param-CheckDuplicateControlNum" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="X12IgnoreLookUp" parameterType="string" groupName="EDI_X12-group-Miscellaneous" id="x12-param-X12IgnoreLookUp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentProtocolParameters>
+<DocumentTypeParameters>
+<Parameter name="GroupID" parameterType="string" hidden="false" mandatory="true" id="x12-param-GroupID" groupName="EDI_X12-group-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionID" parameterType="string" hidden="true" mandatory="false" id="x12-param-TransactionID" groupName="EDI_X12-group-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionImplementationReference" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-Transaction" id="x12-param-TransactionImplementationReference" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionPurposeCode" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-Transaction" id="x12-param-TransactionPurposeCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgeTransaction" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-Transaction" id="x12-param-Acknowledge-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgeTransactionVersion" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-Transaction" id="x12-param-Acknowledge-Transaction-Version" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAOnError" parameterType="boolean" hidden="false" mandatory="false" groupName="EDI_X12-group-Transaction" id="x12-param-FAOnError" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DuplicateTransactionXPathName1" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-DupTransaction" id="x12-param-DuplicateTransactionXPathName1" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DuplicateTransactionXPathName2" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-DupTransaction" id="x12-param-DuplicateTransactionXPathName2" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DuplicateTransactionXPathName3" parameterType="string" hidden="false" mandatory="false" groupName="EDI_X12-group-DupTransaction" id="x12-param-DuplicateTransactionXPathName3" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType1" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype1" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType2" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype2" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType3" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype3" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType4" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype4" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType5" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype5" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType6" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype6" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SNIPType7" parameterType="list" groupName="EDI_X12-group-HIPAA" defaultValue="Default" id="hipaa-param-sniptype7" listValue="Default,Validate,Warning,Information,Ignore" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="false" id="x12-param-validate" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" hidden="false" mandatory="false" id="x12-param-translate" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="fa" parameterType="boolean" hidden="false" mandatory="false" defaultValue="true" id="x12-param-fa" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAHandledByB2B" parameterType="list" listValue="None,Yes,No" id="x12-param-FAHandledByB2B" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryInterval" parameterType="integer" id="x12-param-FARetryInterval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryCount" parameterType="integer" id="x12-param-FARetryCount" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="isSyncRespAgreement" parameterType="boolean" id="x12-param-isSyncRespAgreement" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="TransactionECSFileBlob" parameterType="SO" hidden="false" mandatory="true" id="x12-param-TransactionECSFileBlob" groupName="EDI_X12-group-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="EDI_X12-group-Routing" mandatory="false" id="x12-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="x12-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+<StandardDefinitions>
+<StandardDefinition name="EnvelopIntC-x-4012AndLower" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-x-4012AndLower.ecs" id="EnvelopIntC-x-4012AndLower"/>
+<StandardDefinition name="EnvelopIntC-x-4020AndHigher" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-x-4020AndHigher.ecs" id="EnvelopIntC-x-4020AndHigher"/>
+<StandardDefinition name="EnvelopFuncG-x-3011AndLower" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3011AndLower.ecs" id="EnvelopFuncG-x-3011AndLower"/>
+<StandardDefinition name="EnvelopFuncG-x-3012To3030" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3012To3030.ecs" id="EnvelopFuncG-x-3012To3030"/>
+<StandardDefinition name="EnvelopFuncG-x-3031To3071" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3031To3071.ecs" id="EnvelopFuncG-x-3031To3071"/>
+<StandardDefinition name="EnvelopFuncG-x-3072AndHigher" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3072AndHigher.ecs" id="EnvelopFuncG-x-3072AndHigher"/>
+<StandardDefinition name="EnvelopIntC-x-4012AndLower-HIPAA" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-x-4012AndLower-HIPAA.ecs" id="EnvelopIntC-x-4012AndLower-HIPAA"/>
+<StandardDefinition name="EnvelopIntC-x-5010-HIPAA" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-x-5010-HIPAA.ecs" id="EnvelopIntC-x-5010-HIPAA"/>
+<StandardDefinition name="EnvelopFuncG-x-3072AndHigher-HIPAA" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3072AndHigher-HIPAA.ecs" id="EnvelopFuncG-x-3072AndHigher-HIPAA"/>
+<StandardDefinition name="EnvelopFuncG-x-3072AndHigher-HIPAA_A1" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-x-3072AndHigher-HIPAA_A1.ecs" id="EnvelopFuncG-x-3072AndHigher-HIPAA_A1"/>
+<StandardDefinition name="EnvelopIntC-X12N-4020AndHigher" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-X12N-4020AndHigher.ecs" id="EnvelopIntC-X12N-4020AndHigher"/>
+<StandardDefinition name="EnvelopFuncG-X12N-4010AndHigher" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-X12N-4010AndHigher.ecs" id="EnvelopFuncG-X12N-4010AndHigher"/>
+</StandardDefinitions>
+</DocumentProtocol>
+<DocumentProtocol name="EDI_EDIFACT" custom="false" default="false" implementationClass="oracle.tip.b2b.document.edi.EDIDocumentPlugin" CNRequired="true" CNType1="Interchange" CNType2="Group" CNType3="Transaction" id="EDI_EDIFACT">
+<DocumentProtocolParameters>
+<Parameter name="UNACreation" parameterType="list" listValue="always,never,delimiterbased" hidden="false" mandatory="false" defaultValue="always" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-UNACreation" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CharSet" parameterType="string" hidden="false" mandatory="false" defaultValue="UNOB" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-CharSet" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeControlVersion" parameterType="string" hidden="false" mandatory="false" defaultValue="1" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeControlVersion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeServiceCodeList" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeServiceCodeList" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeCharacterEncoding" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeCharacterEncoding" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeDate" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemDate(YYMMDD)#" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeDate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeTime" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemTime(HHMM)#" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeTime" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeRecipientRefPassword" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeRecipientRefPassword" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeRecipientRefPasswordQual" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeRecipientRefPasswordQual" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeApplicationReference" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeApplicationRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeProcessingPriority" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeProcessingPriority" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeAckRequested" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeAckRequested" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeAgreementIdentifier" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeAgreementIdentifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeTestIndicator" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeTestIndicator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InterchangeECSFileBlob" parameterType="SO" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Interchange" id="edifact-param-InterchangeECSFileBlob" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgementOption" parameterType="string" hidden="true" groupName="EDI_EDIFACT-group-Interchange" defaultValue="T" mandatory="false" id="edifact-param-AcknowledgementOption" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgementType" parameterType="string" hidden="true" groupName="EDI_EDIFACT-group-Interchange" defaultValue="CONTRL" mandatory="false" id="edifact-param-AcknowledgementType" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Standard" parameterType="string" hidden="true" groupName="EDI_EDIFACT-group-Interchange" defaultValue="EDIFACT" mandatory="false" id="ecifact-param-Standard" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FunctionalGroupCreation" parameterType="string" hidden="false" mandatory="false" defaultValue="TRUE" groupName="EDI_EDIFACT-group-Group" id="edifact-param-FunctionalGroupCreation" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupDate" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemDate(YYMMDD)#" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupDate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupTime" parameterType="string" hidden="false" mandatory="false" defaultValue="#SystemTime(HHMM)#" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupTime" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupControllingAgencyCode" parameterType="string" hidden="false" mandatory="false" defaultValue="UN" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupAgencyCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupVersion" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupVersion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupReleaseNumber" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupReleaseNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupAssociationCode" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupAssociationCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupApplicationPassword" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Group" id="edifact-param-GroupApplicationPassword" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GroupECSFileBlob" parameterType="SO" hidden="false" mandatory="false" id="edifact-param-GroupECSFileBlob" groupName="EDI_EDIFACT-group-Group" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SegmentDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x27" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-SegmentDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ElementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x2b" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-ElementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SubelementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x3a" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-SubelementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DecimalSeparator" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x2e" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-DecimalSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ReleaseCharacter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x3f" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-ReleaseCharacter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ReplacementChar" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x7c" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-ReplacementChar" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="RepeatingSeparator" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x2a" groupName="EDI_EDIFACT-group-Delimiters" id="edifact-param-RepeatingSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CheckDuplicateControlNum" parameterType="boolean" defaultValue="false" groupName="EDI_EDIFACT-group-Miscellaneous" id="edifact-param-CheckDuplicateControlNum" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="EDIFACTIgnoreLookUp" parameterType="string" groupName="EDI_EDIFACT-group-Miscellaneous" id="edifact-param-EDIFACTIgnoreLookUp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentProtocolParameters>
+<DocumentTypeParameters>
+<Parameter name="GroupID" parameterType="string" hidden="false" mandatory="true" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-GroupID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionID" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionMessageVersionNumber" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionMessageVersionNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionMessageReleaseNumber" parameterType="string" hidden="true" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionMessageReleaseNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionControllingAgency" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionControllingAgency" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionAssociationAssignedCode" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionAssociationAssignedCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransactionCommonAccessRef" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionCommonAccessRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="EDIFACT.GenerateSegmentSequences" parameterType="boolean" hidden="false" mandatory="false" defaultValue="false" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-GenerateSegmentSequences" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="false" id="edifact-param-validate" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" hidden="false" mandatory="false" id="edifact-param-translate" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="fa" parameterType="boolean" hidden="false" mandatory="false" defaultValue="true" id="edifact-param-fa" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAHandledByB2B" parameterType="list" listValue="None,Yes,No" id="edifact-param-FAHandledByB2B" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryInterval" parameterType="integer" id="edifact-param-FARetryInterval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryCount" parameterType="integer" id="edifact-param-FARetryCount" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="TransactionECSFileBlob" parameterType="SO" hidden="false" mandatory="true" groupName="EDI_EDIFACT-group-Transaction" id="edifact-param-TransactionECSFileBlob" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="EDI_EDIFACT-group-Routing" mandatory="false" id="edifact-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="edifact-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAAssocAssignedCode" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-FAAssocAssignedCode" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAMessageVersionNumber" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-FAMessageVersionNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAMessageReleaseNumber" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-FAMessageReleaseNumber" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="removeFASegments" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-removeFASegments" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAActionCoded" parameterType="string" hidden="false" mandatory="false" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-FAActionCoded" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AppRefToContrl" parameterType="boolean" groupName="EDI_EDIFACT-group-EDIEL2" id="edifact-param-AppRefToContrl" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+<StandardDefinitions>
+<StandardDefinition name="EnvelopIntC-EDIFACT-x-Syntax3AndLower" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-EDIFACT-x-Syntax3AndLower.ecs" id="EnvelopIntC-EDIFACT-x-Syntax3AndLower"/>
+<StandardDefinition name="EnvelopIntC-EDIFACT-x-Syntax4" definitionType="Interchange" valueType="SO" value="/soa/b2b/seed/EnvelopIntC-EDIFACT-x-Syntax4.ecs" id="EnvelopIntC-EDIFACT-x-Syntax4"/>
+<StandardDefinition name="EnvelopFuncG-EDIFACT-x-Syntax3-D99AAndLower" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-EDIFACT-x-Syntax3-D99AAndLower.ecs" id="EnvelopFuncG-EDIFACT-x-Syntax3-D99AAndLower"/>
+<StandardDefinition name="EnvelopFuncG-EDIFACT-x-Syntax4-D99BAndHigher" definitionType="Group" valueType="SO" value="/soa/b2b/seed/EnvelopFuncG-EDIFACT-x-Syntax4-D99BAndHigher.ecs" id="EnvelopFuncG-EDIFACT-x-Syntax4-D99BAndHigher"/>
+</StandardDefinitions>
+</DocumentProtocol>
+<DocumentProtocol name="EDI_TRADACOMS" custom="false" default="false" implementationClass="oracle.tip.b2b.document.tradacoms.TRADACOMSDocumentPlugin" CNRequired="true" CNType1="Interchange" CNType2="Group" CNType3="Transaction" id="EDI_TRADACOMS">
+<DocumentProtocolParameters>
+<Parameter name="TransmissionDate" parameterType="string" defaultValue="#SystemDate(YYMMDD)#" groupName="EDI_TRADACOMS-group-Interchange" id="tradacoms-param-TransmissionDate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TransmissionTime" parameterType="string" defaultValue="#SystemTime(HHMM)#" groupName="EDI_TRADACOMS-group-Interchange" id="tradacoms-param-TransmissionTime" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SegmentDelimiter" parameterType="hex" defaultValue="0x27" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-SegmentDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ElementDelimiter" parameterType="hex" defaultValue="0x2b" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-ElementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SubelementDelimiter" parameterType="hex" defaultValue="0x3a" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-SubelementDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DecimalSeparator" parameterType="hex" defaultValue="0x2e" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-DecimalSeparator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ReleaseCharacter" parameterType="hex" defaultValue="0x3f" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-ReleaseCharacter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TagDelimiter" parameterType="hex" defaultValue="0x3d" groupName="EDI_TRADACOMS-group-Delimiters" id="tradacoms-param-TagDelimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentProtocolParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" id="tradacoms-param-validate" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" id="tradacoms-param-translate" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="TransactionECSFileBlob" parameterType="SO" mandatory="true" groupName="EDI_TRADACOMS-group-Transaction" id="tradacoms-param-TransactionECSFileBlob" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" groupName="EDI_TRADACOMS-group-Routing" mandatory="false" id="tradacoms-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" refValue="xPathParams" id="tradacoms-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+<DocumentProtocol name="HL7" custom="false" default="false" implementationClass="oracle.tip.b2b.document.edi.EDIDocumentPlugin" CNRequired="true" CNType1="Message" id="HL7">
+<DocumentProtocolParameters>
+<Parameter name="Security" parameterType="string" hidden="false" mandatory="false" id="hl7-param-Security" groupName="hl7-group-MessageHeader" description="MSH-00008: Security" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ProcessingID" parameterType="string" hidden="false" mandatory="false" defaultValue="P" id="hl7-param-ProcessingID" groupName="hl7-group-MessageHeader" description="MSH-00011: Processing ID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcceptAcknowledgementType" parameterType="string" hidden="false" mandatory="false" defaultValue="AL" id="hl7-param-AcceptAcknowledgementType" groupName="hl7-group-MessageHeader" description="MSH-00015: Accept Acknowledgement Type" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AppAcknowledgementType" parameterType="string" hidden="false" mandatory="false" defaultValue="AL" id="hl7-param-AppAcknowledgementType" groupName="hl7-group-MessageHeader" description="MSH-00016: Application Acknowledgement Type" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CountryCode" parameterType="string" hidden="false" mandatory="false" defaultValue="US" id="hl7-param-CountryCode" groupName="hl7-group-MessageHeader" description="MSH-00017: Country Code" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CharacterSet" parameterType="string" hidden="false" mandatory="false" defaultValue="ASCII" id="hl7-param-CharacterSet" groupName="hl7-group-MessageHeader" description="MSH-00018: Character Set" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BatchCreation" parameterType="boolean" hidden="false" mandatory="false" id="hl7-param-BatchCreation" defaultValue="false" groupName="hl7-group-BatchHeader" description="Create Batch Header" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BatchECSFileBlob" parameterType="SO" hidden="false" mandatory="false" id="hl7-param-BatchECSFile" groupName="hl7-group-BatchHeader" description="Batch Header Ecs File" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FileCreation" parameterType="boolean" hidden="false" mandatory="false" defaultValue="false" id="hl7-param-FileCreation" groupName="hl7-group-FileHeader" description="Create File Header" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FileECSFileBlob" parameterType="SO" hidden="false" mandatory="false" id="hl7-param-FileECSFile" groupName="hl7-group-FileHeader" description="File Header Ecs File" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeID" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeID" groupName="hl7-group-MessageHeader" description="Internationalization Code Identifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeText" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeText" groupName="hl7-group-MessageHeader" description="Internationalization Code Text" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeSystem" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeSystem" groupName="hl7-group-MessageHeader" description="Internationalization Coding System Name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeAlternateID" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeAlternateID" groupName="hl7-group-MessageHeader" description="Internationalization Code Alternate Identifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeAlternateText" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeAlternateText" groupName="hl7-group-MessageHeader" description="Internationalization Code Alternate Text" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternatCodeAlternateSystem" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternatCodeAlternateSystem" groupName="hl7-group-MessageHeader" description="Internationalization Code Alternate Coding System Name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionID" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionID" groupName="hl7-group-MessageHeader" description="International Version Identifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionIDText" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionIDText" groupName="hl7-group-MessageHeader" description="International Version ID Text" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionIDSystem" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionIDSystem" groupName="hl7-group-MessageHeader" description="International Version ID Coding System Name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionIDAlternateID" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionIDAlternateID" groupName="hl7-group-MessageHeader" description="International Version ID Alternate Identifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionIDAlternateText" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionIDAlternateText" groupName="hl7-group-MessageHeader" description="International Version ID Alternate Text" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="InternationalVersionIDAlternateSystem" parameterType="string" hidden="false" mandatory="false" id="hl7-param-InternationalVersionIDAlternateSystem" groupName="hl7-group-MessageHeader" description="International Version ID Alternate Coding System Name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ElementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x7c" id="hl7-param-ElementDelimiter" groupName="hl7-group-Delimiters" description="Element Delimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ReleaseCharacter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x5c" id="hl7-param-ReleaseCharacter" groupName="hl7-group-Delimiters" description="Escape Character" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="RepeatingSeparator" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x7e" id="hl7-param-Repeating-Separator" groupName="hl7-group-Delimiters" description="Repeating Separator" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SegmentDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x0d" id="hl7-param-SegmentDelimiter" groupName="hl7-group-Delimiters" description="Segment Delimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SubcomponentDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x26" id="hl7-param-SubcomponentDelimiter" groupName="hl7-group-Delimiters" description="Subcomponent Delimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="SubelementDelimiter" parameterType="hex" hidden="false" mandatory="false" defaultValue="0x5e" id="hl7-param-SubelementDelimiter" groupName="hl7-group-Delimiters" description="Subelement Delimiter" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BatchSecurity" parameterType="string" hidden="false" mandatory="false" id="hl7-param-BatchSecurity" groupName="hl7-group-BatchHeader" description="Batch Security" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FileSecurity" parameterType="string" hidden="false" mandatory="false" id="hl7-param-FileSecurity" groupName="hl7-group-FileHeader" description="File Security" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FileDate" parameterType="string" hidden="false" mandatory="false" id="hl7-param-FileDate" groupName="hl7-group-FileHeader" description="FileDate" defaultValue="#SystemDateTime(CCYYMMDDHHMM)#" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BatchDate" parameterType="string" hidden="false" mandatory="false" id="hl7-param-BatchDate" groupName="hl7-group-BatchHeader" description="Batch Date" defaultValue="#SystemDateTime(CCYYMMDDHHMM)#" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AcknowledgementType" parameterType="string" hidden="true" groupName="hl7-group-MessageHeader" defaultValue="HL7" mandatory="false" id="hl7-param-AcknowledgementType" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="HL7IgnoreLookUp" parameterType="string" groupName="hl7-group-misc" id="hl7-param-HL7IgnoreLookUp" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="HL7AckMode" parameterType="list" groupName="hl7-group-misc" id="hl7-param-HL7AckMode" listValue="Multiple,Single" defaultValue="Multiple" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentProtocolParameters>
+<DocumentTypeParameters>
+<Parameter name="HL7GenericACK" parameterType="boolean" hidden="false" mandatory="false" groupName="hl7-group-Transaction" defaultValue="false" id="hl7-param-gen-Ack" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="MapACKControlID" parameterType="boolean" hidden="false" mandatory="false" groupName="hl7-group-Transaction" defaultValue="false" id="hl7-param-mapAckControlID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="acceptAcknowledgement" parameterType="list" hidden="false" mandatory="false" groupName="hl7-group-Transaction" listValue="None,AL,ER,SU" defaultValue="None" id="hl7-param-acceptAcknowledgement" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="false" id="hl7-param-validate" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" hidden="false" mandatory="false" id="hl7-param-translate" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="fa" parameterType="boolean" hidden="false" mandatory="false" defaultValue="false" id="hl7-param-fa" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAHandledByB2B" parameterType="list" listValue="None,Yes,No" id="hl7-param-FAHandledByB2B" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryInterval" parameterType="integer" id="hl7-param-FARetryInterval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryCount" parameterType="integer" id="hl7-param-FARetryCount" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="MessageECSFileBlob" parameterType="SO" hidden="false" mandatory="true" id="hl7-param-MessageECSFileBlob" groupName="hl7-group-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" mandatory="false" id="hl7-param-DocumentRoutingID" groupName="hl7-group-Routing" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="hl7-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+<StandardDefinitions>
+<StandardDefinition name="EnvelopBatch-HL7-2-1" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-1.ecs" id="EnvelopBatch-HL7-2-1"/>
+<StandardDefinition name="EnvelopBatch-HL7-2-2" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-2.ecs" id="EnvelopBatch-HL7-2-2"/>
+<StandardDefinition name="EnvelopBatch-HL7-2-3" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-3.ecs" id="EnvelopBatch-HL7-2-3"/>
+<StandardDefinition name="EnvelopBatch-HL7-2-4" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-4.ecs" id="EnvelopBatch-HL7-2-4"/>
+<StandardDefinition name="EnvelopBatch-HL7-2-5" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-5.ecs" id="EnvelopBatch-HL7-2-5"/>
+<StandardDefinition name="EnvelopBatch-HL7-2-6" definitionType="Batch" valueType="SO" value="/soa/b2b/seed/EnvelopBatch-HL7-2-6.ecs" id="EnvelopBatch-HL7-2-6"/>
+<StandardDefinition name="EnvelopFile-HL7-2-1" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-1.ecs" id="EnvelopFile-HL7-2-1"/>
+<StandardDefinition name="EnvelopFile-HL7-2-2" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-2.ecs" id="EnvelopFile-HL7-2-2"/>
+<StandardDefinition name="EnvelopFile-HL7-2-3" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-3.ecs" id="EnvelopFile-HL7-2-3"/>
+<StandardDefinition name="EnvelopFile-HL7-2-4" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-4.ecs" id="EnvelopFile-HL7-2-4"/>
+<StandardDefinition name="EnvelopFile-HL7-2-5" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-5.ecs" id="EnvelopFile-HL7-2-5"/>
+<StandardDefinition name="EnvelopFile-HL7-2-6" definitionType="File" valueType="SO" value="/soa/b2b/seed/EnvelopFile-HL7-2-6.ecs" id="EnvelopFile-HL7-2-6"/>
+</StandardDefinitions>
+</DocumentProtocol>
+<DocumentProtocol name="RosettaNet" custom="false" implementationClass="oracle.tip.b2b.document.rn20.RNDocumentPlugin" default="false" id="RosettaNet">
+<DocumentTypeParameters>
+<Parameter name="FromRole" parameterType="string" hidden="false" mandatory="true" id="rn-param-FromRole" groupName="rn-group-ServiceHeader" description="From Role" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ToRole" parameterType="string" hidden="false" mandatory="true" id="rn-param-ToRole" groupName="rn-group-ServiceHeader" description="To Role" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FromService" parameterType="string" hidden="false" mandatory="true" id="rn-param-FromService" groupName="rn-group-ServiceHeader" description="From Service" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ToService" parameterType="string" hidden="false" mandatory="true" id="rn-param-ToService" groupName="rn-group-ServiceHeader" description="To Service" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BusinessTransaction" parameterType="string" hidden="false" mandatory="true" id="rn-param-BusinessTransaction" groupName="rn-group-ServiceHeader" description="Business Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="BusinessAction" parameterType="string" hidden="false" mandatory="true" id="rn-param-BusinessAction" groupName="rn-group-ServiceHeader" description="Business Action" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CollaborationTimeToPerform" parameterType="string" hidden="false" mandatory="true" id="rn-param-CollaborationTimeToPerform" groupName="rn-group-ServiceHeader" description="time to perform for collaboration" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CollaborationName" parameterType="string" hidden="false" mandatory="true" id="rn-param-CollaborationName" groupName="rn-group-ServiceHeader" description="Collaboration Name" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CollaborationCode" parameterType="string" hidden="false" mandatory="true" id="rn-param-CollaborationCode" groupName="rn-group-ServiceHeader" description="Collaboration Code" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="GlobalUsageCode" parameterType="list" hidden="false" mandatory="false" listValue="Production,Test" id="rn-param-GlobalUsageCode" defaultValue="Production" groupName="rn-group-ServiceHeader" description="global usage code" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FreeFormText" parameterType="string" hidden="false" mandatory="false" id="rn-param-Manifest-FreeFormText" groupName="rn-group-ServiceHeader" description="FreeFormText used in Manifest->ServiceContentControl->ActionIdentity->messageStandard" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="VersionIdentifier" parameterType="string" hidden="false" mandatory="false" id="rn-param-Manifest-VersionIdentifier" groupName="rn-group-ServiceHeader" description="VersionIdentifier used in Manifest->ServiceContentControl->ActionIdentity->standardVersion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="PartnerDefinedPIPPayloadBindingId" parameterType="string" hidden="false" mandatory="false" id="rn-param-partnerDefinedPIPPayloadBindingId" groupName="rn-group-ServiceHeader" description="PIPPayloadBindingId used in partnerDefinedPIPPayloadBindingId -> ProprietaryReferenceIdentifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="false" id="rn-param-validate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="rn-group-Routing" mandatory="false" id="rn-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="rn-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpression" parameterType="string" hidden="false" mandatory="false" id="rn-param-IdentificationExpression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" id="rn-param-IdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DTDXSDNamespaceConversion" parameterType="list" listValue="Both,Inbound,Outbound,None" hidden="false" mandatory="false" defaultValue="Both" id="rn-param-DTDXSDNamespaceConversion" description="DTD/XSD Namespace Conversion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+<DocumentProtocol name="OAG" default="false" custom="false" implementationClass="oracle.tip.b2b.document.oag.OagDocumentPlugin" id="OAG">
+<DocumentTypeParameters>
+<Parameter name="LogicalId" parameterType="string" groupName="oag-group-CntrolArea" id="oag-param-LogicalId" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Component" parameterType="string" groupName="oag-group-CntrolArea" defaultValue="B2B" id="oag-param-Component" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Task" parameterType="string" groupName="oag-group-CntrolArea" id="oag-param-Task" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Confirmation" parameterType="boolean" groupName="oag-group-CntrolArea" id="oag-param-Confirmation" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Language" parameterType="string" groupName="oag-group-CntrolArea" defaultValue="ENG" id="oag-param-Language" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CodePage" parameterType="string" groupName="oag-group-CntrolArea" id="oag-param-CodePage" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="AuthId" parameterType="string" groupName="oag-group-CntrolArea" defaultValue="Oracle B2B" id="oag-param-AuthId" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Qualifier" parameterType="string" groupName="oag-group-CntrolArea" id="oag-param-Qualifier" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="true" id="oag-param-validate" description="Validate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="fa" parameterType="boolean" hidden="false" mandatory="true" defaultValue="true" id="oag-param-fa" description="Functional Ack" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FAHandledByB2B" parameterType="list" listValue="None,Yes,No" id="oag-param-FAHandledByB2B" defaultValue="None" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryInterval" parameterType="integer" id="oag-param-FARetryInterval" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FARetryCount" parameterType="integer" id="oag-param-FARetryCount" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="IdentificationExpression" parameterType="string" hidden="false" mandatory="false" id="oag-param-IdentificationExpression" groupName="oag-group-xml-param" description="XPath for Identification Expression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="oag-group-xml-param" description="XPath  for Identification Value" id="oag-param-IdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="oag-group-Routing" mandatory="false" id="oag-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DTDXSDNamespaceConversion" parameterType="list" listValue="None,Inbound,Outbound,Both" defaultValue="None" groupName="oag-group-xml-param" id="oag-param-DTDXSDNamespaceConversion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="oag-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+<DocumentProtocol name="PositionalFlatFile" implementationClass="oracle.tip.b2b.document.pff.PFFDocumentPlugin" default="false" custom="false" id="POSITIONAL_FLAT_FILE">
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="false" id="positional-flat-param-validate" defaultValue="false" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" hidden="false" mandatory="false" id="positional-flat-param-translate" defaultValue="true" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="TransactionECSFileBlob" parameterType="SO" hidden="false" mandatory="true" id="positional-flat-param-TransactionECSFileBlob" groupName="POSITIONAL_FLAT_FILE-group-Transaction" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="POSITIONAL_FLAT_FILE-group-Identification" id="positional-flat-param-IdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationStartPosition" parameterType="string" hidden="false" mandatory="false" groupName="POSITIONAL_FLAT_FILE-group-Identification" id="positional-flat-param-IdentificationStartPosition" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationEndPosition" parameterType="string" hidden="false" mandatory="false" groupName="POSITIONAL_FLAT_FILE-group-Identification" id="positional-flat-param-IdentificationEndPosition" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="POSITIONAL_FLAT_FILE-group-Routing" mandatory="false" id="positional-flat-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="positional-flat-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+<DocumentProtocol name="UCCNet" custom="false" implementationClass="oracle.tip.b2b.document.uccnet.UccnetDocumentPlugin" default="false" id="Uccnet">
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="true" id="UCCNET-param-validate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="IdentificationExpression" parameterType="string" hidden="false" mandatory="false" groupName="UCCNET-group-XML" id="UCCNET-param-IdentificationExpression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="UCCNET-group-XML" id="UCCNET-param-IdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="UCCNET-group-Routing" mandatory="false" id="UCCNET-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="UCCNET-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+<DocumentProtocol name="Custom" custom="true" implementationClass="oracle.tip.b2b.document.custom.CustomDocumentPlugin" default="true" id="Custom">
+<DocumentProtocolParameters>
+<Parameter name="message_splitter" parameterType="string" id="custom-param-message_splitter" groupName="CUSTOM-group-generic" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentProtocolParameters>
+<DocumentTypeParameters>
+<Parameter name="ActionName" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-ActionName" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Service" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-Service" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ServiceType" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-ServiceType" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FromRole" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-FromRole" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ToRole" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-ToRole" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ValidateEBMSHeaders" parameterType="boolean" groupName="CUSTOM-group-ebMS" id="custom-param-ValidateEBMSHeaders" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPAFile" parameterType="SO" hidden="true" id="custom-param-cpa-file" groupName="CUSTOM-group-ebMS" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ActionService" parameterType="SO" hidden="true" id="custom-param-actionservice" groupName="CUSTOM-group-ebMS" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-binaryCollaboration" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-binaryCollaboration" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-businessTransactionActivity" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-businessTransactionActivity" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-timeToAcknowledgeAcceptance" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-timeToAcknowledgeAcceptance" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-timeToPerform" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-timeToPerform" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-isIntelligibleCheckRequired" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-isIntelligibleCheckRequired" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CPA-isAuthorizationRequired" parameterType="string" hidden="true" mandatory="false" groupName="CUSTOM-group-ebMS" id="custom-param-CPA-isAuthorizationRequired" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentTypeParameters>
+<AgrDocTypeParameters>
+<Parameter name="validate" parameterType="boolean" hidden="false" mandatory="true" id="custom-param-validate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="translate" parameterType="boolean" hidden="true" mandatory="false" id="custom-param-translate" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="isSyncRespAgreement" parameterType="boolean" id="custom-param-isSyncRespAgreement" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</AgrDocTypeParameters>
+<DocumentDefinitionParameters>
+<Parameter name="IdentificationExpression" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-XML" id="custom-param-IdentificationExpression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-XML" id="custom-param-IdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DTDXSDNamespaceConversion" parameterType="list" listValue="None,Both,Inbound,Outbound" hidden="false" mandatory="false" defaultValue="None" groupName="CUSTOM-group-XML" id="custom-param-DTDXSDNamespaceConversion" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationStartPosition" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-Flat" id="custom-param-IdentificationStartPosition" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="IdentificationEndPosition" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-Flat" id="custom-param-IdentificationEndPosition" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="FlatIdentificationExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-Flat" id="custom-param-FlatIdentificationExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="RegularExpression" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-RegEx" id="custom-param-RegularExpression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="RegularExpressionValue" parameterType="string" hidden="false" mandatory="false" groupName="CUSTOM-group-RegEx" id="custom-param-RegularExpressionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="DocumentRoutingID" parameterType="string" hidden="false" groupName="CUSTOM-group-Routing" mandatory="false" id="custom-param-DocumentRoutingID" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="TPIdentifierType" parameterType="list" listValue="None" groupName="CUSTOM-group-IDExtraction" id="custom-param-TPIdentifierType" callAPI="QueryManager.getTypesNames()" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ExtractionMethod" parameterType="list" listValue="RegularExpression,XPath" groupName="CUSTOM-group-IDExtraction" id="custom-param-ExtractionMethod" defaultValue="RegularExpression" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ExtractionValue" parameterType="string" hidden="false" groupName="CUSTOM-group-IDExtraction" id="custom-param-ExtractionValue" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="ParameterRef" parameterType="ref" hidden="true" mandatory="false" refValue="xPathParams" id="custom-param-ParameterRef" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</DocumentDefinitionParameters>
+</DocumentProtocol>
+</DocumentProtocols>
+<CommonParameters id="xPathParams">
+<Parameter name="XPathName1" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathName1" defaultValue="XPathName1" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XPathExpression1" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathExpression1" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XPathName2" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathName2" defaultValue="XPathName2" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XPathExpression2" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathExpression2" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XPathName3" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathName3" defaultValue="XPathName3" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XPathExpression3" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-XPath" id="common-param-XPathExpression3" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CorrelationFromXPathName" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-Correlation" id="common-param-CorrelationFromXPathName" defaultValue="CorrelationFromXPathName" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CorrelationFromXPathXPR" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-Correlation" id="common-param-CorrelationFromXPathXPR" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CorrelationToXPathName" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-Correlation" id="common-param-CorrelationToXPathName" defaultValue="CorrelationToXPathName" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="CorrelationToXPathXPR" parameterType="string" hidden="false" mandatory="false" groupName="COMMON-group-Correlation" id="common-param-CorrelationToXPathXPR" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Document" parameterType="string" groupName="COMMON-group-Apps" id="common-param-Document" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="Action" parameterType="string" groupName="COMMON-group-Apps" id="common-param-Action" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="XSLTFile" parameterType="string" groupName="COMMON-group-Apps" id="common-param-XSLTFile" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</CommonParameters>
+</Protocols>

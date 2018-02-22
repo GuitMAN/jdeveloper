@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://integration.oracle.com/B2B/Acknowledgment"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://integration.oracle.com/B2B/Acknowledgment">
+
+  <xs:element name="Acknowledgment">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element ref="replyToB2BMessageId" />
+	<xs:element ref="replyToAppMessageId" />
+	<xs:element ref="ackB2BMessageId" />
+        <xs:element ref="ackDetails" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="replyToB2BMessageId" type="xs:string" />
+  <xs:element name="replyToAppMessageId" type="xs:string" />
+  <xs:element name="ackB2BMessageId" type="xs:string" />
+  <xs:element name="ackDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="parameter" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parameter">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required" /> 
+      <xs:attribute name="value" type="xs:string" use="required" /> 
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

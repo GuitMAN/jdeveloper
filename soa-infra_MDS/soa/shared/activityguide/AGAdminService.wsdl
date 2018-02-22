@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="AGAdminService" targetNamespace="http://xmlns.oracle.com/bpel/workflow/AGAdminService" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/AGAdminService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:java="http://schemas.xmlsoap.org/wsdl/java/" xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<documentation>
+        Admin service to perform tasks like expire milestone, abort ag
+    </documentation>
+<types>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/bpel/workflow/AGAdminService/schema" xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/bpel/workflow/AGAdminService" schemaLocation="AGAdminService.xsd"/>
+</schema>
+</types>
+<message name="expireMilestoneRequestMessage">
+<documentation>
+           Request message containing input elements to expire milestone
+        </documentation>
+<part name="expireMSPayload" element="tns:expireMilestoneRequest"/>
+</message>
+<message name="expireMilestoneResponseMessage">
+<documentation>
+           Message used to get AG definition by id
+        </documentation>
+<part name="expireMSResponse" element="tns:expireMilestoneResponse"/>
+</message>
+<message name="expireMilestoneErrorMessage">
+<documentation>
+           Message used for indicating error when expiring milestone
+        </documentation>
+<part name="payload" element="tns:AGAdminServiceFault"/>
+</message>
+<portType name="AGAdminServicePortType">
+<documentation>
+           Port that exposes operations in AG admin service
+        </documentation>
+<operation name="expireMilestone">
+<documentation>
+                   Expire milestone by withdrawing tasks inside milestone and resetting milestone status
+                </documentation>
+<input name="expireMilestoneRequest" message="tns:expireMilestoneRequestMessage"/>
+<output name="expireMilestoneResponse" message="tns:expireMilestoneResponseMessage"/>
+<fault name="AGAdminServiceFault" message="tns:expireMilestoneErrorMessage"/>
+</operation>
+</portType>
+<binding name="HttpSoap11Binding" type="tns:AGAdminServicePortType">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="expireMilestone">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal" parts="expireMSPayload"/>
+</input>
+<output>
+<soap:body use="literal" parts="expireMSResponse"/>
+</output>
+<fault name="AGAdminServiceFault">
+<soap:fault name="AGAdminServiceFault" use="literal" encodingStyle="" parts="payload"/>
+</fault>
+</operation>
+</binding>
+<binding name="WsifJavaBinding" type="tns:AGAdminServicePortType">
+<java:binding/>
+<format:typeMapping encoding="Java" style="Java">
+<format:typeMap typeName="tns:expireMilestoneRequest" formatType="oracle.bpel.services.workflow.activityguide.admin.model.ExpireMilestoneRequestType"/>
+<format:typeMap typeName="tns:expireMilestoneResponse" formatType="oracle.bpel.services.workflow.activityguide.admin.model.ExpireMilestoneResponseType"/>
+<format:typeMap typeName="tns:AGAdminServiceFault" formatType="oracle.bpel.services.workflow.activityguide.admin.model.AGAdminServiceFaultType"/>
+</format:typeMapping>
+<operation name="expireMilestone">
+<java:operation methodName="expireMilestone" methodType="instance" parameterOrder="expireMSPayload" returnPart="expireMSResponse"/>
+<input/>
+<output/>
+<fault name="AGAdminServiceFault">
+<soap:fault name="AGAdminServiceFault" use="literal" encodingStyle="" parts="payload"/>
+</fault>
+</operation>
+</binding>
+<service name="AGAdminService">
+<port name="WsifJava" binding="tns:WsifJavaBinding">
+<java:address className="oracle.bpel.services.workflow.activityguide.admin.impl.AGAdminServiceImpl"/>
+</port>
+<port name="AGAdminServicePort" binding="tns:HttpSoap11Binding">
+<soap:address location="http://localhost:8888/integration/services/AGAdminService/AGAdminService"/>
+</port>
+</service>
+<plnk:partnerLinkType name="AGAdminServicePortType_PL">
+<plnk:role name="AGAdminServicePortType_Role">
+<plnk:portType name="tns:AGAdminServicePortType"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://integration.oracle.com/B2B/Notification"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://integration.oracle.com/B2B/Notification">
+  <xs:element name="Notification">
+    <!--xs:complexType name="Notification"-->
+    <xs:complexType>
+      <xs:sequence>
+      	<xs:element ref="eventType" minOccurs="0"/>
+        <xs:element ref="eventCode" minOccurs="0"/>
+        <xs:element ref="eventText" minOccurs="0"/>
+        <xs:element ref="eventDescription" minOccurs="0"/>
+        <xs:element ref="eventSeverity" minOccurs="0"/>
+		<xs:element ref="ComponentDetails" minOccurs="0"/>
+		<xs:element ref="eventDetails" minOccurs="0"/>				
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eventType" type="xs:string"/>
+  <xs:element name="eventCode" type="xs:string" />
+  <xs:element name="eventText" type="xs:string" />
+  <xs:element name="eventDescription" type="xs:string" />
+  <xs:element name="eventSeverity" type="xs:string" />
+
+  <xs:element name="ComponentDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ComponentName" minOccurs="0"/>
+		<xs:element ref="ComponentType" minOccurs="0"/>
+		<xs:element ref="ComponentSubType" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComponentName" type="xs:string" />
+  <xs:element name="ComponentType" type="xs:string" />
+  <xs:element name="ComponentSubType" type="xs:string" />
+
+  <xs:element name="eventDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="parameter" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parameter">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required" /> 
+      <xs:attribute name="value" type="xs:string" use="required" /> 
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

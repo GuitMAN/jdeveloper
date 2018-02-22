@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Packaging id="1234">
+<ProcessingCapabilities parse="true" generate="true"/>
+<SimplePart id="S01" mimetype="application/xml"/>
+<SimplePart id="S02" mimetype="application/xml"/>
+<SimplePart id="S03" mimetype="application/xml" encOverride="true"/>
+<SimplePart id="S04" mimetype="application/xml"/>
+<SimplePart id="S06" mimetype="application/pkcs7-signature"/>
+<CompositeList>
+<Composite id="C01" mimetype="multipart/signed" mimeparameters="protocol=application/pkcs7-signature">
+<Constituent idref="C02"/>
+<Constituent idref="S06"/>
+</Composite>
+<Composite id="C02" mimetype="multipart/related" mimeparameters="type=application/xml">
+<Constituent idref="S01"/>
+<Constituent idref="S02"/>
+<Constituent idref="S03"/>
+<Constituent idref="C03"/>
+</Composite>
+<Encapsulation id="C03" mimetype="application/pkcs7-mime" mimeparameters="smime-type=enveloped-data">
+<Constituent idref="C04"/>
+</Encapsulation>
+<Composite id="C04" mimetype="multipart/related" mimeparameters="type=application/xml">
+<Constituent idref="S03"/>
+<Constituent idref="S04"/>
+</Composite>
+</CompositeList>
+</Packaging>

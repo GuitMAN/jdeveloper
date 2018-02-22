@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://xmlns.oracle.com/sca/1.0/mediator"
+            targetNamespace="http://xmlns.oracle.com/sca/1.0/mediator"
+            elementFormDefault="qualified">
+ <xsd:annotation>
+  <xsd:documentation>XML Schema for Mediator Entities AS 11g.</xsd:documentation>
+ </xsd:annotation>
+ <xsd:element name="Mediator">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element name="operation" type="OperationType" minOccurs="0"
+                 maxOccurs="unbounded"/>
+    <xsd:element name="eventHandler" type="EventType" minOccurs="0"
+                 maxOccurs="unbounded"/>
+    <xsd:element ref="resequencer" minOccurs="0" maxOccurs="1"/>
+    
+   </xsd:sequence>
+   <xsd:attribute name="name" type="xsd:string"/>
+   <xsd:attribute name="wsdlTargetNamespace" type="xsd:string" use="optional"/>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name="DynamicRouting">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element ref="case" minOccurs="1" maxOccurs="unbounded"/>
+   </xsd:sequence>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:element name="case" type="CaseType"/>
+ <xsd:element name="RoutingAction">
+  <xsd:annotation>
+   <xsd:documentation>Mediator dynamic routing fact type</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element name="caseName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    <xsd:element name="executionType" type="xsd:string" minOccurs="1"
+                 maxOccurs="1"/>
+    <xsd:element name="serviceReference" type="xsd:string" minOccurs="1"
+                 maxOccurs="1"/>
+    <xsd:element name="serviceOperation" type="xsd:string" minOccurs="1"
+                 maxOccurs="1"/>
+    <xsd:element name="serviceBindingInfo" type="xsd:string" minOccurs="1"
+                 maxOccurs="1"/>
+    <xsd:element name="onCbkOperation" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="cbkOperation" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="rplOperation" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="timeoutDuration" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="timeoutReference" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="timeoutOperation" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+    <xsd:element name="timeoutBindingInfo" type="xsd:string" minOccurs="0"
+                 maxOccurs="1"/>
+   </xsd:sequence>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+ </xsd:element>
+ <xsd:complexType name="OperationType">
+  <xsd:complexContent>
+   <xsd:extension base="MessageHandlerType">
+    <xsd:sequence>
+     <xsd:element ref="resequencer"  minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="xsd:string"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="EventType">
+  <xsd:complexContent>
+   <xsd:extension base="MessageHandlerType">
+    <xsd:attribute name="subscriptionName" type="xsd:string"/>
+    <xsd:attribute name="event" type="xsd:QName" use="required"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:element name="resequencer" type="ResequencerType"/>
+ <xsd:complexType name="ResequencerType">
+  <xsd:sequence>
+   <xsd:element name="groupIDExpression" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ignore this. This field in not for the UI. -->
+   
+   <xsd:element name="sequencingLevel" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:choice>
+     <xsd:element name="Standard">
+     <xsd:complexType>
+    <xsd:sequence>
+     <xsd:element name="sequenceIDExpression" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <xsd:element name="timeoutDuration" type="xsd:string" minOccurs="0" maxOccurs="1" default="0"/><!-- in seconds (default 15 mins)-->
+     <xsd:element name="sequenceStart" type="xsd:string" minOccurs="0" maxOccurs="1" default="1"/>
+     <xsd:element name="sequenceIncrement" type="xsd:string" minOccurs="0" maxOccurs="1" default="1"/>
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:complexType>
+    </xsd:element>
+<!--    <xsd:element name="StandardEnum">
+     <xsd:complexType>
+    <xsd:sequence>
+     <xsd:element name="sequenceIDExpression" type="xsd:string"/>
+     <xsd:element name="timeoutDuration" type="xsd:string" minOccurs="0" maxOccurs="1" default="900"/>
+     <xsd:element name="sequenceEnum" type="xsd:string"/>
+    </xsd:sequence>
+    </xsd:complexType>
+    </xsd:element> -->
+    <xsd:element name="BestEffort">
+     <xsd:complexType>
+    <xsd:sequence>
+     <xsd:element name="sequenceIDExpression" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <xsd:element name="sequenceIDDataType" type="sequenceIDDataTypeEnum" minOccurs="0"  maxOccurs="1"/>
+     <xsd:element name="maxRowsRetrieved" type="xsd:string" minOccurs="0"  maxOccurs="1" default="5"/>
+     <xsd:element name="timeWindow" type="xsd:string" minOccurs="0"  maxOccurs="1" default="0"/>	
+    </xsd:sequence>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FIFO">
+     <xsd:complexType>
+    <xsd:sequence>
+     
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:complexType>
+    </xsd:element>
+   </xsd:choice>
+  </xsd:sequence>
+  <xsd:attribute name="sequenceMode" type="ResequencerModeEnum"  >
+   <xsd:annotation>
+    <xsd:documentation>Resequencing mode</xsd:documentation>
+   </xsd:annotation>
+  </xsd:attribute>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ 
+ <xsd:complexType name="MessageHandlerType">
+  <xsd:sequence>
+   <xsd:element name="customFunction" minOccurs="0">
+    <xsd:complexType>
+     <xsd:choice>
+      <xsd:element name="javaFunction" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="PLSQLFunction" type="xsd:string" minOccurs="0"/>
+     </xsd:choice>
+     <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="switch" minOccurs="0">
+    <xsd:complexType>
+     <xsd:sequence>
+      <xsd:element ref="case" maxOccurs="unbounded" minOccurs="0"/>
+     </xsd:sequence>
+     <xsd:attribute name="decisionServiceRef" type="xsd:string" use="optional"/>
+     <xsd:attribute name="decisionServiceOperation" type="xsd:string"
+                    use="optional"/>
+     <xsd:attribute name="externalServiceRef" type="xsd:string" use="optional"/>
+     <xsd:attribute name="externalServiceOperation" type="xsd:string"
+                    use="optional"/>
+     <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:complexType>
+   </xsd:element>
+  </xsd:sequence>
+  <xsd:attribute name="deliveryPolicy" type="DeliveryPolicyEnum">
+   <xsd:annotation>
+    <xsd:documentation>Delivery modes for routing rules</xsd:documentation>
+   </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="priority" type="xsd:int">
+   <xsd:annotation>
+    <xsd:documentation>This will indicate the message priority. Values can be
+                       from 0-9. default value will be 4. Will be ignored for
+                       immediate rules.</xsd:documentation>
+   </xsd:annotation>
+  </xsd:attribute>
+  <xsd:attribute name="validateSchema" type="xsd:boolean">
+   <xsd:annotation>
+    <xsd:documentation>Basic schema validation. Default(if not set) is false.</xsd:documentation>
+   </xsd:annotation>
+  </xsd:attribute>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <!-- MediatorFlowType defination end  -->
+ <xsd:complexType name="CaseType">
+  <xsd:annotation>
+   <xsd:documentation>an XPath Expression corresponding to the condition to
+                      execute the routing rule. Expression build should have
+                      information of header</xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+   <xsd:element name="condition" type="ConditionType" minOccurs="0"/>
+   <xsd:element name="action" type="ActionType"/>
+  </xsd:sequence>
+  <xsd:attribute name="name" type="xsd:string" use="required"/>
+  <xsd:attribute name="executionType" type="ExecutionTypeEnum"/>
+  <xsd:attribute name="dynamic" type="xsd:boolean" use="optional"/>
+  <xsd:attribute name="defaultRule" type="xsd:boolean" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="ValidationType">
+  <xsd:sequence>
+   <xsd:element name="schematron" type="xsd:anyURI" minOccurs="0"/>
+   <xsd:element name="javaValidator" type="xsd:string" minOccurs="0"/>
+   <!-- sch-->
+  </xsd:sequence>
+  <xsd:attribute name="part" type="xsd:string"/>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="ConditionType">
+  <xsd:sequence>
+   <xsd:element name="expression" type="xsd:string"/>
+  </xsd:sequence>
+  <xsd:attribute name="language" type="xsd:string"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="TransformType">
+  <xsd:sequence>
+   <xsd:element name="part" type="partType" maxOccurs="unbounded" minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="partType">  
+  <xsd:attribute name="name" type="xsd:string" use="required"/>
+  <xsd:attribute name="function" type="xsd:string" use="required"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="AssignType">
+  <xsd:sequence>
+   <xsd:element name="copy" type="copyType" maxOccurs="unbounded" minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+<xsd:complexType name="copyType">
+  <xsd:sequence>
+   <xsd:element name="fragment" type="xsd:string" minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:attribute name="type" type="assignTypeEnum" use="optional"/>
+  <xsd:attribute name="target" type="xsd:string" use="required"/>
+  <xsd:attribute name="expression" type="xsd:string" use="optional"/>
+  <xsd:attribute name="value" type="xsd:string" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="ActionType">
+  <xsd:complexContent>
+   <xsd:extension base="DataActionType">
+    <xsd:choice>
+     <xsd:element name="invoke" type="InvocationType" minOccurs="0"/>
+     <xsd:element name="raise" type="RaiseEventActionType" minOccurs="0"/>
+     <xsd:element name="echo" type="EchoType" minOccurs="0"/>
+    </xsd:choice>
+    <xsd:attribute name="wait" type="xsd:date"/>
+    <xsd:attribute name="batch" type="DelayedBatchEnum"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="EchoType">
+  <xsd:sequence>
+   <xsd:element name="optionalElement" type="xsd:string" minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:attribute name="operation" type="xsd:string" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="InvocationType">
+  <xsd:sequence>
+   <xsd:element name="onReply" type="onReplyType" minOccurs="0"/>
+   <xsd:element name="onFault" type="onFaultType" minOccurs="0"
+                maxOccurs="unbounded"/>
+   <xsd:element name="onCallback" type="onCallbackType" minOccurs="0"/>
+   <xsd:element name="onCallbackTimeout" type="onTimeoutType" minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:attribute name="reference" type="xsd:string" use="optional"/>
+  <xsd:attribute name="operation" type="xsd:string" use="optional"/>
+  <xsd:attribute name="bindingInfo" type="xsd:string" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="DataActionType">
+  <xsd:sequence>
+   <xsd:element name="validate" type="ValidationType" minOccurs="0"
+                maxOccurs="unbounded"/>
+   <xsd:element name="transform" type="TransformType" minOccurs="0"
+                maxOccurs="1"/>
+   <xsd:element name="assign" type="AssignType" minOccurs="0" maxOccurs="1"/>
+  </xsd:sequence>
+   <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="onReplyType">
+  <xsd:complexContent>
+   <xsd:extension base="DataActionType">
+    <xsd:choice minOccurs="0">
+     <xsd:element name="raise" type="RaiseEventActionType"/>
+     <xsd:element name="forward" type="InvocationType"/>
+     <xsd:element name="reply" type="ReplyAction"/>
+     <xsd:element name="callback" type="CallbackOperation"/>
+     <!-- Must be oneway !-->
+    </xsd:choice>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="onTimeoutType">
+  <xsd:complexContent>
+   <xsd:extension base="DataActionType">
+    <xsd:choice>
+     <xsd:element name="raise" type="RaiseEventActionType"/>
+     <xsd:element name="forward" type="InvocationType"/>
+     <xsd:element name="callback" type="CallbackOperation"/>
+     <!-- Must be oneway !-->
+    </xsd:choice>
+    <xsd:attribute name="duration" type="xsd:string"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="onFaultType">
+  <xsd:complexContent>
+   <xsd:extension base="DataActionType">
+    <xsd:choice minOccurs="0">
+     <xsd:element name="raise" type="RaiseEventActionType"/>
+     <xsd:element name="forward" type="InvocationType"/>
+     <xsd:element name="fault" type="FaultAction"/>
+     <!-- Must be oneway !-->
+    </xsd:choice>
+    <xsd:attribute name="type" type="xsd:string" use="optional"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="onCallbackType">
+  <xsd:complexContent>
+   <xsd:extension base="DataActionType">
+    <xsd:choice minOccurs="0">
+     <xsd:element name="raise" type="RaiseEventActionType"/>
+     <xsd:element name="reply" type="ReplyAction"/>
+     <xsd:element name="forward" type="InvocationType"/>
+     <xsd:element name="callback" type="CallbackOperation"/>
+     <!-- Must be oneway !-->
+    </xsd:choice>
+    <xsd:attribute name="operation" type="xsd:string" use="required"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="CallbackOperation">
+  <xsd:attribute name="operation" type="xsd:string" use="required"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+  <!-- call back out -->
+ </xsd:complexType>
+ <xsd:complexType name="ReplyAction">
+  <xsd:attribute name="operation" type="xsd:string" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="FaultAction">
+  <xsd:attribute name="type" type="xsd:string" use="optional"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:complexType name="RaiseEventActionType">
+  <xsd:attribute name="event" type="xsd:QName" use="required"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+ </xsd:complexType>
+ <xsd:simpleType name="ExecutionTypeEnum">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="direct">
+    <xsd:annotation>
+     <xsd:documentation>Process directly in the same thread</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="queued">
+    <xsd:annotation>
+     <xsd:documentation>Enquue</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="resequence">
+    <xsd:annotation>
+     <xsd:documentation>Resequencer</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>	
+
+
+  </xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="DeliveryPolicyEnum">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="AllOrNothing">
+    <xsd:annotation>
+     <xsd:documentation>All rules will be successful or no one</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="SkipOnError">
+    <xsd:annotation>
+     <xsd:documentation>Ignore error in execution of the rule</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="StopOnFirstSuccess">
+    <xsd:annotation>
+     <xsd:documentation>Return immediately after delivering to any valid first
+                        target</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+  </xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="DelayedBatchEnum">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="EndOfDay"/>
+   <xsd:enumeration value="EndOfWeek"/>
+   <xsd:enumeration value="EndOfMonth"/>
+   <xsd:enumeration value="EndOfYear"/>
+   <xsd:enumeration value="OneDayDelay"/>
+   <xsd:enumeration value="OneWeekDelay"/>
+  </xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="ResequencerModeEnum">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="BestEffort">
+    <xsd:annotation>
+     <xsd:documentation>Resequencing will be done by best effort mechanism</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="FIFO">
+    <xsd:annotation>
+     <xsd:documentation>Message will be dispatched based on order of their
+                        arrival to mediator</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+   <xsd:enumeration value="Standard">
+    <xsd:annotation>
+     <xsd:documentation>Proper sequence</xsd:documentation>
+    </xsd:annotation>
+   </xsd:enumeration>
+  </xsd:restriction>
+ </xsd:simpleType>
+  <xsd:simpleType name="sequenceIDDataTypeEnum">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="dateTime">
+   </xsd:enumeration>
+   <xsd:enumeration value="numeric">
+   </xsd:enumeration>
+  </xsd:restriction>
+ </xsd:simpleType>
+  <xsd:simpleType name="assignTypeEnum">
+   <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="xml"/>
+  </xsd:restriction>
+ </xsd:simpleType>
+</xsd:schema>

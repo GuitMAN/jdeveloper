@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.oracle.com/bpm/case/activityInstance"
+            targetNamespace="http://www.oracle.com/bpm/case/activityInstance"
+            xmlns:extension="http://xmlns.oracle.com/case/metadata/extension"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+            elementFormDefault="qualified" blockDefault="#all">
+  <xsd:annotation>
+    <xsd:documentation>XML Schema for Case Activity Runtime 1.0</xsd:documentation>
+    <xsd:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.metadata.activity.model"/>
+      </jaxb:schemaBindings>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:import namespace="http://xmlns.oracle.com/case/metadata/extension"
+              schemaLocation="ExtensibleElements.xsd"/>
+  <!-- Root Element -->
+  <xsd:element name="activityInstance" type="tActivityInstance"/>
+  <xsd:complexType name="tActivityInstance">
+    <xsd:complexContent>
+      <xsd:extension base="extension:tExtensibleElements">
+        <xsd:sequence>
+          <xsd:element name="activityId" type="xsd:string"/>
+          <xsd:element name="activityInstanceId" type="xsd:string"/>
+          <xsd:element name="caseId" type="xsd:string"/>
+          <xsd:element name="activityType" type="tActivityType"/>
+          <xsd:element name="activityName" type="xsd:string"/>
+          <!-- is this translatable? -->
+          <xsd:element name="status" type="tStatus"/>
+          <xsd:element name="runningStatus" type="tRunningStatus"/>
+          <xsd:element name="reason" type="xsd:string"/>
+          <xsd:element name="version" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="tActivityType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BPMN"/>
+      <xsd:enumeration value="BPEL"/>
+      <xsd:enumeration value="HWF"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tStatus">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="AVAILABLE"/>
+      <xsd:enumeration value="UNAVAILABLE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tRunningStatus">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NOTSTARTED"/>
+      <xsd:enumeration value="RUNNING"/>
+      <xsd:enumeration value="COMPLETED"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

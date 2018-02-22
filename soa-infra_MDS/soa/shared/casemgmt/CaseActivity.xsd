@@ -1,0 +1,341 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://xmlns.oracle.com/bpm/case/metadata/common"
+            xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+            xmlns="http://xmlns.oracle.com/bpm/case/activity"
+            targetNamespace="http://xmlns.oracle.com/bpm/case/activity"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+            elementFormDefault="qualified" blockDefault="#all">
+ <xsd:annotation>
+  <xsd:documentation>Case Activity Schema</xsd:documentation>
+  <xsd:appinfo>
+   <jaxb:schemaBindings>
+    <jaxb:package name="oracle.bpm.casemgmt.metadata.activity.model"/>
+   </jaxb:schemaBindings>
+   <jaxb:globalBindings generateElementClass="true" generateIsSetMethod="true">
+    <jaxb:serializable uid="123456"/>
+   </jaxb:globalBindings>
+  </xsd:appinfo>
+ </xsd:annotation>
+ <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/common"
+             schemaLocation="CaseMetadataCommon.xsd"/>
+ <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+             schemaLocation="ExtensibleElements.xsd"/>
+ <!-- Root Element -->
+ <xsd:element name="caseActivity" type="tCaseActivity"/>
+ <xsd:complexType name="tCaseActivity">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="name" type="tTranslatedValue"/>
+     <xsd:element name="title" type="common:tTranslatableValue" minOccurs="0"
+                  maxOccurs="1"/>
+     <xsd:element name="productVersion" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="activityDefinitionId" type="xsd:string"/>
+     <xsd:element name="description" type="tTranslatedValue" minOccurs="0"
+                  maxOccurs="1"/>
+     <xsd:element name="activityType" type="tActivity"/>
+     <xsd:element name="repeatable" type="xsd:boolean"/>
+     <xsd:element name="required" type="xsd:boolean"/>
+     <xsd:element name="manual" type="xsd:boolean"/>
+     <xsd:element name="isGlobal" type="xsd:boolean"/>
+     <xsd:element name="isConditional" type="xsd:boolean" minOccurs="1"
+                  maxOccurs="1"/>
+     <xsd:element name="isFormRequired" type="xsd:boolean" default="false" minOccurs="0"
+                  maxOccurs="1"/>
+     <xsd:element name="permissionTag" type="xsd:string" minOccurs="0"
+                  maxOccurs="1"/>
+     <xsd:element name="caseAssociations" type="tCaseAssociations"/>
+     <xsd:choice minOccurs="1" maxOccurs="1">
+      <xsd:element name="bpmnActivity" type="tBpmnActivity"/>
+      <xsd:element name="workflowActivity" type="tWorkflowActivity"/>
+      <xsd:element name="globalActivity" type="tGlobalActivity"/>
+      <xsd:element name="customActivity" type="tCustomActivity"/>
+     </xsd:choice>
+     <xsd:element name="resourceBundle" type="tResourceBundle" minOccurs="0"
+                  maxOccurs="1"/>
+     <xsd:element name="caseActivityFormUrl" type="xsd:string" minOccurs="0"
+                  maxOccurs="1"/>
+    </xsd:sequence>
+    <xsd:attribute name="targetNamespace" type="xsd:string" use="required"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tBpmnActivity">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+
+     <xsd:element name="parameters" type="tParameters"/>
+     <xsd:element name="componentInfo" type="tComponentInfo"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tWorkflowActivity">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="parameters" type="tParameters"/>
+     <xsd:element name="componentInfo" type="tComponentInfo"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tGlobalActivity">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="definition" type="tCustomDefinition"/>
+     <xsd:element name="parameters" type="tParameters" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tCustomActivity">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="definition" type="tCustomDefinition"/>
+     <xsd:element name="parameters" type="tParameters" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tCustomDefinition">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="className" type="xsd:string"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tComponentInfo">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="referenceName" type="xsd:string" minOccurs="1"
+                  maxOccurs="1"/>
+     <xsd:element name="namespace" type="xsd:anyURI" minOccurs="1"
+                  maxOccurs="1"/>
+     <xsd:element name="operationName" type="xsd:string" minOccurs="1"
+                  maxOccurs="1"/>
+     <xsd:element name="isSynchronous" type="xsd:boolean" minOccurs="0"
+                  maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:simpleType name="tActivity">
+  <xsd:restriction base="xsd:string">
+   <xsd:enumeration value="BPMN"/>
+   <xsd:enumeration value="HWF"/>
+   <xsd:enumeration value="CUSTOM"/>
+  </xsd:restriction>
+ </xsd:simpleType>
+ <xsd:complexType name="tCaseAssociations">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:choice minOccurs="1" maxOccurs="1">
+      <xsd:element name="allCases"/>
+      <xsd:element name="associations" type="tAssociations"/>
+     </xsd:choice>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tAssociations">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="cases" type="tCases" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="caseCategories" type="tCaseCategories" minOccurs="0"
+                  maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tCases">
+  <xsd:sequence>
+   <xsd:element name="case" type="tCaseIdentifier" minOccurs="1"
+                maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="tCaseCategories">
+  <xsd:sequence>
+   <xsd:element name="caseCategory" type="tCaseCategory" minOccurs="1"
+                maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="tCaseIdentifier">
+  <xsd:sequence>
+   <xsd:element name="name" type="xsd:string"/>
+   <xsd:element name="caseMetadataId" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="tCaseCategory">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="name" type="tTranslatedValue" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tParameters">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="inputs" type="tInputs" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="outputs" type="tOutputs" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tInputs">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="parameter" type="tInputParameter" maxOccurs="unbounded"
+                  minOccurs="0"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tOutputs">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="output" type="tOutput" maxOccurs="unbounded"
+                  minOccurs="0"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tOutput">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="parameters" type="tOutputParameters" maxOccurs="1"
+                  minOccurs="0"/>
+	 <xsd:element name="endpoint" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="operationName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tInputParameter">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+	  <xsd:choice  minOccurs="1" maxOccurs="1">
+	    <xsd:element name="caseDataInput" type="tCaseDataInput"/>
+       	    <xsd:element name="payloadInput"  type="tPayloadInput"/>
+	  </xsd:choice>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tCaseDataInput">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="activityParamName" type="xsd:string"/>
+     <xsd:element name="elementName" type="xsd:string"/>
+     <xsd:element name="caseDataName" type="xsd:string"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tPayloadInput">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="activityParamName" type="xsd:string"/>
+     <xsd:element name="elementName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="saveData" type="tSaveData" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="elementType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="elementDataType" type="tElementDataTypeEnum" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="elementSchemaLocation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+  <xsd:complexType name="tSaveData">
+   <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="saveDataAs" type="tSaveDataAs" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="dataName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+  <xsd:simpleType name="tSaveDataAs">
+      <xsd:restriction base="xsd:NMTOKEN">
+           <xsd:enumeration value="CASE_DATA"/>
+       </xsd:restriction>
+  </xsd:simpleType>
+ <xsd:complexType name="tOutputParameter">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+	  <xsd:choice  minOccurs="1" maxOccurs="1">
+	    <xsd:element name="nmOutput" type="tNMOutput"/>
+       	    <xsd:element name="payloadOutput"  type="tPayloadOutput"/>
+	  </xsd:choice>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:simpleType name="tElementDataTypeEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SIMPLE_TYPE"/>
+			<xsd:enumeration value="COMPLEX_TYPE"/>
+			<xsd:enumeration value="ELEMENT"/>
+		</xsd:restriction>
+ </xsd:simpleType>
+<xsd:complexType name="tOutputParameters">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+	    <xsd:element name="parameter" type="tOutputParameter" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tNMOutput">
+   <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="activityParamName" type="xsd:string"/>
+     <xsd:element name="elementName" type="xsd:string"/>
+     <xsd:element name="saveData" type="tSaveData" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="tPayloadOutput">
+   <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+     <xsd:element name="activityParamName" type="xsd:string"/>
+     <xsd:element name="saveData" type="tSaveData" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:simpleType name="tTranslatedValue">
+  <xsd:restriction base="xsd:string"/>
+ </xsd:simpleType>
+ <xsd:complexType name="tResourceBundle">
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+</xsd:schema>

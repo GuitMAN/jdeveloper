@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>D:\Work\jdev\mywork\CompositManager\GetCopmositesInfo\composite.xml</file>
+      <name>D:\Work\jdev\mywork\CompositManager\GetCopmositesInfo\composite.xml</name>
+      <fix/>
+      <msg>oracle.fabric.common.FabricException: oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config": oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config"</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Packaging id="1234">
+<ProcessingCapabilities parse="true" generate="true"/>
+<SimplePart id="S01" mimetype="application/xml"/>
+<SimplePart id="S02" mimetype="application/xml"/>
+<SimplePart id="S03" mimetype="application/xml"/>
+<SimplePart id="S04" mimetype="application/pkcs7-signature"/>
+<CompositeList>
+<Composite id="C01" mimetype="multipart/related" type="Application/x-RosettaNet">
+<Constituent idref="S01"/>
+<Constituent idref="S02"/>
+<Constituent idref="S03"/>
+</Composite>
+</CompositeList>
+</Packaging>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="CaseService" targetNamespace="http://xmlns.oracle.com/CaseService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:svc="http://xmlns.oracle.com/CaseService/types" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:tns="http://xmlns.oracle.com/CaseService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:java="http://schemas.xmlsoap.org/wsdl/java/" xmlns:caseInstance="http://xmlns.oracle.com/CaseInstance" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/">
+<documentation>Case  Service APIs for different operations in case management.</documentation>
+<plnk:partnerLinkType name="CaseServicePartnerLink">
+<plnk:role name="CaseServiceProvider">
+<plnk:portType name="tns:CaseServicePortType"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<types>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/CaseService" xmlns="http://www.w3.org/2001/XMLSchema">
+<xsd:import namespace="http://xmlns.oracle.com/CaseService/types" schemaLocation="CaseService.xsd"/>
+</xsd:schema>
+</types>
+<message name="startCaseInputMessage">
+<part name="payload" element="svc:startCaseInputMessage"/>
+</message>
+<message name="startCaseOutputMessage">
+<part name="payload" element="svc:startCaseOutputMessage"/>
+</message>
+<message name="attainMilestoneInputMessage">
+<part name="payload" element="svc:attainMilestoneInputMessage"/>
+</message>
+<message name="attainMilestoneOutputMessage">
+<part name="payload" element="svc:attainMilestoneOutputMessage"/>
+</message>
+<message name="revokeMilestoneInputMessage">
+<part name="payload" element="svc:revokeMilestoneInputMessage"/>
+</message>
+<message name="revokeMilestoneOutputMessage">
+<part name="payload" element="svc:revokeMilestoneOutputMessage"/>
+</message>
+<message name="abortCaseInputMessage">
+<part name="payload" element="svc:abortCaseInputMessage"/>
+</message>
+<message name="abortCaseOutputMessage">
+<part name="payload" element="svc:abortCaseOutputMessage"/>
+</message>
+<message name="suspendCaseInputMessage">
+<part name="payload" element="svc:suspendCaseInputMessage"/>
+</message>
+<message name="suspendCaseOutputMessage">
+<part name="payload" element="svc:suspendCaseOutputMessage"/>
+</message>
+<message name="resumeCaseInputMessage">
+<part name="payload" element="svc:resumeCaseInputMessage"/>
+</message>
+<message name="resumeCaseOutputMessage">
+<part name="payload" element="svc:resumeCaseOutputMessage"/>
+</message>
+<message name="closeCaseInputMessage">
+<part name="payload" element="svc:closeCaseInputMessage"/>
+</message>
+<message name="closeCaseOutputMessage">
+<part name="payload" element="svc:closeCaseOutputMessage"/>
+</message>
+<message name="reopenCaseInputMessage">
+<part name="payload" element="svc:reopenCaseInputMessage"/>
+</message>
+<message name="reopenCaseOutputMessage">
+<part name="payload" element="svc:reopenCaseOutputMessage"/>
+</message>
+<message name="caseServiceFaultMessage">
+<part name="fault" element="svc:caseServiceFaultMessage"/>
+</message>
+<portType name="CaseServicePortType">
+<operation name="startCase">
+<input name="startCaseInput" message="tns:startCaseInputMessage"/>
+<output name="startCaseOutput" message="tns:startCaseOutputMessage"/>
+<fault name="startCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="attainMilestone">
+<input name="attainMilestoneInput" message="tns:attainMilestoneInputMessage"/>
+<output name="attainMilestoneOutput" message="tns:attainMilestoneOutputMessage"/>
+<fault name="attainMilestoneFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="revokeMilestone">
+<input name="revokeMilestoneInput" message="tns:revokeMilestoneInputMessage"/>
+<output name="revokeMilestoneOutput" message="tns:revokeMilestoneOutputMessage"/>
+<fault name="revokeMilestoneFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="abortCase">
+<input name="abortCaseInput" message="tns:abortCaseInputMessage"/>
+<output name="abortCaseOutput" message="tns:abortCaseOutputMessage"/>
+<fault name="abortCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="suspendCase">
+<input name="suspendCaseInput" message="tns:suspendCaseInputMessage"/>
+<output name="suspendCaseOutput" message="tns:suspendCaseOutputMessage"/>
+<fault name="suspendCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="resumeCase">
+<input name="resumeCaseInput" message="tns:resumeCaseInputMessage"/>
+<output name="resumeCaseOutput" message="tns:resumeCaseOutputMessage"/>
+<fault name="resumeCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="closeCase">
+<input name="closeCaseInput" message="tns:closeCaseInputMessage"/>
+<output name="closeCaseOutput" message="tns:closeCaseOutputMessage"/>
+<fault name="closeCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+<operation name="reopenCase">
+<input name="reopenCaseInput" message="tns:reopenCaseInputMessage"/>
+<output name="reopenCaseOutput" message="tns:reopenCaseOutputMessage"/>
+<fault name="reopenCaseFault" message="tns:caseServiceFaultMessage"/>
+</operation>
+</portType>
+</definitions>

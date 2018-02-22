@@ -1,0 +1,14 @@
+<adapter-config name="DB_Database" adapter="Database Adapter" wsdlLocation="DB_Database.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/MDS_CONNECT" UIConnectionName="MDS_CONNECT" adapterRef=""/>
+  <endpoint-interaction portType="DB_Database_ptt" operation="DB_Database">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+     <!-- <property name="SchemaName" value="DEV_MDS"/> -->
+      <property name="PackageName" value="MDS_INTERNAL_SHREDDED"/>
+      <property name="ProcedureName" value="EXPORTDOCUMENTBYNAME"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace ="http://schemas.oracle.com/service/bpel/common"  
+		  xmlns:common = "http://schemas.oracle.com/service/bpel/common"
+		  xmlns:xs = "http://www.w3.org/2001/XMLSchema" 
+		  elementFormDefault="qualified" blockDefault="#all">
+	
+  <xs:element name="serviceProperties"  type="common:PropertiesType"/>  
+  
+   <xs:complexType name="NameValuePairType"> 
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  
+   <xs:complexType name="ArrayOfNameValuePairType"> 
+    <xs:sequence>
+      <xs:element name="item" type="common:NameValuePairType" maxOccurs="unbounded"/>
+    </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="NameAnyTypePairType"> 
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:anyType"/>
+    </xs:sequence>
+   </xs:complexType>
+  
+   <xs:complexType name="ArrayOfNameAnyTypePairType"> 
+    <xs:sequence>
+      <xs:element name="item" type="common:NameAnyTypePairType" maxOccurs="unbounded"/>
+    </xs:sequence>
+   </xs:complexType>   
+  
+   <xs:complexType name="PropertiesType"> 
+    <xs:sequence>
+      <xs:element name="property" type="common:NameValuePairType" maxOccurs="unbounded"/>
+    </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="ArrayOfAnyTypeType"> 
+    <xs:sequence>
+      <xs:element name="item" type="xs:anyType" maxOccurs="unbounded"/>
+    </xs:sequence>
+   </xs:complexType>    
+  
+</xs:schema>

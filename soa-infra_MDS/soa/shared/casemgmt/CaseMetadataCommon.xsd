@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+	jaxb:extensionBindingPrefixes="xjc" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	targetNamespace="http://xmlns.oracle.com/bpm/case/metadata/common"
+	xmlns="http://xmlns.oracle.com/bpm/case/metadata/common"
+	elementFormDefault="qualified" blockDefault="#all">
+	<xsd:annotation>
+		<xsd:documentation>XML Schema for Case Management Common Types and
+			Elements
+		</xsd:documentation>
+		<xsd:appinfo>
+			<jaxb:schemaBindings>
+				<jaxb:package name="oracle.bpm.casemgmt.metadata.common.model" />
+			</jaxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+
+	<xsd:complexType name="tTranslatableValue">
+		<xsd:sequence>
+			<xsd:element name="translationValue" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="translationParam" type="xsd:string"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="translationType" type="tTranslatableValueTypeEnum"
+			use="required" />
+	</xsd:complexType>
+	
+	<xsd:simpleType name="tTranslatableValueTypeEnum">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="RESOURCE" />
+			<xsd:enumeration value="STATIC" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="tResource">
+		<xsd:complexContent>
+			<xsd:extension base="tStaticOrXPath">
+				<xsd:attribute name="identityType" type="tResourceIdentityType" 
+					use="required"/>
+				<xsd:attribute name="application_context" type="xsd:string" 
+					use="optional"/>
+				<xsd:attribute name="systemAttribute" type="xsd:string"
+					use="optional" />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="tResourceIdentityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="user" />
+			<xsd:enumeration value="group" />
+			<xsd:enumeration value="application_role" />
+			<xsd:enumeration value="process_role" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="tStaticOrXPath">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="type" type="tStaticOrXpathType"
+					use="optional" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="tStaticOrXpathType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="STATIC" />
+			<xsd:enumeration value="XPATH" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tPermissionTagEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PUBLIC"/>
+			<xsd:enumeration value="RESTRICTED"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+        <!-- Also update bpm/main/modules/bpmn.engine/oraclebpm_src_ear/META-INF_src/jazn-data.xml -->
+	<xsd:simpleType name="tCaseObjectEnum">
+		<xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="CASE"/>
+                        <xsd:enumeration value="COMMENT"/>
+                        <xsd:enumeration value="DOCUMENT"/>
+                        <xsd:enumeration value="DATA"/>
+                        <xsd:enumeration value="EVENT"/>
+                        <xsd:enumeration value="ACTIVITY"/>
+                        <xsd:enumeration value="MILESTONE"/>
+                        <xsd:enumeration value="STAKEHOLDER"/>
+                        <xsd:enumeration value="HEADER"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="tActionEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="READ"/>
+			<xsd:enumeration value="UPDATE"/>
+			<xsd:enumeration value="INVOKE"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

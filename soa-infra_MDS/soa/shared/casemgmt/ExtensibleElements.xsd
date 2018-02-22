@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+            jaxb:extensionBindingPrefixes="xjc" 
+            xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+            targetNamespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+            xmlns="http://xmlns.oracle.com/bpm/case/metadata/extension"
+            elementFormDefault="qualified" blockDefault="#all">
+            
+
+  <xsd:annotation>
+    <xsd:documentation>XML Schema for extensible elements</xsd:documentation>
+    <xsd:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.metadata.extension.model"/>
+      </jaxb:schemaBindings>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <!-- Base types for extensible elements -->
+  <xsd:complexType name="tExtensibleElements">
+    <xsd:sequence>
+      <xsd:element name="documentation" type="tDocumentation" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="tDocumentation" mixed="true">
+    <xsd:sequence>
+    </xsd:sequence>
+    <!-- xsd:attribute ref="xml:lang"/ -->
+  </xsd:complexType>
+  <xsd:complexType name="tExtensibleMixedContentElements" mixed="true">
+    <xsd:sequence>
+      <xsd:element name="documentation" type="tDocumentation" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="tBoolean">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="yes"/>
+      <xsd:enumeration value="no"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
