@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<schema targetNamespace="http://xmlns.oracle.com/bpm/case/event"
+        xmlns:tns="http://xmlns.oracle.com/bpm/case/event"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+        elementFormDefault="qualified" blockDefault="#all">
+  <annotation>
+    <documentation>XML Schema for Case Management Events</documentation>
+    <appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.metadata.event.model"/>
+      </jaxb:schemaBindings>
+    </appinfo>
+  </annotation>
+  <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+              schemaLocation="ExtensibleElements.xsd"/>
+
+  <element name="caseEvent" type="tns:tCaseEvent"/>
+
+  <!-- ============================================== -->
+  <!-- Type which includes common and all Event Types -->
+  <!-- ============================================== -->
+  <complexType name="tCaseEvent">
+    <complexContent>
+      <extension base="extension:tExtensibleElements">
+        <sequence>
+          <!-- element common to all events type -->
+          <element name="eventId"     type="string" minOccurs="1" maxOccurs="1"/>
+          <element name="caseId"      type="string" minOccurs="1" maxOccurs="1"/>
+          <!-- identificationKey is available from CaseHeader -->
+          <element name="identificationKey" type="string" minOccurs="0" maxOccurs="1"/> 
+          <element name="caseName"    type="string" minOccurs="0" maxOccurs="1"/>
+          <element name="updatedBy"   type="string" minOccurs="0" maxOccurs="1"/>
+          <element name="updatedByDisplayName" type="string" minOccurs="0" maxOccurs="1"/>
+          <!-- event raised by -->
+          <element name="updatedDate"   type="dateTime"         minOccurs="0" maxOccurs="1"/>
+          <element name="comment"       type="string"           minOccurs="0" maxOccurs="1"/>
+          <element name="propertyBag"   type="tns:tPropertyBag" minOccurs="0" maxOccurs="1"/>
+          <!-- one of event type specific element -->
+          <choice minOccurs="1" maxOccurs="1">
+            <element name="activityEvent"    type="tns:tCaseActivityEvent"/>
+            <element name="lifecycleEvent"   type="tns:tCaseLifecycleEvent"/>
+            <element name="documentEvent"    type="tns:tCaseDocumentEvent"/>
+            <element name="milestoneEvent"   type="tns:tCaseMilestoneEvent"/>
+            <element name="commentEvent"     type="tns:tCaseCommentEvent"/>
+            <element name="userDefinedEvent" type="tns:tCaseUserDefinedEvent"/>
+            <element name="dataEvent"        type="tns:tCaseDataEvent"/>
+          </choice>
+        </sequence>
+        <attribute name="eventType" type="tns:tEventType"/>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="tEventType">
+    <restriction base="string">
+      <enumeration value="ACTIVITY_EVENT"/>
+      <enumeration value="LIFECYCLE_EVENT"/>
+      <enumeration value="DOCUMENT_EVENT"/>
+      <enumeration value="MILESTONE_EVENT"/>
+      <enumeration value="COMMENT_EVENT"/>
+      <enumeration value="USER_DEFINED_EVENT"/>
+      <enumeration value="DATA_UPLOAD_EVENT"/>
+    </restriction>
+  </simpleType>
+  <complexType name="tPropertyBag">
+    <sequence>
+      <element name="property" type="tns:tProperty" minOccurs="0"
+               maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="tProperty">
+    <all>
+      <element name="id"    type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="name"  type="string" minOccurs="1" maxOccurs="1"/>
+      <element name="value" type="string" minOccurs="1" maxOccurs="1"/>
+    </all>
+  </complexType>
+  <!-- ======================== -->
+  <!-- Case Activity Event Type -->
+  <!-- ======================== -->
+  <complexType name="tCaseActivityEvent">
+    <sequence>
+      <element name="activityName"  type="string" minOccurs="1" maxOccurs="1"/>
+      <!-- FraudDetection -->
+      <element name="activityType"  type="string" minOccurs="1" maxOccurs="1"/>
+      <!-- BPMN -->
+      <element name="activityId"    type="string" minOccurs="1" maxOccurs="1"/>
+      <!-- 101 -->
+      <element name="activityEvent" type="tns:tActivityEvent" minOccurs="1" maxOccurs="1"/>
+      <element name="startedDate"   type="dateTime" minOccurs="0" maxOccurs="1"/>
+      <element name="completedDate" type="dateTime" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <simpleType name="tActivityEvent">
+    <restriction base="string">
+      <enumeration value="ACTIVATED"/>
+      <enumeration value="COMPLETED"/>
+      <enumeration value="FAULTED"/>
+    </restriction>
+  </simpleType>
+  <!-- ======================== -->
+  <!-- Case Document Event Type -->
+  <!-- ======================== -->
+  <complexType name="tCaseDocumentEvent">
+    <sequence>
+      <element name="document"      type="tns:tDocument"      minOccurs="0" maxOccurs="1"/>
+      <element name="documentEvent" type="tns:tDocumentEvent" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="tDocument">
+    <sequence>
+      <element name="documentName"   type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="documentVesion" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="documentId"     type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <simpleType name="tDocumentEvent">
+    <restriction base="string">
+      <enumeration value="ADDED"/>
+      <enumeration value="DELETED"/>
+      <enumeration value="MODIFIED"/>
+    </restriction>
+  </simpleType>
+  <!-- ========================= -->
+  <!-- Case Lifecycle Event Type -->
+  <!-- ========================= -->
+  <complexType name="tCaseLifecycleEvent">
+    <sequence>
+      <!-- needed? -->
+      <element name="state"          type="string"              minOccurs="0" maxOccurs="1"/>
+      <element name="lifecycleEvent" type="tns:tLifecycleEvent" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <simpleType name="tLifecycleEvent">
+    <restriction base="string">
+      <enumeration value="STARTED"/>
+      <enumeration value="COMPLETED"/>
+      <enumeration value="RESTARTED"/>
+      <enumeration value="TERMINATED"/>
+      <enumeration value="UPDATED"/>
+      <enumeration value="WITHDRAWN"/>
+    </restriction>
+  </simpleType>
+
+  <!-- Removed CaseStateEvent Type as LifecycleEvent can be used instead -->
+  <!--
+  <complexType name="tCaseStateEvent">
+    <sequence>
+      <element name="state" type="string"/>
+      <element name="stateEvent" type="tns:tStateEvent"/>
+    </sequence>
+  </complexType>
+  <simpleType name="tStateEvent">
+    <restriction base="string">
+      <enumeration value="REACHED"/>
+    </restriction>
+  </simpleType>
+  -->
+  <!-- ========================= -->
+  <!-- Case Milestone Event Type -->
+  <!-- ========================= -->
+  <complexType name="tCaseMilestoneEvent">
+    <sequence>
+      <element name="milestone"      type="string"              minOccurs="1" maxOccurs="1"/>
+      <element name="milestoneEvent" type="tns:tMilestoneEvent" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <simpleType name="tMilestoneEvent">
+    <restriction base="string">
+      <enumeration value="REACHED"/>
+      <enumeration value="REVOKED"/>
+    </restriction>
+  </simpleType>
+  <!-- ============================ -->
+  <!-- Case Comment Event Type -->
+  <!-- ============================ -->
+  <complexType name="tCaseCommentEvent">
+    <sequence>
+      <element name="comment" type="string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <!-- ============================ -->
+  <!-- Case User Defined Event Type -->
+  <!-- ============================ -->
+  <complexType name="tCaseUserDefinedEvent">
+    <sequence>
+      <element name="eventName"    type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="event"        type="string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <!-- ============================ -->
+  <!-- Case Data Event Type         -->
+  <!-- ============================ -->
+  <complexType name="tCaseDataEvent">
+    <sequence>
+      <element name="dataName"     type="string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>

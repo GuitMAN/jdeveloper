@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PolicySpecifications xmlns="http://xmlns.oracle.com/integration/b2b/protocol">
+<PolicySpecification name="oracle/wsmtom_policy" version="1.0" specificationType="ws-mtom" displayName="oracle/wsmtom_policy" id="wsmtom_policy" policyType="both"/>
+<PolicySpecification name="oracle/wsrm10_policy" version="1.0" specificationType="ws-reliablemessaging" displayName="oracle/wsrm10_policy" id="wsrm10_policy" policyType="both">
+<Parameter name="replyto" parameterType="string" mandatory="false" id="wsrm10_replyto-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="faultto" parameterType="string" mandatory="false" id="wsrm10_faultto-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wsrm11_policy" version="1.1" specificationType="ws-reliablemessaging" displayName="oracle/wsrm11_policy" id="wsrm11_policy" policyType="both">
+<Parameter name="replyto" parameterType="string" mandatory="false" id="wsrm11_replyto-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="faultto" parameterType="string" mandatory="false" id="wsrm11_faultto-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss_username_token_client_policy" version="1.0" specificationType="ws-security" displayName="oracle/wss_username_token_client_policy" id="wss_username_token_client_policy" policyType="client" specificationSubType="authentication">
+<Parameter name="username" parameterType="string" mandatory="true" id="wsutc_username-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" mandatory="true" id="wsutc_password-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss10_message_protection_client_policy" version="1.1" specificationType="ws-security" displayName="oracle/wss10_message_protection_client_policy" id="wss10_message_protection_client_policy" policyType="client" specificationSubType="messageprotection">
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws10mpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws10mpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws10mpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws10mpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws10mpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss10_username_token_with_message_protection_client_policy" version="1.0" specificationType="ws-security" displayName="oracle/wss10_username_token_with_message_protection_client_policy" id="wss10_username_token_with_message_protection_client_policy" policyType="client" specificationSubType="messageprotection authentication">
+<Parameter name="username" parameterType="string" mandatory="true" id="ws10utmpc_username-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" mandatory="true" id="ws10utmpc_password-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws10utmpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws10utmpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws10utmpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws10utmpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws10utmpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss10_x509_token_with_message_protection_client_policy" version="1.0" specificationType="ws-security" displayName="oracle/wss10_x509_token_with_message_protection_client_policy" id="wss10_x509_token_with_message_protection_client_policy" policyType="client" specificationSubType="messageprotection authentication">
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws10xtmpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws10xtmpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws10xtmpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws10xtmpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws10xtmpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss11_message_protection_client_policy" version="1.1" specificationType="ws-security" displayName="oracle/wss11_message_protection_client_policy" id="wss11_message_protection_client_policy" policyType="client" specificationSubType="messageprotection">
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws11mpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws11mpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws11mpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws11mpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws11mpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss11_username_token_with_message_protection_client_policy" version="1.1" specificationType="ws-security" displayName="oracle/wss11_username_token_with_message_protection_client_policy" id="wss11_username_token_with_message_protection_client_policy" policyType="client" specificationSubType="messageprotection authentication">
+<Parameter name="username" parameterType="string" mandatory="true" id="ws11utmpc_username-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="password" parameterType="credential" mandatory="true" id="ws11utmpc_password-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws11utmpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws11utmpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws11utmpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws11utmpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws11utmpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+<PolicySpecification name="oracle/wss11_x509_token_with_message_protection_client_policy" version="1.1" specificationType="ws-security" displayName="oracle/wss11_x509_token_with_message_protection_client_policy" id="wss11_x509_token_with_message_protection_client_policy" policyType="client" specificationSubType="messageprotection authentication">
+<Parameter name="signalias" parameterType="signCertAlias" mandatory="true" id="ws11xtmpc_signalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="signpwd" parameterType="credential" mandatory="true" id="ws11xtmpc_signkey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encalias" parameterType="encCertAlias" mandatory="true" id="ws11xtmpc_encalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="encpwd" parameterType="credential" mandatory="true" id="ws11xtmpc_enckey-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+<Parameter name="recepientalias" parameterType="string" mandatory="true" id="ws11xtmpc_recepientalias-param" xmlns="http://xmlns.oracle.com/integration/b2b/common"/>
+</PolicySpecification>
+</PolicySpecifications>

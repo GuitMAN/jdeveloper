@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://integration.oracle.com/B2B/Attachments"
+            targetNamespace="http://integration.oracle.com/B2B/Attachments"
+            elementFormDefault="qualified">
+  <xsd:element name="Attachments">
+    <xsd:complexType>
+      <xsd:sequence>
+      <xsd:element name="Attachment" type="AttachmentType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  
+  
+  <xsd:complexType name="AttachmentType">
+    <xsd:attribute name="href" type="xsd:string" use="required"/>
+  </xsd:complexType>
+ 
+</xsd:schema>

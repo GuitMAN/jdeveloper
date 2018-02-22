@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="TaskFaultNotificationService" targetNamespace="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:format="http://schemas.xmlsoap.org/wsdl/formatbinding/" xmlns:java="http://schemas.xmlsoap.org/wsdl/java/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<documentation> Task Fault Notification Service is used to publish fault
+		notifications from Human Workflow Service Engine</documentation>
+<types>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService/schema" xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService" schemaLocation="TaskFaultNotificationService.xsd"/>
+</schema>
+</types>
+<message name="taskFaultNotificationMessage">
+<documentation>
+			Message that contains the task fault notification message
+		</documentation>
+<part name="payload" element="tns:taskFault"/>
+</message>
+<portType name="TaskFaultNotificationService">
+<documentation>
+			Port that exposes operations on task faults
+		</documentation>
+<operation name="taskFault">
+<documentation>
+				Notify task faults from HWF engine
+			</documentation>
+<input name="taskFaultInput" message="tns:taskFaultNotificationMessage"/>
+</operation>
+</portType>
+</definitions>

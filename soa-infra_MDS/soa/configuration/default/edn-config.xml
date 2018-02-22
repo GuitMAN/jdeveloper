@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<edn-config xmlns="http://xmlns.oracle.com/soa/config/edn">
+<thread-count>3</thread-count>
+<retry-count>3</retry-count>
+<queueWaitMs>30000</queueWaitMs>
+<sharedEdn>false</sharedEdn>
+<paused>false</paused>
+</edn-config>

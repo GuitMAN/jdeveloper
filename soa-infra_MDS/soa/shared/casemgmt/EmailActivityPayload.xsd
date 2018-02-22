@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+            xmlns="http://xmlns.oracle.com/bpm/case/activity/custom"
+            targetNamespace="http://xmlns.oracle.com/bpm/case/activity/custom"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+            elementFormDefault="qualified" blockDefault="#all">
+ <xsd:annotation>
+  <xsd:documentation>Email Activity Schema</xsd:documentation>
+  <xsd:appinfo>
+   <jaxb:schemaBindings>
+    <jaxb:package name="oracle.bpm.casemgmt.customactivity.notification.model"/>
+   </jaxb:schemaBindings>
+   <jaxb:globalBindings generateElementClass="true" generateIsSetMethod="true">
+    <jaxb:serializable uid="123456"/>
+   </jaxb:globalBindings>
+  </xsd:appinfo>
+ </xsd:annotation>
+ <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+             schemaLocation="ExtensibleElements.xsd"/>
+
+ <xsd:element name="emailPayload" type="tEmailPayload"/>
+
+  <xsd:complexType name="tEmailPayload">
+   <xsd:annotation>
+    <xsd:documentation>Email activity payload type.</xsd:documentation>
+   </xsd:annotation>
+   <xsd:complexContent>
+    <xsd:extension base="extension:tExtensibleElements">
+     <xsd:sequence>
+       <xsd:element name="from" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+       <xsd:element name="to" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+       <xsd:element name="replyTo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="cc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="bcc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="subject" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="attachments" type="tAttachment" minOccurs="0" maxOccurs="unbounded"/>
+     </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+
+ <xsd:complexType name="tAttachment">
+  <xsd:annotation>
+   <xsd:documentation>Represents case document to be used as email attachment.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexContent>
+   <xsd:extension base="extension:tExtensibleElements">
+    <xsd:sequence>
+       <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+       <xsd:element name="mimeType" type="xsd:string" minOccurs="1" maxOccurs="1"/>       
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+</xsd:schema>

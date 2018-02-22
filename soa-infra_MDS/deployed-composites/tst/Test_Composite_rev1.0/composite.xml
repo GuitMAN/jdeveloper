@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<composite name="Test_Composite" revision="1.0" label="2017-01-24_04-10-17_329" mode="active" state="on" xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+<import namespace="http://xmlns.oracle.com/Application1/Project1/Test_BPEL" location="Test_BPEL.wsdl" importType="wsdl"/>
+<service name="test_bpel_client_ep" ui:wsdlLocation="Test_BPEL.wsdl">
+<interface.wsdl interface="http://xmlns.oracle.com/Application1/Project1/Test_BPEL#wsdl.interface(Test_BPEL)" callbackInterface="http://xmlns.oracle.com/Application1/Project1/Test_BPEL#wsdl.interface(Test_BPELCallback)"/>
+<binding.ws port="http://xmlns.oracle.com/Application1/Project1/Test_BPEL#wsdl.endpoint(test_bpel_client_ep/Test_BPEL_pt)"/>
+<callback>
+<binding.ws port="http://xmlns.oracle.com/Application1/Project1/Test_BPEL#wsdl.endpoint(test_bpel_client_ep/Test_BPELCallback_pt)"/>
+</callback>
+</service>
+<property name="productVersion" type="xs:string" many="false">11.1.1.7.8</property>
+<component name="Test_BPEL" version="1.1">
+<implementation.bpel src="Test_BPEL.bpel"/>
+<property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+<property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
+</component>
+<wire>
+<source.uri>test_bpel_client_ep</source.uri>
+<target.uri>Test_BPEL/test_bpel_client</target.uri>
+</wire>
+</composite>

@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+            xmlns="http://xmlns.oracle.com/bpm/case/activity/custom"
+            targetNamespace="http://xmlns.oracle.com/bpm/case/activity/custom"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+            elementFormDefault="qualified" blockDefault="#all">
+ <xsd:annotation>
+  <xsd:documentation>Simple WF Activity Schema</xsd:documentation>
+  <xsd:appinfo>
+   <jaxb:schemaBindings>
+    <jaxb:package name="oracle.bpm.casemgmt.customactivity.simplewf.model"/>
+   </jaxb:schemaBindings>
+   <jaxb:globalBindings generateElementClass="true" generateIsSetMethod="true">
+    <jaxb:serializable uid="123456"/>
+   </jaxb:globalBindings>
+  </xsd:appinfo>
+ </xsd:annotation>
+ <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+             schemaLocation="ExtensibleElements.xsd"/>
+
+<xsd:element name="SimpleWorkflowPayload" type="tSimpleWorkflowPayload" />
+
+<xsd:complexType name="tSimpleWorkflowPayload">
+  <xsd:annotation>
+   <xsd:documentation>Simple Workflow activity payload type.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexContent>
+    <xsd:extension base="extension:tExtensibleElements">
+       <xsd:sequence>
+         <xsd:choice minOccurs="1" maxOccurs="1">
+           <xsd:element name="simpleAssignmentType" type="tSimpleAssignmentType"/>
+           <xsd:element name="sequentialAssignmentType" type="tSequentialAssignmentType"/>
+	   <xsd:element name="parallelAssignmentType" type="tParallelAssignmentType"/>
+           <xsd:element name="fyiAssignmentType" type="tFyiAssignmentType"/>
+         </xsd:choice>
+         <xsd:element name="title" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="dueDate" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="priority" type="xsd:integer" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="comment" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="payloadType" type="tPayloadType" minOccurs="0" maxOccurs="1"/>
+       </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tSimpleAssignmentType">
+   <xsd:complexContent>
+    <xsd:extension base="extension:tExtensibleElements">
+      <xsd:sequence>
+         <xsd:element name="assigneeType" type="tAssigneeType" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>    
+    </xsd:extension>
+   </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tSequentialAssignmentType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+       <xsd:sequence>
+          <xsd:element name="assigneeType" type="tAssigneeType" minOccurs="1" maxOccurs="unbounded"/>
+       </xsd:sequence>   
+     </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tFyiAssignmentType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+        <xsd:sequence>
+             <xsd:element name="assigneeType" type="tAssigneeType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+     </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tParallelAssignmentType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+        <xsd:sequence>
+          <xsd:element name="assigneeType" type="tAssigneeType" minOccurs="1" maxOccurs="unbounded"/>
+          <xsd:element name="defaultOutcome" type="tOutcomeTypeEnum" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="completionCriteriaType" type="tCompletionCriteriaType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="waitForAllVotes" type="xsd:boolean"/>     
+      </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tCompletionCriteriaType">
+ <xsd:complexContent>
+  <xsd:extension base="extension:tExtensibleElements">
+   <xsd:sequence>
+      <xsd:element name="outcome" type="tOutcomeTypeEnum" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="outcomePercentage" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+   </xsd:sequence>     
+  </xsd:extension>
+ </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:simpleType name="tOutcomeTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="APPROVE"/>
+        <xsd:enumeration value="REJECT"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="tAssigneeType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+       <xsd:sequence>
+           <xsd:element name="identityName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+           <xsd:element name="identityType" type="tIdentityTypeEnum" minOccurs="1" maxOccurs="1"/>
+       </xsd:sequence>
+     </xsd:extension>
+   </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:simpleType name="tIdentityTypeEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="USER"/>
+      <xsd:enumeration value="GROUP"/>
+      <xsd:enumeration value="APPROLE"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:complexType name="tPayloadType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+       <xsd:sequence>
+           <xsd:element name="parameter" type="tParameterType" minOccurs="1" maxOccurs="unbounded"/>
+       </xsd:sequence>
+     </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+
+<xsd:complexType name="tParameterType">
+    <xsd:complexContent>
+     <xsd:extension base="extension:tExtensibleElements">
+       <xsd:sequence>
+           <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+           <xsd:element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+       </xsd:sequence>
+     </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

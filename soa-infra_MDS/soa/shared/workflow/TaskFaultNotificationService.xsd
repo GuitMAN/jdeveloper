@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<schema
+	targetNamespace="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService"
+	xmlns:tns="http://xmlns.oracle.com/bpel/workflow/taskFaultNotificationService"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" blockDefault="#all">
+
+	<element name="taskFault" type="tns:taskFaultType" />
+
+	<complexType name="taskFaultType">
+		<sequence>
+			<element name="taskId" type="xsd:string" />
+			<element name="tenantId" type="xsd:long" />
+			<element name="compositeName" type="xsd:string" />
+			<element name="compositeInstanceId" type="xsd:string"/>
+			<element name="componentName" type="xsd:string" />
+			<element name="compositeVersion" type="xsd:string" />
+			<element name="ecid" type="xsd:string" />
+			<element name="faultCode" type="xsd:string" />
+			<element name="faultedOperation" type="xsd:string" />
+			<element name="parameters" type="tns:parametersType"
+				minOccurs="0" maxOccurs="1" />
+		    <element name="faultDate" type="xsd:dateTime" />
+		    <element name="recoverable" type="xsd:boolean" />
+		</sequence>
+	</complexType>
+
+	<complexType name="parametersType">
+		<sequence>
+			<element name="parameter" type="tns:parameterType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="parameterType">
+		<simpleContent>
+			<extension base="xsd:string">
+				<attribute name="name" type="xsd:string" />
+			</extension>
+		</simpleContent>
+	</complexType>
+
+
+</schema>

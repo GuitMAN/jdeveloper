@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.oracle.com/events/edl" targetNamespace="http://xmlns.oracle.com/bpm/case/event">
+<schema-import location="CaseEvent.xsd" namespace="http://xmlns.oracle.com/bpm/case/event"/>
+<event-definition name="CaseEvent">
+<content xmlns:ns0="http://xmlns.oracle.com/bpm/case/event" element="ns0:caseEvent"/>
+</event-definition>
+</definitions>

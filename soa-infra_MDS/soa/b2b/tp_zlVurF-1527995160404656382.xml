@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TradingPartner hosted="false" id="tp_zlVurF-1527995160404656382" logoSO="/soa/b2b/seed/defaultSeededTpIcon.png" name="New Partner" xmlns="http://xmlns.oracle.com/integration/b2b/profile">
+<Identification id="tpIden_Y220736470493458985" typeRef="/soa/b2b/types.xml#itype-Name" value="New Partner"/>
+</TradingPartner>

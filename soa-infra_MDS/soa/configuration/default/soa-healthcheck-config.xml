@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soa-healthcheck-config xmlns="http://xmlns.oracle.com/soa/config/healthcheck">
+<startup-run>
+<enabled>true</enabled>
+<category>Startup</category>
+</startup-run>
+<periodic-run>
+<name>frequently</name>
+<enabled>true</enabled>
+<interval>120</interval>
+<minute-of-hour>7</minute-of-hour>
+<hour-of-day>-1</hour-of-day>
+<day-of-week>-1</day-of-week>
+<category>Quick</category>
+</periodic-run>
+<periodic-run>
+<name>daily</name>
+<enabled>true</enabled>
+<interval>1440</interval>
+<hour-of-day>5</hour-of-day>
+<minute-of-hour>15</minute-of-hour>
+<day-of-week>-1</day-of-week>
+<category>Intermediate</category>
+</periodic-run>
+<periodic-run>
+<name>weekly</name>
+<enabled>false</enabled>
+<interval>10080</interval>
+<hour-of-day>3</hour-of-day>
+<minute-of-hour>30</minute-of-hour>
+<day-of-week>1</day-of-week>
+<category>Extensive</category>
+</periodic-run>
+</soa-healthcheck-config>

@@ -1,0 +1,59 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<schema targetNamespace="http://xmlns.oracle.com/bpm/case/action"
+        xmlns:tns="http://xmlns.oracle.com/bpm/case/action"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:extension="http://xmlns.oracle.com/bpm/case/metadata/extension"
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+        elementFormDefault="qualified" blockDefault="#all">
+  <xsd:annotation>
+    <xsd:documentation>XML Schema for Case Action</xsd:documentation>
+    <xsd:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.caserule.model"/>
+      </jaxb:schemaBindings>
+    </xsd:appinfo>
+  </xsd:annotation>         
+    <xsd:import namespace="http://xmlns.oracle.com/bpm/case/metadata/extension"
+                schemaLocation="ExtensibleElements.xsd"/>
+    <element name="tCaseAction">
+    <complexType>
+        <complexContent>
+            <extension base="extension:tExtensibleElements">
+                <sequence>
+                    <choice minOccurs="0" maxOccurs="unbounded">
+                      	<element name="milestone" type="tns:tMilestoneAction"/>
+                        <element name="caseActivity" type="tns:tCaseActivityAction"/>                
+                    </choice>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    </element>
+    <complexType name="tMilestoneAction">
+        <sequence>
+            <element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="status" type="tns:tMilestoneStatus"/>
+            <element name="comments" type="string" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+    </complexType>
+    <simpleType name="tMilestoneStatus">
+        <restriction base="string">
+            <enumeration value="REVOKE"/>
+            <enumeration value="REACH"/>
+        </restriction>
+    </simpleType>
+    <complexType name="tCaseActivityAction">
+        <sequence>
+            <element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="status" type="tns:tCaseActivityStatus"/>
+        </sequence>
+    </complexType>
+    <simpleType name="tCaseActivityStatus">
+        <restriction base="string">
+            <enumeration value="ACTIVATE"/>
+            <enumeration value="WITHDRAW"/>
+        </restriction>
+    </simpleType>
+</schema>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soa-infra-config xmlns="http://xmlns.oracle.com/soa/config/soainfra" version="11.1.1.2">
+<serviceEngines>eventagent,mediator,bpel,workflow,decision</serviceEngines>
+<datasourceJndi>jdbc/SOALocalTxDataSource</datasourceJndi>
+<txDatasourceJndi>jdbc/SOADataSource</txDatasourceJndi>
+<globalTxMaxRetry>2</globalTxMaxRetry>
+<globalTxRetryInterval>3</globalTxRetryInterval>
+<validateSchema>false</validateSchema>
+<ednJmsMode>false</ednJmsMode>
+<createWSCallTrackingMBean>false</createWSCallTrackingMBean>
+<loadDVMsAtStartup>false</loadDVMsAtStartup>
+<cache-config>
+<policy name="InMemory" active="true"/>
+<policy name="Coherence" active="false">
+<config-file/>
+</policy>
+</cache-config>
+<audit-config>
+<level>Production</level>
+<compositeInstanceStateEnabled>false</compositeInstanceStateEnabled>
+<bpelRecoveryStatus>All</bpelRecoveryStatus>
+<policy name="Immediate" active="true"/>
+<policy name="Deferred" active="false">
+<property name="maxThreads">10</property>
+<property name="flushDelay">5000</property>
+<property name="batchSize">100</property>
+</policy>
+</audit-config>
+<serverQuiesed>false</serverQuiesed>
+</soa-infra-config>

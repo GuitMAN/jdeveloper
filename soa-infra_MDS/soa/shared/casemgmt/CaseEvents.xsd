@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<schema targetNamespace="http://xmlns.oracle.com/bpm/case/events"
+        xmlns:events="http://xmlns.oracle.com/bpm/case/events"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:event="http://xmlns.oracle.com/bpm/case/event"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+        elementFormDefault="qualified" blockDefault="#all">
+  <annotation>
+    <documentation>XML Schema for Case Management Events</documentation>
+    <appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="oracle.bpm.casemgmt.metadata.event.model"/>
+      </jaxb:schemaBindings>
+    </appinfo>
+  </annotation>
+  <xsd:import namespace="http://xmlns.oracle.com/bpm/case/event"
+              schemaLocation="CaseEvent.xsd"/>
+
+  <element name="caseEvents" type="events:tCaseEvents"/>
+
+  <complexType name="tCaseEvents">
+    <sequence>
+      <element name="caseEvent" type="event:tCaseEvent" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+</schema>

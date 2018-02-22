@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/AGAdminService"
+     xmlns:tns="http://xmlns.oracle.com/bpel/workflow/AGAdminService"
+     xmlns="http://www.w3.org/2001/XMLSchema" 
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     elementFormDefault="qualified" blockDefault="#all">
+    <element name="expireMilestoneRequest" type="tns:expireMilestoneRequestType"/>
+    <element name="expireMilestoneResponse" type="tns:expireMilestoneResponseType"/>
+    <element name="AGAdminServiceFault" type="tns:AGAdminServiceFaultType"/>
+    <complexType name="expireMilestoneRequestType">
+         <sequence>
+            <element name="ciKey" type="xsd:long" />
+            <element name="compositeInstanceId" type="xsd:string" />
+            <element name="milestoneName" type="xsd:string" />
+           </sequence>
+    </complexType>
+    <complexType name="expireMilestoneResponseType">
+         <sequence>
+            <element name="status" type="xsd:string" />
+         </sequence>
+    </complexType>
+    <complexType name="AGAdminServiceFaultType">
+        <sequence>
+            <element name="faultInfo" type="xsd:string"/>
+        </sequence>
+    </complexType>
+</schema>

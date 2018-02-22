@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<logs xmlns="http://www.oracle.com/iAS/EMComponent/ojdl">
+<suppl_attrs>
+<attribute name="composite_instance_id" label="LOG_COMPOSITE_INSTANCE_ID@oracle.sysman.emai.rsc.sca.SCAMsg" searchType="BASIC"/>
+<attribute name="component_instance_id" label="LOG_COMPONENT_INSTANCE_ID@oracle.sysman.emai.rsc.sca.SCAMsg" searchType="BASIC"/>
+<attribute name="composite_name" label="LOG_COMPOSITE_NAME@oracle.sysman.emai.rsc.sca.SCAMsg" searchType="BASIC"/>
+<attribute name="component_name" label="LOG_COMPONENT_NAME@oracle.sysman.emai.rsc.sca.SCAMsg" searchType="BASIC"/>
+</suppl_attrs>
+</logs>

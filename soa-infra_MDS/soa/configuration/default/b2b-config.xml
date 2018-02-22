@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<b2b-config xmlns="http://xmlns.oracle.com/b2b/config">
+<property>
+<name>b2b.enableMetrics</name>
+<value>true</value>
+<comment>Enables B2B DMS metrics for Enterprise Manager.</comment>
+</property>
+<property>
+<name>b2b.payloadObfuscation</name>
+<value>false</value>
+<comment>Enables payload obfuscation</comment>
+</property>
+</b2b-config>

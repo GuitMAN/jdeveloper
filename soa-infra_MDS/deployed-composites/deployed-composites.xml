@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<deployed-composites>
+<composite-series name="tst/Test_Composite" default="tst/Test_Composite!1.0">
+<composite-revision dn="tst/Test_Composite!1.0" state="on" mode="active" location="dc/soa_9377e23c-e22a-48e5-abda-14a7cf6096bf">
+<composite dn="tst/Test_Composite!1.0*soa_9377e23c-e22a-48e5-abda-14a7cf6096bf" deployedTime="2017-08-16T17:36:30.157+03:00"/>
+</composite-revision>
+</composite-series>
+</deployed-composites>

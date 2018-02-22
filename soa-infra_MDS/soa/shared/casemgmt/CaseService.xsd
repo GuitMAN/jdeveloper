@@ -1,0 +1,111 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://xmlns.oracle.com/CaseService/types"
+            targetNamespace="http://xmlns.oracle.com/CaseService/types"
+            xmlns:cm="http://xmlns.oracle.com/bpm/case"
+            elementFormDefault="qualified">
+    <xsd:import schemaLocation="Case.xsd"
+                namespace="http://xmlns.oracle.com/bpm/case"/>		
+              
+    <xsd:element name="startCaseInputMessage" type="tStartCaseInputMessage"/>  
+    <xsd:element name="startCaseOutputMessage" type="tStartCaseOutputMessage"/>
+    <xsd:element name="attainMilestoneInputMessage" type="tMilestoneInputMessage"/>  
+    <xsd:element name="attainMilestoneOutputMessage" type="tMilestoneOutputMessage"/>
+    <xsd:element name="revokeMilestoneInputMessage" type="tMilestoneInputMessage"/>  
+    <xsd:element name="revokeMilestoneOutputMessage" type="tMilestoneOutputMessage"/>	
+	<xsd:element name="suspendCaseInputMessage" type="tSuspendResumeAbortCaseInputMessage"/>
+	<xsd:element name="suspendCaseOutputMessage" type="tSuspendResumeAbortCaseOutputMessage"/>
+    <xsd:element name="resumeCaseInputMessage" type="tSuspendResumeAbortCaseInputMessage"/>
+	<xsd:element name="resumeCaseOutputMessage" type="tSuspendResumeAbortCaseOutputMessage"/>
+    <xsd:element name="abortCaseInputMessage" type="tSuspendResumeAbortCaseInputMessage"/>
+	<xsd:element name="abortCaseOutputMessage" type="tSuspendResumeAbortCaseOutputMessage"/>
+	<xsd:element name="closeCaseInputMessage" type="tCloseCaseInputMessage"/>
+	<xsd:element name="closeCaseOutputMessage" type="tCloseCaseOutputMessage"/>
+	<xsd:element name="reopenCaseInputMessage" type="tSuspendResumeAbortCaseInputMessage"/>
+	<xsd:element name="reopenCaseOutputMessage" type="tSuspendResumeAbortCaseOutputMessage"/>
+	<xsd:element name="caseServiceFaultMessage" type="tCaseServiceFaultMessage"/>	
+	<xsd:element name="bpmContext" type="tBpmContext"/>
+    <xsd:element name="caseIdentifier" type="tCaseIdentifier"/>
+	
+ <xsd:complexType name="tBpmContext">
+        <xsd:sequence>
+            <xsd:element name="credential" type="tCredential" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="token" type="xsd:string" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="locale" type="xsd:string" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="timeZone" type="xsd:string" minOccurs="0"
+                         maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="tCredential">
+        <xsd:sequence>
+            <xsd:element name="login" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="password" type="xsd:string" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="identityContext" type="xsd:string" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="onBehalfOfUser" type="xsd:string" minOccurs="0"
+                         maxOccurs="1"/>
+        </xsd:sequence>
+		    </xsd:complexType>
+		<xsd:complexType name="tCaseIdentifier">
+        <xsd:sequence>
+            <xsd:element name="caseId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="caseNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="identificationKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	
+   
+    <xsd:complexType name="tStartCaseInputMessage">
+     <xsd:sequence>
+      <xsd:element ref="cm:case"/>
+     </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="tStartCaseOutputMessage">
+     <xsd:sequence>
+      <xsd:element ref="caseIdentifier"/>
+     </xsd:sequence>
+    </xsd:complexType>
+	 <xsd:complexType name="tMilestoneInputMessage">
+     <xsd:sequence>
+	  <xsd:element ref="cm:milestone"/>
+     </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="tMilestoneOutputMessage">
+     <xsd:sequence>
+      <xsd:element name="result" type="xsd:boolean"/>
+     </xsd:sequence>
+    </xsd:complexType>
+	 <xsd:complexType name="tCaseServiceFaultMessage">
+     <xsd:sequence>
+      <xsd:element name="message" type="xsd:string"/>
+     </xsd:sequence>
+    </xsd:complexType>
+	 <xsd:complexType name="tSuspendResumeAbortCaseInputMessage">
+     <xsd:sequence>
+      <xsd:element ref="caseIdentifier"/>
+	  <xsd:element ref="cm:comment"/>
+     </xsd:sequence>
+	 </xsd:complexType>
+	  <xsd:complexType name="tSuspendResumeAbortCaseOutputMessage">
+     <xsd:sequence>
+	    <xsd:element name="result" type="xsd:boolean"/>
+     </xsd:sequence>
+    </xsd:complexType>
+	<xsd:complexType name="tCloseCaseInputMessage">
+     <xsd:sequence>
+      <xsd:element ref="caseIdentifier"/>
+	  <xsd:element name="outcome" type="xsd:string"/>
+	  <xsd:element ref="cm:comment"/>
+     </xsd:sequence>
+	 </xsd:complexType>
+	  <xsd:complexType name="tCloseCaseOutputMessage">
+     <xsd:sequence>
+	    <xsd:element name="result" type="xsd:boolean"/>
+     </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
