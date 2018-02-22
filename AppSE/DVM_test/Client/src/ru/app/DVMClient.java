@@ -13,7 +13,7 @@ public class DVMClient {
             /**
             *http://<host>:<managedServerPort>/soa-infra/services/<partition-name>/<compositeProjectName>/<dvm-name>.dvm
             */
-            String dvmLoc = "D:\\NeoFlex_MDS\\Master\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm\\cm.Country.mappingTable.V1.dvm";
+            String dvmLoc = "oramds:/apps/EDM/VTB24/Dvm/cm.Country.mappingTable.V1.dvm";
 
             String srcColumnName = "localObjectKey";
             String srcColumnVal = "ABH";

@@ -17,7 +17,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import oracle.fabric.common.MetadataManager;
 import oracle.fabric.common.dvm.DVM;
-import oracle.fabric.common.dvm.DVMManager;
+//import oracle.fabric.common.dvm.DVMManager;
 import oracle.fabric.common.xml.xpath.IXPathContext;
 import oracle.fabric.common.xml.xpath.IXPathFunction;
 import oracle.fabric.common.xml.xpath.XPathFunctionException;
@@ -26,28 +26,30 @@ import oracle.tip.dvm.DVMExtFunctions;
 import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.DVMManagerImpl;
 import oracle.tip.dvm.DVMUtil;
-import oracle.tip.dvm.LookupValue;
-import oracle.tip.dvm.entity.DVMRTObject;
+//import oracle.tip.dvm.LookupValue;
+//import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
 
 import oracle.tip.dvm.exception.DVMValidationException;
-import oracle.tip.dvm.sdk.util.DVMConstants;
+//import oracle.tip.dvm.sdk.util.DVMConstants;
 
 import oracle.xml.parser.v2.XMLDocument;
 
-import oracle.xml.parser.v2.XMLElement;
+//import oracle.xml.parser.v2.XMLElement;
 
-import oracle.xml.parser.v2.XSLException;
+//import oracle.xml.parser.v2.XSLException;
 
-import oracle.integration.platform.blocks.xpath.XPathContext;
+//import oracle.integration.platform.blocks.xpath.XPathContext;
 
 import oracle.tip.dvm.sdk.util.XMLUtil;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+//import org.w3c.dom.NodeList;
 
 
 //import javax.xml.xpath.XPathFunctionException;
+
+import oracle.integration.platform.blocks.xpath.XPathContext;
 
 
 public class dvmNeoUtils {
@@ -96,7 +98,7 @@ public class dvmNeoUtils {
            
            try
            {
-         /*      if (this.mTestMetadataMgr_new == null)
+               if (this.mTestMetadataMgr_new == null)
              {
                  
                     Object ctx;
@@ -124,7 +126,7 @@ public class dvmNeoUtils {
 
              dvmLoc = mdm.resolve(dvmLoc);
             
-  */
+  
              DVM dvm = null;
              try
              {

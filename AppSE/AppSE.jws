@@ -4,7 +4,8 @@
       <value n="adrs-instance-binding" v="DefaultServer"/>
    </hash>
    <value n="application-package-prefix" v="ru.app"/>
-   <value n="appTemplateId" v="#Java EE Web Application"/>
+   <url n="application-source-directory" path="src/"/>
+   <value n="appTemplateId" v="#Java SE"/>
    <hash n="component-versions">
       <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.adfdt.controller.adfc.source.migration.SavePointDataSourceForWLSMigrator" v="11.1.1.1.0"/>
@@ -17,6 +18,12 @@
       <value n="oracle.mds.internal.dt.ide.migrator.MDSConfigMigratorHelper" v="11.1.1.0.5313"/>
    </hash>
    <list n="listOfChildren">
+      <hash><url n="URL" path="DVM_test/DVM_test.jpr"/></hash>
       <hash><url n="URL" path="DVMValid/DVMValid.jpr"/></hash>
    </list>
+   <hash n="oracle.mds.internal.dt.ide.CustOptions">
+      <list n="customizationLibraries">
+         <hash/>
+      </list>
+   </hash>
 </jws:workspace>
