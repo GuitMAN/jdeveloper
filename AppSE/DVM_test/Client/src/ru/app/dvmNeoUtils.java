@@ -89,9 +89,7 @@ public class dvmNeoUtils {
         private MetadataManager mTestMetadataMgr_new = null;
        
         private DVMRTObject getDVMRTObject(String dvmLoc) throws DVMException
-         {
-            
-          
+         {   
             
            MetadataManager mdm = null;
            DVMRTObject obj;
@@ -100,7 +98,6 @@ public class dvmNeoUtils {
            {
                if (this.mTestMetadataMgr_new == null)
              {
-                 
                     Object ctx;
                     ctx = XPathContext.getXPathContext();
                 
@@ -146,8 +143,9 @@ public class dvmNeoUtils {
             //   throw new DVMValidationException(1573, params, null);
              }
              obj = (DVMRTObject)dvm.getParsedDVM();
-               dvm.setIsValid(dvmNeoUtils.isValidateDVM);
-               dvm.setIsValidated(dvmNeoUtils.isValidateDVM);
+             //отключаем валидацию
+             dvm.setIsValid(dvmNeoUtils.isValidateDVM);
+             dvm.setIsValidated(dvmNeoUtils.isValidateDVM);
              if (obj == null)
              {
                obj = new DVMRTObject(dvm);
@@ -231,6 +229,7 @@ public class dvmNeoUtils {
               // XMLDocument xmlDoc = validateDVM(dvm);
             
                 XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
+                
                   if (((!dvm.isValidated()) || (!dvm.isValid())))
                       {
                         ArrayList<String> errorParams = new ArrayList<String>();

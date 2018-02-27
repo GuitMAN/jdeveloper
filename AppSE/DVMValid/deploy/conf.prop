@@ -1,2 +1,2 @@
-Directory=D:\\NeoFlex_MDS\\Supply\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm
-dvm=cm.Country.mappingTable.V1.dvm
+Directory=D:\\NeoFlex_MDS\\Master\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm
+dvm=cm.Currency.mappingTable.V2.dvm

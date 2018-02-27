@@ -173,7 +173,7 @@ public class Main {
                 return;
             }
 
-            System.out.println("Анализ структуры DVM справчоника...");
+            System.out.println("Анализ структуры DVM справочника...");
             //Пров
             int cur_num_cells = 0;
             for (int i = 0; i < Rows.size(); i++) {
@@ -188,7 +188,7 @@ public class Main {
                 if (cur_num_cells == cellname.size()) {
                    // System.out.println("Количество блоков <cell> = " + cur_num_cells + " [OK]");
                 } else {
-                    System.out.println("Нарурение целостности справчоника. В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size() );
+                    System.out.println("Нарушение целостности справчоника. В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size() );
                     for (int j = 0; j < Rows.get(i).size(); j++) {
                         //       System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
                     }
