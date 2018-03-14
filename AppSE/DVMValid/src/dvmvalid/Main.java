@@ -134,7 +134,6 @@ public class Main {
             NodeList row_node_lst = rows_node.item(0).getChildNodes();
             for (int jrow = 0; jrow < row_node_lst.getLength(); jrow++) {
 
-
                 if (row_node_lst.item(jrow).getNodeType() == Node.ELEMENT_NODE) {
                     Node row_node = row_node_lst.item(jrow);
                     // System.out.println("--" + row_node.getNodeName()  + ":jrow=" + jrow);
@@ -196,7 +195,6 @@ public class Main {
                     System.out.println("Должно быть = " + s + " элементов [ERROR]");
                     error = true;
                 }
-
             }
 
             if (error) {
@@ -212,7 +210,7 @@ public class Main {
             }
 
             for (int i = 0; i < Rows.size(); i++) {
-                for (int j = 0; j < Rows.get(i).size(); j++) {
+              //  for (int j = 0; j < Rows.get(i).size(); j++) {
 
                     for (int ki = 0; ki < Rows.size(); ki++) {
                         for (int k = 0; k < cellname.size(); k++) {
@@ -223,26 +221,25 @@ public class Main {
 
                             for (int kj = 0; kj < Rows.get(ki).size(); kj++) {
 
-                                if (Rows.get(i).get(kj) == Rows.get(ki).get(kj)) {
+                                if (Rows.get(i).get(kj).equals(Rows.get(ki).get(kj))) {
                                     flag.set(kj, true);
                                 } else {
                                     flag.set(kj, false);
                                 }
-                                //System.out.println(Rows.get(i).get(kj)+ " : " + Rows.get(ki).get(kj)) ;
+                               // System.out.println(Rows.get(i).get(kj)+ " : " + Rows.get(ki).get(kj)) ;
                                 d = true;
 
                             }
                         }
-                        for (int k = 0; k < cellname.size(); k++) {
+                        for (int k = 0; k < cellname.size(); k++) 
+                       {
                             d &= flag.get(k);
-
                         }
                         if (d) {
                             System.out.println("Дубль найден " + Rows.get(i) + " ... [ERROR]");
-                            error = true;
                         }
                     }
-                }
+               // }
             }
             if (error) {
                 return;

@@ -17,7 +17,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import oracle.fabric.common.MetadataManager;
 import oracle.fabric.common.dvm.DVM;
-//import oracle.fabric.common.dvm.DVMManager;
+import oracle.fabric.common.dvm.DVMManager;
 import oracle.fabric.common.xml.xpath.IXPathContext;
 import oracle.fabric.common.xml.xpath.IXPathFunction;
 import oracle.fabric.common.xml.xpath.XPathFunctionException;
@@ -27,7 +27,7 @@ import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.DVMManagerImpl;
 import oracle.tip.dvm.DVMUtil;
 //import oracle.tip.dvm.LookupValue;
-//import oracle.tip.dvm.entity.DVMRTObject;
+import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
 
 import oracle.tip.dvm.exception.DVMValidationException;
@@ -93,9 +93,9 @@ public class dvmNeoUtils {
             
            MetadataManager mdm = null;
            DVMRTObject obj;
-           
+          
            try
-           {
+           { /*
                if (this.mTestMetadataMgr_new == null)
              {
                     Object ctx;
@@ -122,7 +122,7 @@ public class dvmNeoUtils {
 
 
              dvmLoc = mdm.resolve(dvmLoc);
-            
+            */
   
              DVM dvm = null;
              try

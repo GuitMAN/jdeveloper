@@ -13,10 +13,10 @@ public class DVMClient {
             /**
             *http://<host>:<managedServerPort>/soa-infra/services/<partition-name>/<compositeProjectName>/<dvm-name>.dvm
             */
-            String dvmLoc = "oramds:/apps/EDM/VTB24/Dvm/cm.Country.mappingTable.V1.dvm";
+            String dvmLoc = "D:\\NeoFlex_MDS\\Master\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm\\cm.Currency.mappingTable.V2.dvm";
 
             String srcColumnName = "localObjectKey";
-            String srcColumnVal = "ABH";
+            String srcColumnVal = "810";
             String destColumnName = "cmObjectKey";
             String targetColumnName = "system";
             
@@ -31,20 +31,20 @@ public class DVMClient {
             System.out.println("Начало вывоза lookupValue... ");
            
            // lookupVal = m.lookupValue(dvmLoc, srcColumnName, srcColumnVal, destColumnName, "не найдено", targetColumnName,"cm.System.BQ","")
-            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.BQ") ;
+            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.DWH") ;
             timeSpent = System.currentTimeMillis() - startTime;
             System.out.println("Затраченное время: " + timeSpent + " миллисекунд");
             System.out.println("Response lookupValue :->" + lookupVal);
                 
             //Вызываем  справочник повторно         
             
-            srcColumnVal = "ARE";
+            srcColumnVal = "PLN";
             System.out.println("Включаем валидацию и ждем пока провалидируется справочник");
             System.out.println("Начало вывоза lookupValue... ");
             m.setisVailateDVM(true);
             
             startTime = System.currentTimeMillis();
-            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.BQ") ;            timeSpent = System.currentTimeMillis() - startTime;
+            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.AC") ;            timeSpent = System.currentTimeMillis() - startTime;
             System.out.println("Затраченное время: " + timeSpent + " миллисекунд");
             System.out.println("Response lookupValue :->" + lookupVal);
             
@@ -53,7 +53,7 @@ public class DVMClient {
             System.out.println("Снова отключаем валидацию и ждем пока провалидируется справочник");
             
             startTime = System.currentTimeMillis();
-            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.BQ") ;            timeSpent = System.currentTimeMillis() - startTime;
+            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.AC") ;            timeSpent = System.currentTimeMillis() - startTime;
             System.out.println("Затраченное время: " + timeSpent + " миллисекунд");
             System.out.println("Response lookupValue :->" + lookupVal);
             
@@ -61,7 +61,7 @@ public class DVMClient {
            
             
             startTime = System.currentTimeMillis();
-            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.BQ") ;            timeSpent = System.currentTimeMillis() - startTime;
+            lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.AC") ;            timeSpent = System.currentTimeMillis() - startTime;
             System.out.println("Затраченное время: " + timeSpent + " миллисекунд");
             System.out.println("Response lookupValue :->" + lookupVal);
        
