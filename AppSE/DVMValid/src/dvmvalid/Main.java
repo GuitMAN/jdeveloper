@@ -18,8 +18,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import org.xml.sax.Locator;
+
 
 public class Main {
+
+    public static Locator locator;
 
 
     //Cписок тегов DVM справочника
@@ -52,12 +56,15 @@ public class Main {
         }
     }
 
-    //  public static String AppendDirectorySeparator(String path)
-    {
-        String directorySeparator;
-        //    directorySeparator = path.DirectorySeparatorChar.ToString();
-        //    return path.EndsWith(directorySeparator) ? path : path + directorySeparator;
-    }
+    /**
+     * @param _locator
+     */
+    public static void setDocumentLocator(Locator _locator) {
+            locator = _locator;
+        }
+
+
+
 
 
     public static void main(String[] args) {
@@ -78,14 +85,14 @@ public class Main {
             filename = dvm;
         }
         filename = DirDVM + "\\" + filename;
-
+        
 
         int num_rows = 0;
         boolean error = false;
 
         File fXml = new File(filename);
-
-
+   //     Locator l = new Locator();
+        
         //     File fXml=new File("D:\\NeoFlex_MDS\\Master\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm\\cm.AccountKind.V1.dvm");
         // File fXml=new File(filename);
 
@@ -93,7 +100,7 @@ public class Main {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(fXml);
-
+            //setDocumentLocator();
             //       List<String> cell = new ArrayList<String>();
             //       ArrayList<List> cells =  new ArrayList<List>();
 
@@ -145,6 +152,7 @@ public class Main {
                     for (int jcell = 0; jcell < cell_node_lst.getLength(); jcell++) {
 
                         Node cell_node = cell_node_lst.item(jcell);
+                       
                         //System.out.println(cell_node.getUserData(LocationAwareContentHandler.LINE_NUMBER_KEY_NAME));
                         if (cell_node.getNodeType() == Node.ELEMENT_NODE) {
                             String value = ".";
@@ -236,12 +244,17 @@ public class Main {
                             d &= flag.get(k);
                         }
                         if (d) {
-                            System.out.println("Дубль найден " + Rows.get(i) + " ... [ERROR]");
+                            error = true;
+                            int num_str = i*(cellname.size()+2)+cellname.size()+5;
+                            System.out.println("Дубль найден [стр. "+ num_str +"]" + Rows.get(i) + " ... [ERROR]");
+                            
                         }
                     }
                // }
             }
             if (error) {
+                System.out.println("Внимание! Расчет строки с элементом не учитывает вставленные пробелы или комментарии");
+                System.out.println("Валидация DVM справочника не успешная.");
                 return;
             }
             System.out.print("Валидация справочника успешно завершена...");
