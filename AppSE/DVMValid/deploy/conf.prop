@@ -1,3 +1,4 @@
-Directory=D:\\NeoFlex_MDS\\Supply\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm
+Directory=D:\\NeoFlex_MDS\\Master\\oracle_mds\\v1\\src\\apps\\EDM\\VTB24\\Dvm
 #Directory=D:\\Work\\Weblogic_project\\AppSE\\DVMValid\\deploy
-dvm=cm.Country.mappingTable.V1.dvm
+dvm=cm.SystemInstance.mappingTable.V2.dvm
+
