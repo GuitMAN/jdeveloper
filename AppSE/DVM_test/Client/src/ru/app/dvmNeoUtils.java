@@ -51,26 +51,29 @@ import org.w3c.dom.Document;
 
 import oracle.integration.platform.blocks.xpath.XPathContext;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 
 public class dvmNeoUtils {
 
- 
+
     private static final String DVM_DEFAUL_VALUE = UUID.randomUUID().toString();
-    
-    
+
+
     /*
      * Менеджер DVM
      */
-    private static final  DVMManagerImpl_new dvmManager = new DVMManagerImpl_new();
-    
+    private static final DVMManagerImpl_new dvmManager = new DVMManagerImpl_new();
+
     /*
      * По умолчанию отключим валидацию
      * true - справочник провалидирован, иначе будем валидировать.
      */
     private static boolean isValidateDVM = true;
-    
-    
-    
+
+
     dvmNeoUtils() {
         super();
     }
@@ -79,28 +82,26 @@ public class dvmNeoUtils {
     /**
      * @return
      */
-    public  DVMManagerImpl_new getdvmManager(){
-        
-        return this.dvmManager;
-        }
+    public DVMManagerImpl_new getdvmManager() {
 
-    public static class DVMManagerImpl_new extends DVMManagerImpl{
-        
+        return this.dvmManager;
+    }
+
+    public static class DVMManagerImpl_new extends DVMManagerImpl {
+
         private MetadataManager mTestMetadataMgr_new = null;
-       
-        private DVMRTObject getDVMRTObject(String dvmLoc) throws DVMException
-         {   
-            
-           MetadataManager mdm = null;
-           DVMRTObject obj;
-          
-           try
-           { /*
+
+        private DVMRTObject getDVMRTObject(String dvmLoc) throws DVMException {
+
+            MetadataManager mdm = null;
+            DVMRTObject obj;
+
+            try { /*
                if (this.mTestMetadataMgr_new == null)
              {
                     Object ctx;
                     ctx = XPathContext.getXPathContext();
-                
+
                     if (ctx == null)
                {
                  Object[] params = { dvmLoc };
@@ -109,7 +110,7 @@ public class dvmNeoUtils {
                mdm = XPathContext.getXPathContext().getComposite().getMetadataManager();
                if (mdm == null)
                {
-                    
+
                  Object[] params = { dvmLoc };
                  throw new DVMValidationException(1572, params, null);
                }
@@ -123,52 +124,236 @@ public class dvmNeoUtils {
 
              dvmLoc = mdm.resolve(dvmLoc);
             */
-  
-             DVM dvm = null;
-             try
-             {
-               oracle.fabric.common.dvm.DVMManager dvmMgr = mdm.getDVMManager();            
-               dvm = dvmMgr.getDVM(dvmLoc);
-             }
-             catch (Exception e)
-             {
-                 //если адрес является локальным путем, а не ссылка
-                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                             DocumentBuilder db = dbf.newDocumentBuilder();
-                             dbf.setNamespaceAware(true);
-                             Document doc = db.parse(new File(dvmLoc));
-                             dvm = new DVM(doc, "");
-                        //     Object[] params = { dvmLoc, e.getMessage() };
-              // mLogger.severe(e.getMessage());
-            //   throw new DVMValidationException(1573, params, null);
-             }
-             obj = (DVMRTObject)dvm.getParsedDVM();
-             //отключаем валидацию
-             dvm.setIsValid(dvmNeoUtils.isValidateDVM);
-             dvm.setIsValidated(dvmNeoUtils.isValidateDVM);
-             if (obj == null)
-             {
-               obj = new DVMRTObject(dvm);
-               dvm.setParsedDVM(obj);
-             }
-           }
-           catch (Exception e)
-           {
-             e.printStackTrace();
-             Object[] params = { dvmLoc, e.getMessage() };
-             
-             throw new DVMValidationException(1572, params, null);
-           }
-           return obj;
-         }
-       
-    
-        public void setMetadataManager(MetadataManager mmg)
-        {
+
+                DVM dvm = null;
+                try {
+                    oracle.fabric.common.dvm.DVMManager dvmMgr = mdm.getDVMManager();
+                    dvm = dvmMgr.getDVM(dvmLoc);
+                } catch (Exception e) {
+                    //если адрес является локальным путем, а не ссылка
+                    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder db = dbf.newDocumentBuilder();
+                    dbf.setNamespaceAware(true);
+                    Document doc = db.parse(new File(dvmLoc));
+                    dvm = new DVM(doc, "");
+                    //     Object[] params = { dvmLoc, e.getMessage() };
+                    // mLogger.severe(e.getMessage());
+                    //   throw new DVMValidationException(1573, params, null);
+                }
+                obj = (DVMRTObject)dvm.getParsedDVM();
+
+                if (obj == null) {
+                   
+                    //Вызов кастомной валидации
+                    dvm = CustomValidateDVM(dvm);
+                    
+                    //Вызываем создание объекта без штатной валидации
+                    obj = new DVMRTObject(dvm);
+                    dvm.setParsedDVM(obj);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Object[] params = { dvmLoc, e.getMessage() };
+
+                throw new DVMValidationException(1572, params, null);
+            }
+            return obj;
+        }
+
+        public DVM CustomValidateDVM(DVM dvm) {
+            System.out.println("CustomValidateDVM");
+            int num_rows = 0;
+            boolean error = false;
+            XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
+            //Cписок тегов DVM справочника
+ 
+            if ((!dvm.isValidated()) || (!dvm.isValid())) {
+                try {
+
+
+                    //  DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                    //  DocumentBuilder db = dbf.newDocumentBuilder();
+                    // Document doc = db.parse(dvmDocument.);
+                    //setDocumentLocator();
+                      ArrayList<String> cellname = new ArrayList<String>();
+                      //Массив Rows
+                      ArrayList<List> Rows = new ArrayList<List>();
+
+                    dvmDocument.getDocumentElement().normalize();
+                    System.out.println("Root element <" + dvmDocument.getDocumentElement().getNodeName() + ">");
+
+                    NodeList nodeList_columns = dvmDocument.getElementsByTagName("columns");
+                    System.out.println("<columns>");
+                    Node fistNode = nodeList_columns.item(0);
+                    Element elj = (Element)fistNode;
+                    NodeList current_node = elj.getElementsByTagName("column");
+                    for (int je = 0; je < current_node.getLength(); je++) {
+                        if (current_node.item(je).getNodeType() == Node.ELEMENT_NODE) {
+                            //current_node.item(je).getChildNodes();
+                            elj = (Element)current_node.item(je);
+                            String attr_str = elj.getAttribute("name");
+
+                            cellname.add(je, attr_str);
+                        }
+                    }
+                    System.out.println("</columns>");
+
+                    //Тестовый вывод
+
+                    for (String a : cellname) {
+                        System.out.println(cellname.indexOf(a) + ":" + a);
+                    }
+
+                    //Перемещаемся в корней тег rows
+                    NodeList rows_node = dvmDocument.getElementsByTagName("rows");
+
+                    num_rows = rows_node.getLength();
+
+                    Node cur_node_rows = rows_node.item(0);
+                    //System.out.println("-" +cur_node_rows.getNodeName());
+
+                    //Перемещаемся на первый элемент блока row
+                    NodeList row_node_lst = rows_node.item(0).getChildNodes();
+                    for (int jrow = 0; jrow < row_node_lst.getLength(); jrow++) {
+
+                        if (row_node_lst.item(jrow).getNodeType() == Node.ELEMENT_NODE) {
+                            Node row_node = row_node_lst.item(jrow);
+                            // System.out.println("--" + row_node.getNodeName()  + ":jrow=" + jrow);
+
+
+                            ArrayList<String> cur_list = new ArrayList<String>();
+
+                            NodeList cell_node_lst = row_node.getChildNodes();
+                            for (int jcell = 0; jcell < cell_node_lst.getLength(); jcell++) {
+
+                                Node cell_node = cell_node_lst.item(jcell);
+
+                                //System.out.println(cell_node.getUserData(LocationAwareContentHandler.LINE_NUMBER_KEY_NAME));
+                                if (cell_node.getNodeType() == Node.ELEMENT_NODE) {
+                                    String value = ".";
+                                    value = cell_node.getTextContent();
+                                    int ind = jcell / 2;
+                                    //String str = cell_node.getUserData("lineNumber");
+                                    //String term = "/";
+                                    //if (value =="") {term="/";} else {term="";}
+                                    //   System.out.println(cell_node.getUserData("location")+ " : ---<" + cellname.get(jcell/2) + ">"+ value );
+                                    cur_list.add(value);
+                                }
+                            }
+                            Rows.add(cur_list);
+                        }
+
+                    }
+
+                    //1. наличие блоков <rows> должно быть =1.
+                    if (num_rows == 1) {
+                        System.out.println("Количество блоков <rows> = " + num_rows + " [OK]");
+                    } else {
+                        error = true;
+                        System.out.println("Количество блоков <rows> = " + num_rows + "[ERROR]");
+                        dvm.setIsValid(false);
+                        dvm.setIsValidated(true);
+                        throw new DVMValidationException(1510, null, null);
+                    }
+
+                    System.out.println("Анализ структуры DVM справочника...");
+                    //Пров
+                    int cur_num_cells = 0;
+                    for (int i = 0; i < Rows.size(); i++) {
+                        //System.out.println("<row>");
+                        //считем количество элементов <cell>
+                        cur_num_cells = 0;
+                        for (int j = 0; j < Rows.get(i).size(); j++) {
+                            //  System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
+
+                            cur_num_cells++;
+                        }
+                        if (cur_num_cells == cellname.size()) {
+                            // System.out.println("Количество блоков <cell> = " + cur_num_cells + " [OK]");
+                        } else {
+                            System.out.println("Нарушение целостности справчоника. В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size());
+                            for (int j = 0; j < Rows.get(i).size(); j++) {
+                                //       System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
+                            }
+                            int s = cellname.size();
+                            System.out.println("Должно быть = " + s + " элементов [ERROR]");
+                            error = true;
+                        }
+                    }
+
+                    if (error) {
+                        dvm.setIsValid(false);
+                        dvm.setIsValidated(true);
+                        throw new DVMValidationException(1510, null, null);
+                    }
+
+                    //Поиск дублей.
+                    List<Boolean> flag = new ArrayList<Boolean>();
+                    System.out.println("Поиск дублей ... ");
+
+                    for (int i = 0; i < cellname.size(); i++) {
+                        flag.add(true);
+                    }
+
+                    for (int i = 0; i < Rows.size(); i++) {
+                        //  for (int j = 0; j < Rows.get(i).size(); j++) {
+
+                        for (int ki = 0; ki < Rows.size(); ki++) {
+                            for (int k = 0; k < cellname.size(); k++) {
+                                flag.set(k, false);
+                            }
+                            boolean d = true;
+                            if (i != ki) {
+
+                                for (int kj = 0; kj < Rows.get(ki).size(); kj++) {
+
+                                    if (Rows.get(i).get(kj).equals(Rows.get(ki).get(kj))) {
+                                        flag.set(kj, true);
+                                    } else {
+                                        flag.set(kj, false);
+                                    }
+                                    // System.out.println(Rows.get(i).get(kj)+ " : " + Rows.get(ki).get(kj)) ;
+                                    d = true;
+
+                                }
+                            }
+                            for (int k = 0; k < cellname.size(); k++) {
+                                d &= flag.get(k);
+                            }
+                            if (d) {
+                                error = true;
+                                int num_str = i * (cellname.size() + 2) + cellname.size() + 5;
+                                System.out.println("Дубль найден [стр. " + num_str + "]" + Rows.get(i) + " ... [ERROR]");
+
+                            }
+                        }
+                        // }
+                    }
+                    if (error) {
+                        System.out.println("Внимание! Расчет строки с элементом не учитывает вставленные пробелы или комментарии");
+                        System.out.println("Валидация DVM справочника не успешная.");
+                        throw new DVMValidationException(1510, null, null);
+                    }
+                    System.out.print("Валидация справочника успешно завершена...");
+                    System.out.println();
+                    dvm.setIsValid(true);
+                    dvm.setIsValidated(true);
+
+                } catch (Exception ex) {
+
+
+                    System.out.println(ex.fillInStackTrace());
+                }
+            }
+            return dvm;
+        }
+
+
+        public void setMetadataManager(MetadataManager mmg) {
             this.mTestMetadataMgr_new = mmg;
 
         }
-        
+
         public String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
                                   String defaultValue, String... qualifiers) throws DVMException {
             // mLogger.fine("The input parameters for dvm:lookupValue are " + dvmLoc + "," + srcColumnName + "," + srcValue + "," + tgtColumnName + "and qualifiers are ");
@@ -201,35 +386,34 @@ public class dvmNeoUtils {
             //  mLogger.fine("The output of dvm:lookupValue is " + lookedUpValue);
             return lookedUpValue;
         }
-         
-    }     
-       
 
-
+    }
 
 
     public static class DVMRTObject_new extends DVMRTObject {
-            private String dvmLocation = null;
-            private Map<String, Map> columnsToValues = null;
-             private String[] rowValues = null;
-             private Map<String, DVMColumn> columnNames = null;
-             private boolean hasQualifierColumns = false;
-             private boolean isQualifersOrdered = false;
-             private DVMColumn[] qualifierColumnArray = null;
-             private int numberOfQualifierColumns = 0;
+
+        private String dvmLocation = null;
+        private Map<String, Map> columnsToValues = null;
+        private String[] rowValues = null;
+        private Map<String, DVMColumn> columnNames = null;
+        private boolean hasQualifierColumns = false;
+        private boolean isQualifersOrdered = false;
+        private DVMColumn[] qualifierColumnArray = null;
+        private int numberOfQualifierColumns = 0;
 
 
         /**
          * @param dvm
          * @throws DVMException
          */
-        public DVMRTObject_new (DVM dvm)  throws DVMException
-              {
+        public DVMRTObject_new(DVM dvm) throws DVMException {
             super(null);
-              // XMLDocument xmlDoc = validateDVM(dvm);
-            
+            System.out.println("DVMRTObject_new (DVM dvm)");
+        }
+        // XMLDocument xmlDoc = CustomValidateDVM(dvm);
+        /*
                 XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
-                
+
                   if (((!dvm.isValidated()) || (!dvm.isValid())))
                       {
                         ArrayList<String> errorParams = new ArrayList<String>();
@@ -246,15 +430,24 @@ public class dvmNeoUtils {
                         dvm.setIsValid(true);
                         dvm.setIsValidated(true);
                       }
-                
+
                   if (dvmDocument == null) {
                         throw new DVMValidationException(1510, null, null);
                       }
-                  
+
+                //XMLDocument dvmDocument = null;
+                XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
+                if (((!dvm.isValidated()) || (!dvm.isValid()))){
+                    System.out.println("Кастомная валидация");
+                    dvmDocument = CustomValidateDVM(dvm);
+
+                }
+
+
                 this.dvmLocation = dvm.getDVMURI();
-                
+
                 this.columnNames = new HashMap(10, 0.75F);
-                
+
                 DVMUtil.fillColumnNames(this, dvmDocument, this.columnNames);
                 for (DVMColumn col : this.columnNames.values()) {
                   if (col.isQualifier())
@@ -276,10 +469,197 @@ public class dvmNeoUtils {
                 this.columnsToValues = new HashMap();
                 this.rowValues = DVMUtil.fillRowIds(dvmDocument, this.columnsToValues);
               }
-        
-        
+  */
+
+
+        public XMLDocument validateDVM(DVM dvm) {
+            System.out.println("DVMRTObject_new (DVM dvm)");
+            int num_rows = 0;
+            boolean error = false;
+            XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
+            //Cписок тегов DVM справочника
+            ArrayList<String> cellname = new ArrayList<String>();
+            //Массив Rows
+            ArrayList<List> Rows = new ArrayList<List>();
+
+            try {
+
+
+                //  DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                //  DocumentBuilder db = dbf.newDocumentBuilder();
+                // Document doc = db.parse(dvmDocument.);
+                //setDocumentLocator();
+                //       List<String> cell = new ArrayList<String>();
+                //       ArrayList<List> cells =  new ArrayList<List>();
+
+                dvmDocument.getDocumentElement().normalize();
+                System.out.println("Root element <" + dvmDocument.getDocumentElement().getNodeName() + ">");
+
+                NodeList nodeList_columns = dvmDocument.getElementsByTagName("columns");
+                System.out.println("<columns>");
+                Node fistNode = nodeList_columns.item(0);
+                Element elj = (Element)fistNode;
+                NodeList current_node = elj.getElementsByTagName("column");
+                for (int je = 0; je < current_node.getLength(); je++) {
+                    if (current_node.item(je).getNodeType() == Node.ELEMENT_NODE) {
+                        //current_node.item(je).getChildNodes();
+                        elj = (Element)current_node.item(je);
+                        String attr_str = elj.getAttribute("name");
+
+                        cellname.add(je, attr_str);
+                    }
+                }
+                System.out.println("</columns>");
+
+                //Тестовый вывод
+
+                for (String a : cellname) {
+                    System.out.println(cellname.indexOf(a) + ":" + a);
+                }
+
+                //Перемещаемся в корней тег rows
+                NodeList rows_node = dvmDocument.getElementsByTagName("rows");
+
+                num_rows = rows_node.getLength();
+
+                Node cur_node_rows = rows_node.item(0);
+                //System.out.println("-" +cur_node_rows.getNodeName());
+
+                //Перемещаемся на первый элемент блока row
+                NodeList row_node_lst = rows_node.item(0).getChildNodes();
+                for (int jrow = 0; jrow < row_node_lst.getLength(); jrow++) {
+
+                    if (row_node_lst.item(jrow).getNodeType() == Node.ELEMENT_NODE) {
+                        Node row_node = row_node_lst.item(jrow);
+                        // System.out.println("--" + row_node.getNodeName()  + ":jrow=" + jrow);
+
+
+                        ArrayList<String> cur_list = new ArrayList<String>();
+
+                        NodeList cell_node_lst = row_node.getChildNodes();
+                        for (int jcell = 0; jcell < cell_node_lst.getLength(); jcell++) {
+
+                            Node cell_node = cell_node_lst.item(jcell);
+
+                            //System.out.println(cell_node.getUserData(LocationAwareContentHandler.LINE_NUMBER_KEY_NAME));
+                            if (cell_node.getNodeType() == Node.ELEMENT_NODE) {
+                                String value = ".";
+                                value = cell_node.getTextContent();
+                                int ind = jcell / 2;
+                                //String str = cell_node.getUserData("lineNumber");
+                                //String term = "/";
+                                //if (value =="") {term="/";} else {term="";}
+                                //   System.out.println(cell_node.getUserData("location")+ " : ---<" + cellname.get(jcell/2) + ">"+ value );
+                                cur_list.add(value);
+                            }
+                        }
+                        Rows.add(cur_list);
+                    }
+
+                }
+
+                //1. наличие блоков <rows> должно быть =1.
+                if (num_rows == 1) {
+                    System.out.println("Количество блоков <rows> = " + num_rows + " [OK]");
+                } else {
+                    error = true;
+                    System.out.println("Количество блоков <rows> = " + num_rows + "[ERROR]");
+
+                    throw new DVMValidationException(1510, null, null);
+                }
+
+                System.out.println("Анализ структуры DVM справочника...");
+                //Пров
+                int cur_num_cells = 0;
+                for (int i = 0; i < Rows.size(); i++) {
+                    //System.out.println("<row>");
+                    //считем количество элементов <cell>
+                    cur_num_cells = 0;
+                    for (int j = 0; j < Rows.get(i).size(); j++) {
+                        //  System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
+
+                        cur_num_cells++;
+                    }
+                    if (cur_num_cells == cellname.size()) {
+                        // System.out.println("Количество блоков <cell> = " + cur_num_cells + " [OK]");
+                    } else {
+                        System.out.println("Нарушение целостности справчоника. В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size());
+                        for (int j = 0; j < Rows.get(i).size(); j++) {
+                            //       System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
+                        }
+                        int s = cellname.size();
+                        System.out.println("Должно быть = " + s + " элементов [ERROR]");
+                        error = true;
+                    }
+                }
+
+                if (error) {
+                    throw new DVMValidationException(1510, null, null);
+                }
+
+                //Поиск дублей.
+                List<Boolean> flag = new ArrayList<Boolean>();
+                System.out.println("Поиск дублей ... ");
+
+                for (int i = 0; i < cellname.size(); i++) {
+                    flag.add(true);
+                }
+
+                for (int i = 0; i < Rows.size(); i++) {
+                    //  for (int j = 0; j < Rows.get(i).size(); j++) {
+
+                    for (int ki = 0; ki < Rows.size(); ki++) {
+                        for (int k = 0; k < cellname.size(); k++) {
+                            flag.set(k, false);
+                        }
+                        boolean d = true;
+                        if (i != ki) {
+
+                            for (int kj = 0; kj < Rows.get(ki).size(); kj++) {
+
+                                if (Rows.get(i).get(kj).equals(Rows.get(ki).get(kj))) {
+                                    flag.set(kj, true);
+                                } else {
+                                    flag.set(kj, false);
+                                }
+                                // System.out.println(Rows.get(i).get(kj)+ " : " + Rows.get(ki).get(kj)) ;
+                                d = true;
+
+                            }
+                        }
+                        for (int k = 0; k < cellname.size(); k++) {
+                            d &= flag.get(k);
+                        }
+                        if (d) {
+                            error = true;
+                            int num_str = i * (cellname.size() + 2) + cellname.size() + 5;
+                            System.out.println("Дубль найден [стр. " + num_str + "]" + Rows.get(i) + " ... [ERROR]");
+
+                        }
+                    }
+                    // }
+                }
+                if (error) {
+                    System.out.println("Внимание! Расчет строки с элементом не учитывает вставленные пробелы или комментарии");
+                    System.out.println("Валидация DVM справочника не успешная.");
+                    throw new DVMValidationException(1510, null, null);
+                }
+                System.out.print("Валидация справочника успешно завершена...");
+                System.out.println();
+
+
+            } catch (Exception ex) {
+
+
+                System.out.println(ex.fillInStackTrace());
+            }
+
+            return dvmDocument;
         }
-   
+
+
+    }
+
 
     /*
      * Включение и отключение валидации справчоника
@@ -301,15 +681,11 @@ public class dvmNeoUtils {
     }
 
 
-
     private static Object checkLookupValue(Object searchValue, ArrayList args) {
         return null;
     }
 
- 
 
- 
-   
     /* Возвращает значение из DVM
    / * откорректированная версия из tsc.soa.utils.jar
     */
@@ -327,7 +703,7 @@ public class dvmNeoUtils {
 
             Object searchValue = dvmValue.call(ixPathContext, args);
             Object obj;
-            
+
             obj = dvmNeoUtils.checkLookupValue(searchValue, args);
             return obj;
         }
@@ -336,174 +712,166 @@ public class dvmNeoUtils {
             return null;
         }
     }
- 
-  
 
- 
-     
 
-        /**
-         * Возвращает значение из DVM.
-         * @param dvmLoc - путь к файлу DVM
-         * @param srcColumnName - колонка источник
-         * @param srcValue - значение источника
-         * @param tgtColumnName - колонка назначения
-         * @param qualifierColumnName - имя колонки квалификатора
-         * @param qualifierValue - значение колонки квалификатора
-         * @return значение из DVM
-         * @throws DVMException
-         * @throws XPathFunctionException
-         */
-        public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
-                                         String qualifierColumnName, String qualifierValue) throws DVMException,
-                                                                                                   XPathFunctionException {
-      
-        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                         DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue);
+    /**
+     * Возвращает значение из DVM.
+     * @param dvmLoc - путь к файлу DVM
+     * @param srcColumnName - колонка источник
+     * @param srcValue - значение источника
+     * @param tgtColumnName - колонка назначения
+     * @param qualifierColumnName - имя колонки квалификатора
+     * @param qualifierValue - значение колонки квалификатора
+     * @return значение из DVM
+     * @throws DVMException
+     * @throws XPathFunctionException
+     */
+    public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
+                                     String qualifierColumnName, String qualifierValue) throws DVMException,
+                                                                                               XPathFunctionException {
+
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName, DVM_DEFAUL_VALUE,
+                                                    qualifierColumnName, qualifierValue);
         return checkLookupValue(searchValue,
-                                    Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                                 qualifierColumnName, qualifierValue })).toString();
-        }
+                                Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                             qualifierColumnName, qualifierValue })).toString();
+    }
 
-        /**
-         * Возвращает значение из DVM.
-         * @param dvmLoc - путь к файлу DVM
-         * @param srcColumnName - колонка источник
-         * @param srcValue - значение источника
-         * @param tgtColumnName - колонка назначения
-         * @param qualifierColumnName - имя колонки квалификатора
-         * @param qualifierValue - значение колонки квалификатора
-         * @param qualifierColumnName1 - имя колонки квалификатора
-         * @param qualifierValue1 - значение колонки квалификатора
-         * @return значение из DVM
-         * @throws DVMException
-         * @throws XPathFunctionException
-         */
-        public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
-                                          String qualifierColumnName, String qualifierValue,
-                                          String qualifierColumnName1, String qualifierValue1) throws DVMException,
-            
-                                                                                                      XPathFunctionException {
-            
-            String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                         DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue,
-                                                         qualifierColumnName1, qualifierValue1);
-            return checkLookupValue(searchValue,
-                                    Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                                 qualifierColumnName, qualifierValue,
-                                                                 qualifierColumnName1, qualifierValue1 })).toString();
-        }
+    /**
+     * Возвращает значение из DVM.
+     * @param dvmLoc - путь к файлу DVM
+     * @param srcColumnName - колонка источник
+     * @param srcValue - значение источника
+     * @param tgtColumnName - колонка назначения
+     * @param qualifierColumnName - имя колонки квалификатора
+     * @param qualifierValue - значение колонки квалификатора
+     * @param qualifierColumnName1 - имя колонки квалификатора
+     * @param qualifierValue1 - значение колонки квалификатора
+     * @return значение из DVM
+     * @throws DVMException
+     * @throws XPathFunctionException
+     */
+    public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
+                                     String qualifierColumnName, String qualifierValue, String qualifierColumnName1,
+                                     String qualifierValue1) throws DVMException,
 
-        /**
-         * Возвращает значение из DVM.
-         * @param dvmLoc - путь к файлу DVM
-         * @param srcColumnName - колонка источник
-         * @param srcValue - значение источника
-         * @param tgtColumnName - колонка назначения
-         * @param qualifierColumnName - имя колонки квалификатора
-         * @param qualifierValue - значение колонки квалификатора
-         * @param qualifierColumnNameX - имя колонки квалификатора
-         * @param qualifierValueX - значение колонки квалификатора
-         * @return значение из DVM
-         * @throws DVMException
-         * @throws XPathFunctionException
-         */
-        public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
-                                         String qualifierColumnName, String qualifierValue,
-                                         String qualifierColumnName1, String qualifierValue1,
-                                         String qualifierColumnName2, String qualifierValue2) throws DVMException,
-                                                                                                     XPathFunctionException {
-            
-            String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                         DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue,
-                                                         qualifierColumnName1, qualifierValue1, qualifierColumnName2,
-                                                         qualifierValue2);
-            return checkLookupValue(searchValue,
-                                    Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                                 qualifierColumnName, qualifierValue,
-                                                                 qualifierColumnName1, qualifierValue1,
-                                                                 qualifierColumnName2, qualifierValue2 })).toString();
-        }
+            XPathFunctionException {
 
-        /**
-         * Возвращает значение из DVM.
-         * @param dvmLoc - путь к файлу DVM
-         * @param srcColumnName - колонка источник
-         * @param srcValue - значение источника
-         * @param tgtColumnName - колонка назначения
-         * @param qualifierColumnName - имя колонки квалификатора
-         * @param qualifierValue - значение колонки квалификатора
-         * @param qualifierColumnNameX - имя колонки квалификатора
-         * @param qualifierValueX - значение колонки квалификатора
-         * @return значение из DVM
-         * @throws DVMException
-         * @throws XPathFunctionException
-         */
-        public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
-                                         String qualifierColumnName, String qualifierValue,
-                                         String qualifierColumnName1, String qualifierValue1,
-                                         String qualifierColumnName2, String qualifierValue2,
-                                         String qualifierColumnName3, String qualifierValue3) throws DVMException,
-                                                                                                     XPathFunctionException {
-          // dvmNeoUtils.DVMManagerImpl_new dvm;
-            String searchValue = dvmNeoUtils.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                         DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue,
-                                                         qualifierColumnName1, qualifierValue1, qualifierColumnName2,
-                                                         qualifierValue2, qualifierColumnName3, qualifierValue3);
-            return checkLookupValue(searchValue,
-                                    Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                                 qualifierColumnName, qualifierValue,
-                                                                 qualifierColumnName1, qualifierValue1,
-                                                                 qualifierColumnName2, qualifierValue2,
-                                                                 qualifierColumnName3, qualifierValue3 })).toString();
-        }
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName, DVM_DEFAUL_VALUE,
+                                                    qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                    qualifierValue1);
+        return checkLookupValue(searchValue,
+                                Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                             qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                             qualifierValue1 })).toString();
+    }
 
-        /**
-         * Возвращает значение из DVM.
-         * @param dvmLoc - путь к файлу DVM
-         * @param srcColumnName - колонка источник
-         * @param srcValue - значение источника
-         * @param tgtColumnName - колонка назначения
-         * @param qualifierColumnName - имя колонки квалификатора
-         * @param qualifierValue - значение колонки квалификатора
-         * @param qualifierColumnNameX - имя колонки квалификатора
-         * @param qualifierValueX - значение колонки квалификатора
-         * @return значение из DVM
-         * @throws DVMException
-         * @throws XPathFunctionException
-         */
-        public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
-                                         String qualifierColumnName, String qualifierValue,
-                                         String qualifierColumnName1, String qualifierValue1,
-                                         String qualifierColumnName2, String qualifierValue2,
-                                         String qualifierColumnName3, String qualifierValue3,
-                                         String qualifierColumnName4, String qualifierValue4) throws DVMException,
-                                                                                                     XPathFunctionException {
-            String          searchValue = dvmNeoUtils.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName, DVM_DEFAUL_VALUE,
-                                                  qualifierColumnName, qualifierValue, qualifierColumnName1,
-                                                  qualifierValue1, qualifierColumnName2, qualifierValue2,
-                                                  qualifierColumnName3, qualifierValue3, qualifierColumnName4,
-                                                  qualifierValue4);
-            return checkLookupValue(searchValue,
-                                    Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
-                                                                 qualifierColumnName, qualifierValue,
-                                                                 qualifierColumnName1, qualifierValue1,
-                                                                 qualifierColumnName2, qualifierValue2,
-                                                                 qualifierColumnName3, qualifierValue3,
-                                                                 qualifierColumnName4, qualifierValue4 })).toString();
-        }
+    /**
+     * Возвращает значение из DVM.
+     * @param dvmLoc - путь к файлу DVM
+     * @param srcColumnName - колонка источник
+     * @param srcValue - значение источника
+     * @param tgtColumnName - колонка назначения
+     * @param qualifierColumnName - имя колонки квалификатора
+     * @param qualifierValue - значение колонки квалификатора
+     * @param qualifierColumnNameX - имя колонки квалификатора
+     * @param qualifierValueX - значение колонки квалификатора
+     * @return значение из DVM
+     * @throws DVMException
+     * @throws XPathFunctionException
+     */
+    public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
+                                     String qualifierColumnName, String qualifierValue, String qualifierColumnName1,
+                                     String qualifierValue1, String qualifierColumnName2,
+                                     String qualifierValue2) throws DVMException, XPathFunctionException {
+
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName, DVM_DEFAUL_VALUE,
+                                                    qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                    qualifierValue1, qualifierColumnName2, qualifierValue2);
+        return checkLookupValue(searchValue,
+                                Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                             qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                             qualifierValue1, qualifierColumnName2, qualifierValue2 }))
+            .toString();
+    }
+
+    /**
+     * Возвращает значение из DVM.
+     * @param dvmLoc - путь к файлу DVM
+     * @param srcColumnName - колонка источник
+     * @param srcValue - значение источника
+     * @param tgtColumnName - колонка назначения
+     * @param qualifierColumnName - имя колонки квалификатора
+     * @param qualifierValue - значение колонки квалификатора
+     * @param qualifierColumnNameX - имя колонки квалификатора
+     * @param qualifierValueX - значение колонки квалификатора
+     * @return значение из DVM
+     * @throws DVMException
+     * @throws XPathFunctionException
+     */
+    public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
+                                     String qualifierColumnName, String qualifierValue, String qualifierColumnName1,
+                                     String qualifierValue1, String qualifierColumnName2, String qualifierValue2,
+                                     String qualifierColumnName3, String qualifierValue3) throws DVMException,
+                                                                                                 XPathFunctionException {
+        // dvmNeoUtils.DVMManagerImpl_new dvm;
+        String searchValue = dvmNeoUtils.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                                DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue,
+                                                                qualifierColumnName1, qualifierValue1,
+                                                                qualifierColumnName2, qualifierValue2,
+                                                                qualifierColumnName3, qualifierValue3);
+        return checkLookupValue(searchValue,
+                                Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                             qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                             qualifierValue1, qualifierColumnName2, qualifierValue2,
+                                                             qualifierColumnName3, qualifierValue3 })).toString();
+    }
+
+    /**
+     * Возвращает значение из DVM.
+     * @param dvmLoc - путь к файлу DVM
+     * @param srcColumnName - колонка источник
+     * @param srcValue - значение источника
+     * @param tgtColumnName - колонка назначения
+     * @param qualifierColumnName - имя колонки квалификатора
+     * @param qualifierValue - значение колонки квалификатора
+     * @param qualifierColumnNameX - имя колонки квалификатора
+     * @param qualifierValueX - значение колонки квалификатора
+     * @return значение из DVM
+     * @throws DVMException
+     * @throws XPathFunctionException
+     */
+    public static String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
+                                     String qualifierColumnName, String qualifierValue, String qualifierColumnName1,
+                                     String qualifierValue1, String qualifierColumnName2, String qualifierValue2,
+                                     String qualifierColumnName3, String qualifierValue3, String qualifierColumnName4,
+                                     String qualifierValue4) throws DVMException, XPathFunctionException {
+        String searchValue = dvmNeoUtils.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                                DVM_DEFAUL_VALUE, qualifierColumnName, qualifierValue,
+                                                                qualifierColumnName1, qualifierValue1,
+                                                                qualifierColumnName2, qualifierValue2,
+                                                                qualifierColumnName3, qualifierValue3,
+                                                                qualifierColumnName4, qualifierValue4);
+        return checkLookupValue(searchValue,
+                                Arrays.asList(new String[] { dvmLoc, srcColumnName, srcValue, tgtColumnName,
+                                                             qualifierColumnName, qualifierValue, qualifierColumnName1,
+                                                             qualifierValue1, qualifierColumnName2, qualifierValue2,
+                                                             qualifierColumnName3, qualifierValue3,
+                                                             qualifierColumnName4, qualifierValue4 })).toString();
+    }
 
     /*    public Object call(IXPathContext ixPathContext, java.util.List<?> list) {
             return null;
         }
 */
-        private final static Object checkLookupValue(Object searchValue, List args) throws XPathFunctionException {
-            if (searchValue == null || DVM_DEFAUL_VALUE.equals(searchValue)) {
-                throw new XPathFunctionException("Value not found in DVM = '" + args.get(0) + "', srcColumnName = '" + args.get(1) + "', srcValue = '" + args.get(2) + "', tgtColumnName = '" + args.get(3) + "'. Args: " + args.toString());
-            }
 
-            return searchValue;
+    private final static Object checkLookupValue(Object searchValue, List args) throws XPathFunctionException {
+        if (searchValue == null || DVM_DEFAUL_VALUE.equals(searchValue)) {
+            throw new XPathFunctionException("Value not found in DVM = '" + args.get(0) + "', srcColumnName = '" + args.get(1) + "', srcValue = '" + args.get(2) + "', tgtColumnName = '" + args.get(3) + "'. Args: " + args.toString());
         }
+
+        return searchValue;
+    }
 
 
 }
