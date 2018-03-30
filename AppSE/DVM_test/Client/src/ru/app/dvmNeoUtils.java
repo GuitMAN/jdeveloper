@@ -26,7 +26,7 @@ import oracle.tip.dvm.DVMExtFunctions;
 import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.DVMManagerImpl;
 import oracle.tip.dvm.DVMUtil;
-//import oracle.tip.dvm.LookupValue;
+
 import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
 
@@ -60,7 +60,7 @@ public class dvmNeoUtils {
 
 
     private static final String DVM_DEFAUL_VALUE = UUID.randomUUID().toString();
-
+    private static final String CLASS_NAME = dvmNeoUtils.class.getName();
 
     /*
      * Менеджер DVM
@@ -160,21 +160,22 @@ public class dvmNeoUtils {
             return obj;
         }
 
-        public DVM CustomValidateDVM(DVM dvm) {
+        public DVM CustomValidateDVM(DVM dvm) throws  DVMValidationException {
             System.out.println("CustomValidateDVM");
             int num_rows = 0;
             boolean error = false;
-            XMLDocument dvmDocument = (XMLDocument)dvm.getDVMDocument();
-            //Cписок тегов DVM справочника
- 
+            XMLDocument dvmDocument = null;          
+            dvmDocument = (XMLDocument)dvm.getDVMDocument();
+            if (dvmDocument == null) {
+                  throw new DVMValidationException(1510, null, null);
+                }
+            
+            
+            
+            
             if ((!dvm.isValidated()) || (!dvm.isValid())) {
                 try {
-
-
-                    //  DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                    //  DocumentBuilder db = dbf.newDocumentBuilder();
-                    // Document doc = db.parse(dvmDocument.);
-                    //setDocumentLocator();
+                    //Cписок тегов DVM справочника
                       ArrayList<String> cellname = new ArrayList<String>();
                       //Массив Rows
                       ArrayList<List> Rows = new ArrayList<List>();
@@ -251,9 +252,8 @@ public class dvmNeoUtils {
                     } else {
                         error = true;
                         System.out.println("Количество блоков <rows> = " + num_rows + "[ERROR]");
-                        dvm.setIsValid(false);
-                        dvm.setIsValidated(true);
-                        throw new DVMValidationException(1510, null, null);
+                        Object[] params= {"Количество блоков <rows> = \" + num_rows + \"[ERROR]\""};
+                        throw new DVMValidationException(1510, params, null);
                     }
 
                     System.out.println("Анализ структуры DVM справочника...");
@@ -271,7 +271,9 @@ public class dvmNeoUtils {
                         if (cur_num_cells == cellname.size()) {
                             // System.out.println("Количество блоков <cell> = " + cur_num_cells + " [OK]");
                         } else {
-                            System.out.println("Нарушение целостности справчоника. В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size());
+                            int num_str = i * (cellname.size() + 2) + cellname.size() + 5;
+                            System.out.println("Ошибка! Нарушение целостности справочника. [стр. " + num_str + "]" + Rows.get(i) + " ... [ERROR]");
+                            System.out.println("В блоке " + Rows.get(i) + ". Содержит " + cur_num_cells + " элемента(ов) <cell> вместо " + cellname.size());
                             for (int j = 0; j < Rows.get(i).size(); j++) {
                                 //       System.out.println("  <cell>"+Rows.get(i).get(j)+ "</cell>");
                             }
@@ -282,9 +284,8 @@ public class dvmNeoUtils {
                     }
 
                     if (error) {
-                        dvm.setIsValid(false);
-                        dvm.setIsValidated(true);
-                        throw new DVMValidationException(1510, null, null);
+                        Object[] params =  {"Ошибка! Нарушение целостности справочника"};
+                        throw new DVMValidationException(1510, params, null);
                     }
 
                     //Поиск дублей.
@@ -294,7 +295,8 @@ public class dvmNeoUtils {
                     for (int i = 0; i < cellname.size(); i++) {
                         flag.add(true);
                     }
-
+                    Throwable trowable = null;
+                    String str_err = " ";
                     for (int i = 0; i < Rows.size(); i++) {
                         //  for (int j = 0; j < Rows.get(i).size(); j++) {
 
@@ -323,8 +325,9 @@ public class dvmNeoUtils {
                             if (d) {
                                 error = true;
                                 int num_str = i * (cellname.size() + 2) + cellname.size() + 5;
+                                str_err = str_err + CLASS_NAME + ".customValidateDVM " + "Дубль найден [стр. " + num_str + "]" + Rows.get(i) + " ... [ERROR] " + dvm.getDVMURI()+ " ";
                                 System.out.println("Дубль найден [стр. " + num_str + "]" + Rows.get(i) + " ... [ERROR]");
-
+                                
                             }
                         }
                         // }
@@ -332,17 +335,26 @@ public class dvmNeoUtils {
                     if (error) {
                         System.out.println("Внимание! Расчет строки с элементом не учитывает вставленные пробелы или комментарии");
                         System.out.println("Валидация DVM справочника не успешная.");
-                        throw new DVMValidationException(1510, null, null);
+                        trowable = new Throwable(dvm.getDVMURI() + " is not valid. " + str_err);
+                        throw new DVMValidationException(1510, null, trowable);
                     }
+                    
+                    dvm.setIsValidated(true);
+                    dvm.setIsValid(true);
                     System.out.print("Валидация справочника успешно завершена...");
                     System.out.println();
-                    dvm.setIsValid(true);
-                    dvm.setIsValidated(true);
 
                 } catch (Exception ex) {
-
-
-                    System.out.println(ex.fillInStackTrace());
+                    
+                    System.out.println("dvm.setIsValid -> false");
+                    dvm.setIsValid(false);
+                    System.out.println("dvm.setIsValidated -> true");
+                    dvm.setIsValidated(true);
+                    
+                    ex.printStackTrace();
+                    //Throwable a = new Throwable("Валидация DVM справочника не успешная.");
+                    //a.fillInStackTrace(ex)
+                    throw new DVMValidationException(1510, null, null);
                 }
             }
             return dvm;

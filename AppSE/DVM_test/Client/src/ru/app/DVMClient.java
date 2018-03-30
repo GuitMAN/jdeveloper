@@ -1,7 +1,7 @@
 package ru.app;
 
 import org.apache.xmlbeans.XmlObject;
-
+import oracle.tip.dvm.LookupValue;
 
 
 
@@ -29,6 +29,8 @@ public class DVMClient {
             
             startTime = System.currentTimeMillis();
             System.out.println("Начало вывоза lookupValue... ");
+            
+            //oracle.tip.dvm.LookupValue.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.WAY4");
            
            // lookupVal = m.lookupValue(dvmLoc, srcColumnName, srcColumnVal, destColumnName, "не найдено", targetColumnName,"cm.System.BQ","")
             lookupVal = m.lookupValue(dvmLoc, srcColumnName,  srcColumnVal, destColumnName,   targetColumnName, "cm.System.WAY4") ;
