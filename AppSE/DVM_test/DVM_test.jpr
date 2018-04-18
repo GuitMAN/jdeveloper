@@ -19,8 +19,9 @@
       <value n="oracle.adfdtinternal.view.rich.migration.LibraryVersionMigrator" v="11.1.1.1.0"/>
       <value n="oracle.bm.commonIde.ProjectUpgrader" v="11.1.1.1.0"/>
       <value n="oracle.bm.migration.project.MigratorRegistryProjectUpgradeAdapter" v="11.1.1.1.0"/>
-      <value n="oracle.ide.model.Project" v="11.1.1.1.0"/>
+      <value n="oracle.ide.model.Project" v="11.1.1.1.0;17.4.0.355"/>
       <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
+      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.6"/>
       <value n="oracle.jbo.dt.jclient.migrator.JCProjectMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jbo.dt.jdevx.deployment.JbdProjectMigrator" v="11.1.1.1.0"/>
       <value n="oracle.jbo.dt.jdevx.ui.appnav.APProjectMigrator" v="11.1.1.0.1.5"/>
@@ -171,15 +172,36 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Xml.jar1"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Xmlparserv2.jar1"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
       <hash n="internalDefinitions">
+         <list n="jdkDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/resources.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/rt.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/sunrsasign.jar/"/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/jsse.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/jce.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/charsets.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/lib/modules/jdk.boot.jar/"/>
+                  <url path="../../../../Oracle/Middleware/jdk160_29/jre/classes/"/>
+               </list>
+               <value n="description" v="1.8.0_151"/>
+               <list n="docPath">
+                  <url protocol="http" host="java.sun.com" path="/javase/6/docs/api/"/>
+               </list>
+               <value n="id" v="1.8.0_151"/>
+               <url n="javaExecutable" path="../../../../Oracle/Middleware/jdk160_29/bin/java.exe"/>
+               <url n="sdkBinDir" path="../../../../Oracle/Middleware/jdk160_29/bin/"/>
+               <list n="sourcePath">
+                  <url path="../../../../Oracle/Middleware/jdk160_29/src.zip" jar-entry=""/>
+               </list>
+               <value n="version" v="1.6.0_29"/>
+            </hash>
+         </list>
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
@@ -246,16 +268,7 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../Oracle/Middleware/oracle_common/modules/oracle.xdk_11.1.0/xml.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Xml.jar1"/>
-               <value n="id" v="Xml.jar1"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../../../Oracle/Middleware/oracle_common/modules/oracle.xdk_11.1.0/xmlparserv2.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware/jdeveloper/jdev/extensions/oracle.jdeveloper.smartupgrade.weblogic/rules/lib/xmlparserv2.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Xmlparserv2.jar1"/>
@@ -265,7 +278,7 @@
          </list>
       </hash>
       <hash n="jdkReference">
-         <url n="id" path="../../../jdev/system11.1.1.9.40.66.73/o.jdeveloper/1.8.0_151.jdk"/>
+         <value n="id" v="1.8.0_151"/>
          <value n="isJDK" v="true"/>
          <value n="jdkVersion" v="1.6.0_29"/>
       </hash>
@@ -288,10 +301,6 @@
          </hash>
          <hash>
             <value n="id" v="Mdsrt.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Xml.jar1"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>

@@ -5,9 +5,9 @@
    <iconize/>
    <partnerlink_locations>
       <partnerlink name="getcompositeinfo_client" x="0" y="297" side="left"/>
-      <partnerlink name="DB_Database" x="1352" y="278" side="right"/>
+      <partnerlink name="DB_Database" x="1265" y="278" side="right"/>
    </partnerlink_locations>
-   <graph_layout viewport="0,0,1468,820" show_swimlanes="true">
+   <graph_layout viewport="0,0,1381,860" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll" type="catchall"/>
       <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/sequence" type="sequence"/>

@@ -3,7 +3,11 @@ package dvmvalid;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -159,7 +163,7 @@ public class CustomVaidateDVM {
             //Поиск дублей.
             List<Boolean> flag = new ArrayList<Boolean>();
             System.out.println("Поиск дублей ... ");
-
+/*
             for (int i = 0; i < cellname.size(); i++) {
                 flag.add(true);
             }
@@ -199,6 +203,8 @@ public class CustomVaidateDVM {
                     }
                // }
             }
+*/
+            oneMap(Rows);
             if (error) {
                 System.out.println("Внимание! Расчет строки с элементом не учитывает вставленные пробелы или комментарии");
                 System.out.println("Валидация DVM справочника не успешная.");
@@ -216,6 +222,28 @@ public class CustomVaidateDVM {
         return null;
     }
     
+   private static void oneMap(ArrayList<List> data)
+    {
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        Integer i = 0;
+        for (List<String> str_mass : data)
+        {
+            String str = str_mass.toString();       
+            if (!map.containsKey(str))
+            {
+                i++;
+                map.put(str,i);
+                System.out.println(map.get(str) + " " + str);               
+            }
+            else
+            {
+                System.out.println("Дубликат: " + data.get(map.get(str)).toString());
+              //  dup.put(str, 1);
+            }
+        }
+        // System.out.println(dup.);
+    }
+   
     
     
 }

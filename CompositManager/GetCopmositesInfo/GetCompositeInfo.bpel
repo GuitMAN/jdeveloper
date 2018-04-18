@@ -128,8 +128,7 @@
      <assign name="Assign2">
       <copy>
         <from expression="oraext:parseXML(bpws:getVariableData('Invoke1_DB_Database_OutputVariable','OutputParameters','/ns10:OutputParameters/ns10:CHUNK'))"/>
-        <to variable="V_OutputVariable" part="payload"
-            query="/client:deployed-composites"/>
+        <to variable="V_OutputVariable" part="payload" query="/client:deployed-composites"/>
       </copy>
     </assign>
     <assign name="Transform1">
