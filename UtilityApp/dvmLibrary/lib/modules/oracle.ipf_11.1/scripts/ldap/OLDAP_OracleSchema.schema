@@ -1,0 +1,30 @@
+############################################################
+# NOTE: Usage
+#  1. To add the schema in open ldap include this file in slapd.conf
+#     file and restart the Open LDAP service i.e. slapd
+#  2. To remove the schema just comment/remove the entry from slapd.conf
+#     file and restart the Open LDAP service i.e. slapd
+#  3. Convert the file format according to the platform where OpenLDAP
+#     (e.g. using the dos2unix or unix2dos commands)
+############################################################
+attributetype ( 1.3.6.1.4.1.3831.0.2.100 NAME 'orcllockedreason' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.101 NAME 'orcluserpwdwarndate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.102 NAME 'orcluserpwdcantchange' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.103 NAME 'orcluserpwdneverexpires' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.104 NAME 'orcllockouttime' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.105 NAME 'orclloginattemptsctr' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.106 NAME 'orcluserpwdresetattemptsctr' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.107 NAME 'orcluserpwdgenerated' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.108 NAME 'orcllastsuccessfullogindate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.109 NAME 'orcllastfailedlogindate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.110 NAME 'orcluserpwdcreationdate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.111 NAME 'orcluserpwdhistory' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.114 NAME 'orclpwdchangerequired' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.115 NAME 'orclaccountenabled' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.117 NAME 'orcluserpwdchallengeques' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.118 NAME 'orcluserpwdchallengeans' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.201 NAME 'orcluseraccountlocked' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.202 NAME 'orcluserpwdexpirationdate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.3831.0.2.203 NAME 'orcluserlockedondate' EQUALITY caseIgnoreMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 SINGLE-VALUE USAGE userApplications )
+
+objectclass ( 1.3.6.1.4.1.3831.0.2.1 NAME 'orclIDXIPFPerson' SUP top AUXILIARY MAY ( orcllockedreason $ orcluserpwdwarndate $ orcluserpwdcantchange $ orcluserpwdneverexpires $ orcllockouttime $ orclloginattemptsctr $ orcluserpwdresetattemptsctr $ orcluserpwdgenerated $ orcllastsuccessfullogindate $ orcllastfailedlogindate $ orcluserpwdcreationdate $ orcluserpwdhistory $ orcluserlockedondate $ orcluserpwdexpirationdate $ orclpwdchangerequired $ orclaccountenabled $ orcluseraccountlocked $ orcluserpwdchallengeques $ orcluserpwdchallengeans ) )

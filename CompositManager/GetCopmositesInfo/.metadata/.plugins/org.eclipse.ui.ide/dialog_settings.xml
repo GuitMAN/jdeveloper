@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="BeExplorer">
+	</section>
+	<section name="ResourceNavigator">
+		<item value="2" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+</section>

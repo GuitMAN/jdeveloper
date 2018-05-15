@@ -137,7 +137,7 @@ public class dvmNeoUtils {
                     //   throw new DVMValidationException(1573, params, null);
                 }
                 obj = (DVMRTObject)dvm.getParsedDVM();
-
+                System.out.println(CLASS_NAME + ".customValidateDVM. " + dvm.getDVMURI());
                 if (obj == null) {
                     System.out.println("dvm.isValid():" + dvm.isValid() + "; dvm.isValidated():" + dvm.isValidated());
                     //Вызов кастомной валидации
@@ -162,7 +162,7 @@ public class dvmNeoUtils {
 
 
         public DVM CustomValidateDVM(DVM dvm) throws DVMValidationException {
-            System.out.println("CustomValidateDVM");
+            System.out.println(CLASS_NAME + ".customValidateDVM. " + dvm.getDVMDocument());
             int num_rows = 0;
             boolean error = false;
             XMLDocument dvmDocument = null;
@@ -183,7 +183,7 @@ public class dvmNeoUtils {
 
                     int dup_num_str = 0;
                     int cur_num_str = 0;
-                    Map<String, Integer> map = new HashMap<String, Integer>();
+                    Map<String, Integer> map_list = new HashMap<String, Integer>();
 
 
                     dvmDocument.getDocumentElement().normalize();
@@ -220,7 +220,7 @@ public class dvmNeoUtils {
                     //System.out.println("-" +cur_node_rows.getNodeName());
                     
                     //Индекс элемента массиве
-                    Integer i = 0;
+                    int i = 0;
                     //Перемещаемся на первый элемент блока row
                     NodeList row_node_lst = rows_node.item(0).getChildNodes();
                     for (int jrow = 0; jrow < row_node_lst.getLength(); jrow++) {
@@ -245,18 +245,17 @@ public class dvmNeoUtils {
                             Rows.add(cur_list);
                             
                             String item_str = cur_list.toString();
-                            if (!map.containsKey(item_str)) {
+                            if (!map_list.containsKey(item_str)) {
 
-                                map.put(item_str, i);
+                                map_list.put(item_str, i);
                                 // System.out.println(map.get(item_str) + " " + item_str);
                             } else {
                                 error = true;
 
-                                dup_num_str = map.get(item_str) * (cellname.size() + 2) + cellname.size() + 5;
+                                dup_num_str = map_list.get(item_str) * (cellname.size() + 2) + cellname.size() + 5;
                                 cur_num_str = i * (cellname.size() + 2) + cellname.size() + 5;
                                 str_err = str_err + " |" + CLASS_NAME + ".customValidateDVM Дубль найден [стр. " + dup_num_str + " и " + cur_num_str + " ]" + item_str + " ... [ERROR]";
                                 System.out.println(str_err);
-                                //  dup.put(str, 1);
                             }
                             i++;
                         }
@@ -386,7 +385,7 @@ public class dvmNeoUtils {
 
                     dvm.setIsValidated(true);
                     dvm.setIsValid(true);
-                    System.out.print("Валидация справочника успешно завершена...");
+                    System.out.print("Валидация DVM справочника успешно завершена..." + dvm.getDVMURI() + " [OK]");
                     System.out.println();
 
                 } catch (Exception ex) {

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<logs xmlns='http://www.oracle.com/iAS/EMComponent/ojdl'>
+ <log path="${domain.home}/servers/${weblogic.Name}/adr/oracle-dfw-0.tmp/odl_quicktrace%*%.dmp">
+  <logreader class="oracle.core.ojdl.reader.ODLLogReaderFactory">
+   <property name="FileRotation" value="none"/>
+
+  </logreader>
+ </log>
+</logs>

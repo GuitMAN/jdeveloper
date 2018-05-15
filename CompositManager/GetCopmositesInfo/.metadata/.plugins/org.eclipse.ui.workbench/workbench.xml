@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="89" version="2.0">
+<workbenchAdvisor/>
+<window height="768" maximized="true" width="1024" x="163" y="100">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="99" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="com.ibm.etools.patterns.PatternActionSet" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="com.ibm.team.workitem.ide" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="com.ibm.team.workitem.ide.ShowFeeds" itemType="typeToolBarContribution" x="53" y="22"/>
+<coolItem id="com.ibm.wbit.reporting.infrastructure.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="com.rational.clearcase.ActionSet" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.ibm.etools.references.ui.debugTrimToolbarContributionToolbar" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="com.ibm.cic.licensing.common.ui.controlContribution" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1526068157838" focus="true" label="Workspace - Business Monitoring">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+</editorArea>
+</editors>
+<views>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
+<view id="org.eclipse.help.ui.HelpView" partName="Help">
+<viewState pageId="context-help-page"/>
+</view>
+<view id="com.ibm.wbit.taskflow.ui.views.TaskFlowView" partName="Task Flows">
+<viewState/>
+</view>
+<view id="com.ibm.wbit.ui.build.activities.view.BuildActivitiesView" partName="Build Activities"/>
+<view id="com.ibm.ram.internal.rich.ui.myrepositories.MyRepositoriesView" partName="Asset Repositories"/>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+<view id="com.ibm.wbit.ui.logicalview.WBILogicalView" partName="Business Integration">
+<viewState activeSolution="&lt;all resources&gt;" linkWithEditor="false" modeTree="2" sectionExpansion="SOLUTIONS_AND_PROJECTS" sectionExpansionFirstWeight="249" sectionExpansionSecondWeight="750" showFoldersInTree="0" showNamespacesInTree="1" showSections="true" showSolutionDropdown="false">
+<solutionTreeExpansion>
+<expandedTypeSolution projectPath="/soa"/>
+</solutionTreeExpansion>
+</viewState>
+</view>
+<view id="com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id" partName="Monitoring Flow">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="com.ibm.wbit.comptest.ui.view.HorizontalTraceView" partName="Server Logs">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console"/>
+<view id="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id" partName="Project Explorer">
+<viewState/>
+</view>
+<view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
+</views>
+<perspectives activePart="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id" activePerspective="com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.ibm.wbit.ui.BusinessIntegrationPerspective" id="com.ibm.wbit.ui.WBIPerspective" label="Business Integration"/>
+<alwaysOnActionSet id="com.ibm.bpm.gettingstarted.actionset.id"/>
+<alwaysOnActionSet id="com.ibm.cic.licensing.common.ui.actionSet"/>
+<alwaysOnActionSet id="com.ibm.etools.patterns.PatternActionSet"/>
+<alwaysOnActionSet id="help.additions.support_actionset"/>
+<alwaysOnActionSet id="com.ibm.etools.miniwelcome.miniWelcomeActionSet"/>
+<alwaysOnActionSet id="com.ibm.team.filesystem.shortcuts"/>
+<alwaysOnActionSet id="com.ibm.team.fulltext.ide.ui.JazzArtifactsSearch"/>
+<alwaysOnActionSet id="com.ibm.team.process.ui.actionSet"/>
+<alwaysOnActionSet id="com.ibm.team.workitem.ide"/>
+<alwaysOnActionSet id="com.ibm.magnolia.workitems.searchActionSet"/>
+<alwaysOnActionSet id="com.ibm.team.workitem.rcp.ui.OpenFavoriteSet"/>
+<alwaysOnActionSet id="com.ibm.wbit.samples.framework.help_samplestutorials_actionset_id"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.buildactivitiesview.wid_project_actionset_id"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.mapcatalog.actionsets"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="com.ibm.wbit.reporting.infrastructure.actionSet"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.navigation.actionSets"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.newprojects.actionSets"/>
+<alwaysOnActionSet id="com.rational.clearcase.ActionSet"/>
+<alwaysOffActionSet id="com.ibm.01.help.gallery.cat.tutorialGalleryActionSet"/>
+<alwaysOffActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOffActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOffActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOffActionSet id="com.ibm.rational.welcome.core.helpSearchActionSet"/>
+<alwaysOffActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOffActionSet id="com.ibm.rational.welcome.core.webResourcesActionSet"/>
+<alwaysOffActionSet id="org.eclipse.jst.servlet.ui.internal.actions.ConvertToWebModuleTypeActionSet"/>
+<alwaysOffActionSet id="com.ibm.ccl.help.preferenceharvester.actionSet1"/>
+<alwaysOffActionSet id="com.ibm.help.gallery.sampleGalleryActionSet"/>
+<alwaysOffActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<show_view_action id="com.ibm.wbit.ui.logicalview.WBILogicalView"/>
+<show_view_action id="com.ibm.wbit.ui.build.activities.view.BuildActivitiesView"/>
+<show_view_action id="com.ibm.wbit.ui.referencesview"/>
+<show_view_action id="com.ibm.wbit.ui.physicalview.PhysicalView"/>
+<show_view_action id="com.ibm.wbit.activity.ui.viewer.ActivityLibraryView"/>
+<show_view_action id="org.eclipse.wst.server.ui.ServersView"/>
+<show_view_action id="com.ibm.wbit.comptest.ui.view.HorizontalTraceView"/>
+<show_view_action id="org.eclipse.wst.internet.monitor.view"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.ibm.wbit.taskflow.ui.views.TaskFlowView"/>
+<show_view_action id="com.ibm.etools.patterns.views.PatternExplorerView"/>
+<new_wizard_action id="com.ibm.wbit.bo.evolution.internal.wizards.NewArtifactUpdaterWizard"/>
+<new_wizard_action id="com.ibm.wbit.businesscalendar.ui.CalModelWizardID"/>
+<new_wizard_action id="com.ibm.wbit.bo.ui.NewBusinessObjectWizard"/>
+<new_wizard_action id="com.ibm.wbit.adapter.ui.wizards.EMDBOWizard"/>
+<new_wizard_action id="com.ibm.wbit.bpel.ui.wizards.newprocess.NewProcessWizard"/>
+<new_wizard_action id="com.ibm.wbit.templates.forms.formProcess"/>
+<new_wizard_action id="NewBusinessSvcWizardID"/>
+<new_wizard_action id="com.ibm.wbit.ae.ui.wizards.NewAdaptiveEntityWizard"/>
+<new_wizard_action id="NewVocabWizardID"/>
+<new_wizard_action id="com.ibm.wbit.comptest.ct.ui.SCATestCaseNewWizard"/>
+<new_wizard_action id="com.ibm.wbit.comptest.ct.ui.SCATestSuiteNewWizard"/>
+<new_wizard_action id="com.ibm.wbit.adapter.emd.ui.wizards.EMDResourceConfigWizard"/>
+<new_wizard_action id="com.ibm.wbit.activity.ui.CustomActivityWizardID"/>
+<new_wizard_action id="com.ibm.wbit.sib.xmlmap.internal.ui.wizards.NewMapWizard"/>
+<new_wizard_action id="com.ibm.wbit.comptest.ui.NewObjectPoolWizard"/>
+<new_wizard_action id="com.ibm.wbit.br.ui.decisiontable.DecisionTableFileWizard"/>
+<new_wizard_action id="com.ibm.wbit.comptest.ui.NewEmulatorWizard"/>
+<new_wizard_action id="com.ibm.wbimonitor.edt.wizard.NewEventDefinitionWizard"/>
+<new_wizard_action id="com.ibm.wbit.adapter.ui.wizards.EMDWizard"/>
+<new_wizard_action id="com.ibm.wbit.tel.integration.wizards.TaskNewWizard"/>
+<new_wizard_action id="com.ibm.wbit.ie.ui.wizards.NewInterfaceWizard"/>
+<new_wizard_action id="com.ibm.wbit.mediation.ui.wizards.NewMediatorWizard"/>
+<new_wizard_action id="com.ibm.wbit.sib.mediation.ui.wizards.NewMediationFlowWizard"/>
+<new_wizard_action id="com.ibm.wbit.sib.mediation.ui.wizards.NewMediationSubFlowWizard"/>
+<new_wizard_action id="com.ibm.wbimonitor.xml.editor.ui.newwizard.NewBusinessMeasuresWizard.id"/>
+<new_wizard_action id="com.ibm.wbit.migrationplan.ui.wizard.NewMigrationplanWizardID"/>
+<new_wizard_action id="com.ibm.wbit.relationshipdesigner.wizards.NewRelationshipWizard"/>
+<new_wizard_action id="com.ibm.wbit.br.selector.ui.wizard.RuleGroupWizard"/>
+<new_wizard_action id="com.ibm.wbit.br.ui.ruleset.wizard.RuleSetFileWizard"/>
+<new_wizard_action id="com.ibm.wbit.br.selector.ui.wizard.SelectorWizard"/>
+<perspective_action id="com.ibm.wbit.ui.WBIPerspective"/>
+<perspective_action id="org.eclipse.hyades.trace.internal.ui.tracePerspective"/>
+<perspective_action id="com.ibm.btools.blm.ui.perspective.BLMPerspective"/>
+<perspective_action id="com.ibm.magnolia.ui.workItemPerspective"/>
+<perspective_action id="com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective"/>
+<view id="com.ibm.wbit.ui.logicalview.WBILogicalView"/>
+<view id="com.ibm.wbit.taskflow.ui.views.TaskFlowView"/>
+<view id="com.ibm.wbit.ui.build.activities.view.BuildActivitiesView"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="com.ibm.wbit.comptest.ui.view.HorizontalTraceView"/>
+<view id="org.eclipse.wst.server.ui.ServersView"/>
+<view id="com.ibm.ram.internal.rich.ui.myrepositories.MyRepositoriesView"/>
+<view id="org.eclipse.help.ui.HelpView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="com.ibm.wbit.ui.logicalview.WBILogicalView" appearance="2" expanded="2">
+<page content="com.ibm.wbit.ui.logicalview.WBILogicalView" label="Business Integration"/>
+<page content="com.ibm.wbit.ui.physicalview.PhysicalView" label="LabelNotFound"/>
+<page content="com.ibm.etools.patterns.views.PatternExplorerView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@57a357a3" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="left">
+<folder activePageID="org.eclipse.help.ui.HelpView" appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="Help"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.29" ratioLeft="290" ratioRight="710" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.71910113" ratioLeft="448" ratioRight="175" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.ibm.wbit.taskflow.ui.views.TaskFlowView" appearance="2" expanded="2">
+<page content="com.ibm.wbit.taskflow.ui.views.TaskFlowView" label="Task Flows"/>
+<page content="com.ibm.wbit.ui.build.activities.view.BuildActivitiesView" label="Build Activities"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="com.ibm.wbit.comptest.ui.view.HorizontalTraceView" label="Server Logs"/>
+<page content="org.eclipse.wst.server.ui.ServersView" label="Servers"/>
+<page content="com.ibm.ram.internal.rich.ui.myrepositories.MyRepositoriesView" label="Asset Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.58908504" ratioLeft="367" ratioRight="256" relationship="4" relative="left">
+<folder appearance="2" expanded="2">
+<page content="com.ibm.wbit.ui.referencesview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective" id="com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective" label="Business Monitoring"/>
+<alwaysOnActionSet id="com.ibm.bpm.gettingstarted.actionset.id"/>
+<alwaysOnActionSet id="com.ibm.rational.welcome.core.helpSearchActionSet"/>
+<alwaysOnActionSet id="com.ibm.ccl.help.preferenceharvester.actionSet1"/>
+<alwaysOnActionSet id="com.ibm.help.gallery.sampleGalleryActionSet"/>
+<alwaysOnActionSet id="com.ibm.01.help.gallery.cat.tutorialGalleryActionSet"/>
+<alwaysOnActionSet id="com.ibm.rational.welcome.core.webResourcesActionSet"/>
+<alwaysOnActionSet id="com.ibm.cic.licensing.common.ui.actionSet"/>
+<alwaysOnActionSet id="com.ibm.etools.patterns.PatternActionSet"/>
+<alwaysOnActionSet id="help.additions.support_actionset"/>
+<alwaysOnActionSet id="com.ibm.etools.miniwelcome.miniWelcomeActionSet"/>
+<alwaysOnActionSet id="com.ibm.team.filesystem.shortcuts"/>
+<alwaysOnActionSet id="com.ibm.team.fulltext.ide.ui.JazzArtifactsSearch"/>
+<alwaysOnActionSet id="com.ibm.team.process.ui.actionSet"/>
+<alwaysOnActionSet id="com.ibm.team.workitem.ide"/>
+<alwaysOnActionSet id="com.ibm.magnolia.workitems.searchActionSet"/>
+<alwaysOnActionSet id="com.ibm.team.workitem.rcp.ui.OpenFavoriteSet"/>
+<alwaysOnActionSet id="com.ibm.wbit.samples.framework.help_samplestutorials_actionset_id"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.buildactivitiesview.wid_project_actionset_id"/>
+<alwaysOnActionSet id="com.ibm.wbit.ui.mapcatalog.actionsets"/>
+<alwaysOnActionSet id="org.eclipse.jst.servlet.ui.internal.actions.ConvertToWebModuleTypeActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<show_view_action id="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id"/>
+<show_view_action id="com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id"/>
+<show_view_action id="org.eclipse.wst.server.ui.ServersView"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<perspective_action id="com.ibm.magnolia.ui.workItemPerspective"/>
+<perspective_action id="com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective"/>
+<view id="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.wst.server.ui.ServersView"/>
+<view id="com.ibm.wbit.comptest.ui.view.HorizontalTraceView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.ibm.ram.internal.rich.ui.myrepositories.MyRepositoriesView"/>
+<view id="org.eclipse.help.ui.HelpView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id" appearance="2" expanded="2">
+<page content="com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id" label="Project Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@3ea83ea8" ratio="0.7495944" ratioLeft="1386" ratioRight="463" relationship="2" relative="topLeft">
+<folder activePageID="org.eclipse.help.ui.HelpView" appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="Help"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.19956733" ratioLeft="369" ratioRight="1480" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottomRight" ratio="0.7497436" ratioLeft="731" ratioRight="244" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id" appearance="2" expanded="2">
+<page content="com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id" label="Monitoring Flow"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.wst.server.ui.ServersView" label="Servers"/>
+<page content="com.ibm.wbit.comptest.ui.view.HorizontalTraceView" label="Server Logs"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.ibm.ram.internal.rich.ui.myrepositories.MyRepositoriesView" label="Asset Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.7497436" ratioLeft="731" ratioRight="244" relationship="4" relative="topLeft">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory/>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="com.ibm.team.workitem.rcp.ui.SearchBarGroup"/>
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="com.ibm.team.collaboration.rcp.ui.ChangePresenceGroup"/>
+<trimItem IMemento.internal.id="com.ibm.team.metronome.group"/>
+<trimItem IMemento.internal.id="com.ibm.team.workitem.rcp.ui.WorkitemActivationGroup"/>
+<trimItem IMemento.internal.id="com.ibm.ram.rich.ui.trim.toolbar"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="com.ibm.bpm.gettingstarted.editor.GettingStartedEditorElementFactory" id="com.ibm.bpm.gettingstarted.editor.GettingStartedEditor" name="IBM WebSphere Integration Developer 7.0" tooltip="Getting Started - IBM WebSphere Integration Developer 7.0">
+<persistable gettingStartedID="com.ibm.wbit.ui.gettingStarted"/>
+</file>
+</mruList>
+</workbench>

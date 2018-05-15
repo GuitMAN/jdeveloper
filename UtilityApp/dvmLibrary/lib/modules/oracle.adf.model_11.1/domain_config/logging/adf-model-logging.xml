@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logging_configuration>
+    <loggers>
+	<logger name="oracle.adf.model.log.ApplicationScript" />
+        <logger name="oracle.adf.model.log.AMPoolLifecycle"/>
+        <logger name="oracle.adf.model.log.LobDomain"/>
+        <logger name="oracle.adf.model.log.SQLBuilder"/>
+        <logger name="oracle.adf.model.log.DataChangeEvent"/>
+        <logger name="oracle.adf.model.log.RowFinder"/>
+        <logger name="oracle.adf.model.log.JPXSettings"/>
+        <logger name="oracle.adf.model.log.GlobalGroovyFunctions"/>
+        <logger name="oracle.adf.model.log.FrameManagement"/>
+        <logger name="oracle.adf.model.log.BusEvent"/>
+        <logger name="oracle.adf.model.log.DefaultValueSerializer"/>
+        <logger name="oracle.adf.model.log.ViewCriteria" />
+        <logger name="oracle.adf.model.log.lov.MRU" />
+        <logger name="oracle.adf.model.log.HierBinding.KeyLookup"/>
+        <logger name="oracle.adf.model.log.ProgrammaticViewObject"/>
+        <logger name="oracle.adf.model.log.customizations.cpx" />
+        <logger name="oracle.adf.model.log.customizations.def" />
+        <logger name="oracle.adf.model.log.PropertiesLookup" />
+        <logger name="oracle.adf.model.log.ResourceLookup" />
+        <logger name="oracle.adf.model.log.entity.ExprValueSupplier" />
+        <logger name="oracle.adf.model.log.ViewObject" />
+        <logger name="oracle.adf.model.log.XMLInteraction" />
+        <logger name="oracle.adf.model.log.Version" />
+        <logger name="oracle.adf.model.svc.log.ServiceImpl" />
+        <logger name="oracle.adf.model.svc.log.SchemaGen" />
+        <logger name="oracle.adf.model.svc.log.ServicePublisher" />
+        
+        <!--
+            BEGIN SECTION: ADFm Business Editor Functional Loggers
+         -->
+        <logger name="oracle.adf.model.businesseditor.log"/>
+        <!-- configuration -->
+        <logger name="oracle.adf.model.businesseditor.log.Settings"/>
+        <!-- Allocation/Management/Migration of objects in the
+             Business Editor database dictionary -->
+        <logger name="oracle.adf.model.businesseditor.log.dictionary"/>
+        <logger name="oracle.adf.model.businesseditor.log.dictionary.Allocation"/>
+        <logger name="oracle.adf.model.businesseditor.log.dictionary.Lookups"/>
+        <logger name="oracle.adf.model.businesseditor.log.dictionary.Migration"/>
+        <!-- Supported customization functions -->
+        <logger name="oracle.adf.model.businesseditor.log.customization"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.BusinessObjects"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.Fields"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.logic"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.logic.Functions"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.logic.Triggers"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.logic.ValidationRules"/>
+        <logger name="oracle.adf.model.businesseditor.log.customization.WebServices"/>
+
+	<logger name="oracle.adf.model.businesseditor.log.logic.Functions" />
+	<logger name="oracle.adf.model.businesseditor.log.logic.Debugger" />
+	
+        <!--
+            END SECTION: ADFm Business Editor Functional Loggers
+         -->
+        <logger name="oracle.adfdebugdiagnostics"/>
+
+         <!--
+         	Rest Functional Loggers
+ 	-->
+ 	<logger name="oracle.adf.model.rest.log" />
+ 
+ 	<!-- Operations -->
+ 	<logger name="oracle.adf.model.rest.log.operation" />
+ 	<logger name="oracle.adf.model.rest.log.operation.serializer" />
+ 	<logger name="oracle.adf.model.rest.log.operation.describer" />
+ 
+ 	<!-- Diagnostics -->
+ 	<logger name="oracle.adfdiagnostics.rest" />
+
+ 	<!--
+     		END SECTION:  Rest Functional Loggers
+ 	-->
+
+    </loggers>
+</logging_configuration>

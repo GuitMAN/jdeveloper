@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="GetCompositeInfo" targetNamespace="http://xmlns.oracle.com/GetCompositesInfo/GetCompositesInfo/GetCompositeInfo" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/GetCompositesInfo/GetCompositesInfo/GetCompositeInfo" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/GetCompositesInfo/GetCompositesInfo/DB_Database" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/sp/DB_Database" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="BpPrc0">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="getcompositeinfo_client" partnerLinkType="client:GetCompositeInfo" myRole="GetCompositeInfoProvider"/>
+    <partnerLink name="DB_Database" partnerLinkType="ns9:DB_Database_plt" partnerRole="DB_Database_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:GetCompositeInfoRequestMessage"/>
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:GetCompositeInfoResponseMessage"/>
+    <variable name="Invoke1_DB_Database_InputVariable" messageType="ns9:args_in_msg"/>
+    <variable name="Invoke1_DB_Database_OutputVariable" messageType="ns9:args_out_msg"/>
+    <variable name="V_OutputVariable" messageType="client:CompositeInfoResponseMessage"/>
+                   <variable name="Reply1_process_OutputVariable" messageType="client:GetCompositeInfoResponseMessage"/>
+    <variable name="jndiVar" type="xsd:string"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="Assign3" id="BpAss0">
+          <copy>
+            <from expression="concat('Ошибка преобразования в GetBankAccountBalance',' ECID [',  ora:getECID(),  ']. Text : ', ora:getFaultAsString())"/>
+            <to variable="Reply1_process_OutputVariable" part="payload" query="/client:processResponse"/>
+          </copy>
+        </assign>
+        <reply name="FaultReply" variable="Reply1_process_OutputVariable" partnerLink="getcompositeinfo_client" portType="client:GetCompositeInfo" operation="process" id="BpRpl0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in GetCompositeInfo.wsdl) -->
+    <receive name="receiveInput" partnerLink="getcompositeinfo_client" portType="client:GetCompositeInfo" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="Assign1" id="BpAss1">
+      <copy>
+        <from expression="1"/>
+        <to variable="Invoke1_DB_Database_InputVariable" part="InputParameters" query="/ns10:InputParameters/ns10:PARTITIONID"/>
+      </copy>
+      <copy>
+        <from expression="'/deployed-composites/deployed-composites.xml'"/>
+        <to variable="Invoke1_DB_Database_InputVariable" part="InputParameters" query="/ns10:InputParameters/ns10:FULLNAME"/>
+      </copy>
+      <copy>
+        <from expression="1"/>
+        <to variable="Invoke1_DB_Database_InputVariable" part="InputParameters" query="/ns10:InputParameters/ns10:FORMATTED"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference('jndiVar')"/>
+        <to variable="jndiVar"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke1" inputVariable="Invoke1_DB_Database_InputVariable" outputVariable="Invoke1_DB_Database_OutputVariable" partnerLink="DB_Database" portType="ns9:DB_Database_ptt" operation="DB_Database" bpelx:invokeAsDetail="no" id="BpInv0">
+        <bpelx:inputProperty name="jca.jndi" variable="jndiVar"/>
+    </invoke>
+            
+     <assign name="Assign2" id="BpAss2">
+      <copy>
+        <from expression="oraext:parseXML(bpws:getVariableData('Invoke1_DB_Database_OutputVariable','OutputParameters','/ns10:OutputParameters/ns10:CHUNK'))"/>
+        <to variable="V_OutputVariable" part="payload" query="/client:deployed-composites"/>
+      </copy>
+    </assign>
+    <assign name="Transform1" id="BpAss3">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('xsl/Transformation_1.xsl', $V_OutputVariable.payload)"/>
+        <to variable="outputVariable" part="payload"/>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="getcompositeinfo_client" portType="client:GetCompositeInfo" operation="process" variable="outputVariable" id="BpRpl1"/>
+  </sequence>
+</process><!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Nov 16 09:33:46 MSK 2017
+  Author:  vdementev
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->

@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8' standalone='yes'?>
+<application-mbeans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://xmlns.oracle.com/oracleas/schema/11/application-mbeans-11_1.xsd" schema-major-version="11" schema-minor-version="1">
+<config-mbeans>
+      <jmx-config-mbean
+            objectname="oracle.wsm:type=security,name=JKSKeystoreMBean"
+            class="oracle.wsm.security.store.jks.mgmt.KeystoreMBeanImpl"
+            management-interface="oracle.wsm.security.store.jks.mgmt.KeystoreMBean">
+            <description>MBean to access and manage JKS Keystore</description>
+            <config-file path="../default-keystore.jks"/>
+        </jmx-config-mbean>
+    </config-mbeans>
+</application-mbeans>

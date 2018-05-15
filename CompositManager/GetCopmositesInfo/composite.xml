@@ -27,12 +27,9 @@
     <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/GetCompositesInfo/GetCompositesInfo/DB_Database#wsdl.interface(DB_Database_ptt)"/>
     <binding.jca config="DB_Database_db.jca"/>
     <property name="jca.retry.count" type="xs:int" many="false" override="may">4</property>
-    <property name="jca.retry.interval" type="xs:int" many="false"
-              override="may">1</property>
-    <property name="jca.retry.backoff" type="xs:int" many="false"
-              override="may">2</property>
-    <property name="jca.retry.maxInterval" type="xs:string" many="false"
-              override="may">120</property>
+    <property name="jca.retry.interval" type="xs:int" many="false" override="may">1</property>
+    <property name="jca.retry.backoff" type="xs:int" many="false" override="may">2</property>
+    <property name="jca.retry.maxInterval" type="xs:string" many="false" override="may">120</property>
   </reference>
   <wire>
     <source.uri>getcompositeinfo_client_ep</source.uri>

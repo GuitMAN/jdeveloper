@@ -6,3 +6,5 @@ deploy
 /system11.1.1.9.40.66.73
 /AppSE/DVM_test/Client/classes
 /CompositManager/GetCopmositesInfo/SCA-INF/classes/.data/00000000
+/UtilityApp/dvmLibrary/nbproject/private/
+/UtilityApp/dvmLibrary/build/

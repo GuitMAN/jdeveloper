@@ -233,7 +233,7 @@ public class CustomVaidateDVM {
             {
                 i++;
                 map.put(str,i);
-                System.out.println(map.get(str) + " " + str);               
+            //    System.out.println(map.get(str) + " " + str);               
             }
             else
             {
