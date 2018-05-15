@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<product-family name="owsm">
-    <application name="wsm-pm">
-        <context-root>/wsm-pm</context-root>
-    </application>
-</product-family>
