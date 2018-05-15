@@ -1,20 +1,12 @@
 
 package ru.neoflex.soa.utils.dvm;
 
-import java.io.File;
-
-import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Logger;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import oracle.fabric.common.MetadataManager;
 import oracle.fabric.common.dvm.DVM;
@@ -22,27 +14,23 @@ import oracle.fabric.common.xml.xpath.IXPathContext;
 import oracle.fabric.common.xml.xpath.IXPathFunction;
 import oracle.fabric.common.xml.xpath.XPathFunctionException;
 
+import oracle.integration.platform.blocks.xpath.XPathContext;
+
 import oracle.tip.dvm.DVMExtFunctions;
-import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.DVMManagerImpl;
-import oracle.tip.dvm.DVMUtil;
-
+import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
-
 import oracle.tip.dvm.exception.DVMValidationException;
 
 import oracle.xml.parser.v2.XMLDocument;
 
-import oracle.integration.platform.blocks.xpath.XPathContext;
-
-import oracle.tip.dvm.sdk.util.XMLUtil;
-
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import weblogic.logging.NonCatalogLogger;
+
+
 /**
  *
  * @author vdementev
@@ -350,8 +338,9 @@ public class dvmCustom {
     }
 
 
-    /* Возвращает значение из DVM
-   / * откорректированная версия из tsc.soa.utils.jar
+    /**
+     * Возвращает значение из DVM
+     * откорректированная версия из tsc.soa.utils.jar
      */
     public static class lookupValue implements IXPathFunction {
 
