@@ -18,6 +18,7 @@ import oracle.integration.platform.blocks.xpath.XPathContext;
 
 import oracle.tip.dvm.DVMExtFunctions;
 import oracle.tip.dvm.DVMManagerImpl;
+
 import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
 import oracle.tip.dvm.exception.DVMValidationException;
@@ -65,7 +66,7 @@ public class dvmCustom {
         return this.dvmManager;
     }
 
-    public static class DVMManagerImpl_new extends DVMManagerImpl {
+    public static class DVMManagerImpl_new extends DVMManagerImpl implements oracle.tip.dvm.DVMManager {
 
         private MetadataManager mTestMetadataMgr_new = null;
 
@@ -382,7 +383,7 @@ public class dvmCustom {
             String qualifierColumnName, String qualifierValue) throws DVMException,
             XPathFunctionException {
 
-        String searchValue = dvmCustom.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
                 DVM_DEFAUL_VALUE, qualifierColumnName,
                 qualifierValue);
         return checkLookupValue(searchValue,
@@ -410,7 +411,7 @@ public class dvmCustom {
             String qualifierColumnName1, String qualifierValue1) throws DVMException,
             XPathFunctionException {
 
-        String searchValue = dvmCustom.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
                 DVM_DEFAUL_VALUE, qualifierColumnName,
                 qualifierValue, qualifierColumnName1,
                 qualifierValue1);
@@ -441,7 +442,7 @@ public class dvmCustom {
             String qualifierColumnName2, String qualifierValue2) throws DVMException,
             XPathFunctionException {
 
-        String searchValue = dvmCustom.dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
+        String searchValue = dvmManager.lookupValue(dvmLoc, srcColumnName, srcValue, tgtColumnName,
                 DVM_DEFAUL_VALUE, qualifierColumnName,
                 qualifierValue, qualifierColumnName1,
                 qualifierValue1, qualifierColumnName2,
