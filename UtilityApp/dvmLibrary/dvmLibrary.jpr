@@ -130,6 +130,9 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
+                              <value n="pattern" v="ext-soa-xpath-functions-config.xml"/>
+                           </hash>
+                           <hash>
                               <value n="pattern" v="ru/"/>
                            </hash>
                            <hash>
