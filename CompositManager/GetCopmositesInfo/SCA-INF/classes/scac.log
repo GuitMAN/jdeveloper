@@ -1,31 +1,18 @@
-10.01.2018 16:46:55 oracle.mds
-ERROR: элемент "file:/D:/Work/jdev/mywork/CompositManager/.adf/META-INF/adf-config.xml" отсутствует в документе "{1}"
-oracle.fabric.common.FabricException: oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config": oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config"
-oracle.fabric.common.FabricException: oracle.fabric.common.FabricException: oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config": oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config"
-	at oracle.fabric.common.FabricMetadataManagerFactory.createMetadataManager(FabricMetadataManagerFactory.java:193)
-	at oracle.fabric.common.FabricMetadataManagerFactory.createMetadataManager(FabricMetadataManagerFactory.java:159)
-	at oracle.fabric.composite.model.ModuleConfigModel.initializeMetadataManager(ModuleConfigModel.java:75)
-	at oracle.fabric.composite.model.CompositeModel.getClientMetadataManager(CompositeModel.java:235)
-	at oracle.soa.scac.ValidateComposite.loadComposite(ValidateComposite.java:816)
-	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:484)
-	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:214)
-	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:195)
-	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:187)
-Caused by: oracle.fabric.common.FabricException: oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config": MDS-01333: отсутствует элемент "mds-config"
-	at oracle.integration.platform.common.MDSMetadataManagerImpl.init(MDSMetadataManagerImpl.java:380)
-	at oracle.integration.platform.common.MDSMetadataManagerImpl.init(MDSMetadataManagerImpl.java:276)
-	at oracle.integration.platform.common.MDSMetadataManagerImpl.<init>(MDSMetadataManagerImpl.java:211)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-	at oracle.fabric.common.FabricMetadataManagerFactory.createMetadataManager(FabricMetadataManagerFactory.java:188)
-	... 8 more
-Caused by: oracle.mds.config.MDSConfigurationException: MDS-01333: отсутствует элемент "mds-config"
-	at oracle.mds.config.MDSConfig.<init>(MDSConfig.java:884)
-	at oracle.mds.config.MDSConfig.<init>(MDSConfig.java:804)
-	at oracle.integration.platform.common.MDSUtil.getMDSConfig(MDSUtil.java:67)
-	at oracle.integration.platform.common.MDSUtil.getMDSInstance(MDSUtil.java:161)
-	at oracle.integration.platform.common.MDSMetadataManagerImpl.getMDSInstance(MDSMetadataManagerImpl.java:736)
-	at oracle.integration.platform.common.MDSMetadataManagerImpl.init(MDSMetadataManagerImpl.java:335)
-	... 15 more
+19.04.2018 19:37:10 oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+19.04.2018 19:37:10 com.collaxa.cube.CubeLogger info
+INFO: validating "GetCompositeInfo.bpel" ...
+19.04.2018 19:37:10 oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+19.04.2018 19:37:10 oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+19.04.2018 19:37:10 com.collaxa.cube.CubeLogger info
+INFO: Composed "GetCompositeInfo" in 89,7 milliseconds [nodes 13=0+13, 144,9 nodes/sec]
+19.04.2018 19:37:11 com.collaxa.cube.CubeLogger info
+INFO: Compiled "GetCompositeInfo" in 666,4 milliseconds
+19.04.2018 19:37:11 com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0,4 milliseconds
+
+19.04.2018 19:37:11 com.collaxa.cube.CubeLogger info
+INFO: Packaged "GetCompositeInfo" in 5,6 milliseconds
+

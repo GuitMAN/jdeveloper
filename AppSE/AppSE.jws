@@ -18,6 +18,7 @@
       <value n="oracle.mds.internal.dt.ide.migrator.MDSConfigMigratorHelper" v="11.1.1.0.5313"/>
    </hash>
    <list n="listOfChildren">
+      <hash><url n="URL" path="../../../NeoFlex_Middle/FMW_11/Application/SOAStatusWeb/SOAStatusWeb.jpr"/></hash>
       <hash><url n="URL" path="DVM_test/DVM_test.jpr"/></hash>
       <hash><url n="URL" path="DVMValid/DVMValid.jpr"/></hash>
    </list>

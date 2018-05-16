@@ -1,0 +1,11 @@
+#Fri May 11 23:42:29 MSD 2018
+org.eclipse.sdk.Eclipse.master=false
+com.ibm.websphere.infocenter.master=false
+org.eclipse.help.ui.localSearch.master=true
+com.ibm.developerWorks.master=true
+com.ibm.etools.ui.support.search.engine.WPSForum.master=true
+com.ibm.etools.ui.support.search.engine.WIDTechNotes.master=true
+com.ibm.etools.ui.support.search.engine.WIDForum.master=true
+org.eclipse.sdk.Google.master=true
+net.jazz.Jazz.master=true
+__DEFAULT__=true

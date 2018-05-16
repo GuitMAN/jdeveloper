@@ -4,7 +4,7 @@
          <sequence>
             <element name="PARTITIONID" type="decimal" db:index="3" db:type="NUMBER" minOccurs="0" nillable="true"/>
             <element name="FULLNAME" type="string" db:index="4" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
-            <element name="FORMATTED" type="int" db:index="5" db:default="true" db:type="INTEGER" minOccurs="0" nillable="true"/>
+            <element name="FORMATTED" type="int" db:index="5" db:type="INTEGER" minOccurs="0" nillable="true"/>
          </sequence>
       </complexType>
    </element>

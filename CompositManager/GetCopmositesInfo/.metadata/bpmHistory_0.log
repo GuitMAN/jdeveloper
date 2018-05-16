@@ -1,0 +1,1020 @@
+[11.05.2018 23:42:29.867 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Workbench session started
+[11.05.2018 23:42:29.873 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Product name: IBM WebSphere Integration Developer 7.0, Product ID: com.ibm.wbit.feature.ide, Product version: 7.0.0
+[11.05.2018 23:42:33.737 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Server Logs, ID: com.ibm.wbit.comptest.ui.view.HorizontalTraceView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:48:18.928 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Business Integration, ID: com.ibm.wbit.ui.logicalview.WBILogicalView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:04.872 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Referenced part does not exist yet: org.eclipse.jdt.ui.PackageExplorer. <No exception provided, stack trace is implied> Details...
+java.lang.Exception
+	at com.ibm.bpm.common.history.History.logExceptionWrapped(History.java:340)
+	at com.ibm.bpm.common.history.History.logException(History.java:322)
+	at com.ibm.wbit.ui.GeneralUITracing$6.logging(GeneralUITracing.java:270)
+	at org.eclipse.core.internal.runtime.RuntimeLog.log(RuntimeLog.java:95)
+	at org.eclipse.core.internal.runtime.InternalPlatform.log(InternalPlatform.java:669)
+	at org.eclipse.core.internal.runtime.Log.log(Log.java:56)
+	at org.eclipse.ui.internal.WorkbenchPlugin.log(WorkbenchPlugin.java:747)
+	at org.eclipse.ui.internal.PageLayout.stackPart(PageLayout.java:758)
+	at org.eclipse.ui.internal.PageLayout.stackView(PageLayout.java:804)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.processView(PerspectiveExtensionReader.java:244)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.processExtension(PerspectiveExtensionReader.java:118)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.readElement(PerspectiveExtensionReader.java:329)
+	at org.eclipse.ui.internal.registry.RegistryReader.readElements(RegistryReader.java:144)
+	at org.eclipse.ui.internal.registry.RegistryReader.readExtension(RegistryReader.java:155)
+	at org.eclipse.ui.internal.registry.RegistryReader.readRegistry(RegistryReader.java:176)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.extendLayout(PerspectiveExtensionReader.java:82)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:807)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openOther(ShowPerspectiveHandler.java:124)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:63)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:178)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.eclipse.ui.actions.PerspectiveMenu.runOther(PerspectiveMenu.java:369)
+	at org.eclipse.ui.actions.PerspectiveMenu$3.runWithEvent(PerspectiveMenu.java:125)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:49:04.930 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Referenced part does not exist yet: org.eclipse.jdt.ui.PackageExplorer. <No exception provided, stack trace is implied> Details...
+java.lang.Exception
+	at com.ibm.bpm.common.history.History.logExceptionWrapped(History.java:340)
+	at com.ibm.bpm.common.history.History.logException(History.java:322)
+	at com.ibm.wbit.ui.GeneralUITracing$6.logging(GeneralUITracing.java:270)
+	at org.eclipse.core.internal.runtime.RuntimeLog.log(RuntimeLog.java:95)
+	at org.eclipse.core.internal.runtime.InternalPlatform.log(InternalPlatform.java:669)
+	at org.eclipse.core.internal.runtime.Log.log(Log.java:56)
+	at org.eclipse.ui.internal.WorkbenchPlugin.log(WorkbenchPlugin.java:747)
+	at org.eclipse.ui.internal.PageLayout.stackPart(PageLayout.java:758)
+	at org.eclipse.ui.internal.PageLayout.stackPlaceholder(PageLayout.java:782)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.processView(PerspectiveExtensionReader.java:246)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.processExtension(PerspectiveExtensionReader.java:118)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.readElement(PerspectiveExtensionReader.java:329)
+	at org.eclipse.ui.internal.registry.RegistryReader.readElements(RegistryReader.java:144)
+	at org.eclipse.ui.internal.registry.RegistryReader.readExtension(RegistryReader.java:155)
+	at org.eclipse.ui.internal.registry.RegistryReader.readRegistry(RegistryReader.java:176)
+	at org.eclipse.ui.internal.registry.PerspectiveExtensionReader.extendLayout(PerspectiveExtensionReader.java:82)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:807)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openOther(ShowPerspectiveHandler.java:124)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:63)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:178)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.eclipse.ui.actions.PerspectiveMenu.runOther(PerspectiveMenu.java:369)
+	at org.eclipse.ui.actions.PerspectiveMenu$3.runWithEvent(PerspectiveMenu.java:125)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:49:04.940 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: JPA, ID: org.eclipse.jpt.ui.jpaPerspective
+[11.05.2018 23:49:05.630 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Project Explorer, ID: org.eclipse.ui.navigator.ProjectExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:17.771 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Data Source Explorer, ID: org.eclipse.datatools.connectivity.DataSourceExplorerNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:17.855 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Problems, ID: org.eclipse.ui.views.ProblemView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:18.150 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: JPA Details, ID: org.eclipse.jpt.ui.jpaDetailsView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:18.397 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: JPA Structure, ID: org.eclipse.jpt.ui.jpaStructureView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:19.160 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:19.220 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: JPA, ID: org.eclipse.jpt.ui.jpaPerspective
+[11.05.2018 23:49:19.226 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:49:26.265 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Project Explorer, ID: org.eclipse.ui.navigator.ProjectExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:50.879 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Business Integration, ID: com.ibm.wbit.ui.WBIPerspective
+[11.05.2018 23:49:50.884 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:49:50.928 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: JPA, ID: org.eclipse.jpt.ui.jpaPerspective
+[11.05.2018 23:49:50.935 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Project Explorer, ID: org.eclipse.ui.navigator.ProjectExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:50.939 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Data Source Explorer, ID: org.eclipse.datatools.connectivity.DataSourceExplorerNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:50.941 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: JPA Details, ID: org.eclipse.jpt.ui.jpaDetailsView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:50.942 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: JPA Structure, ID: org.eclipse.jpt.ui.jpaStructureView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:50.943 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:56.265 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: Work Items, ID: com.ibm.magnolia.ui.workItemPerspective
+[11.05.2018 23:49:56.300 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:56.400 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Work Items, ID: com.ibm.magnolia.workItemExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:49:56.435 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Work Items, ID: com.ibm.magnolia.ui.workItemPerspective
+[11.05.2018 23:50:01.012 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:01.039 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:02.142 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: My Work, ID: com.ibm.team.apt.internal.ui.myWorkView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:02.161 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: My Work, ID: com.ibm.team.apt.internal.ui.myWorkView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:03.534 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:15.984 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Business Integration, ID: com.ibm.wbit.ui.WBIPerspective
+[11.05.2018 23:50:15.988 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:50:16.023 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: Work Items, ID: com.ibm.magnolia.ui.workItemPerspective
+[11.05.2018 23:50:16.026 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:16.030 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:16.036 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: My Work, ID: com.ibm.team.apt.internal.ui.myWorkView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:16.044 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Work Items, ID: com.ibm.magnolia.workItemExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:21.285 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Business Integration, ID: com.ibm.wbit.ui.logicalview.WBILogicalView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:50:40.365 MSD] 0000005e bpmHist       I [com.ibm.wbit.command.builder.CommandBuilder:doBuild(CommandBuilder.java:377)] BUILD Starting command "com.ibm.wbit.project.wbisolutioncommand" for project "P/soa" with build type "full validation and code gen" Details...
+Properties = {wbit.builder.globaldeltaprocessed=false, wbit.index.reindex.files=[], wbit.build.isClean=false, wbit.build.kind=6, wbit.build.level=3}
+[11.05.2018 23:50:40.416 MSD] 0000005e bpmHist       I [com.ibm.wbit.command.builder.CommandBuilder:doBuild(CommandBuilder.java:609)] BUILD Ending command "com.ibm.wbit.project.wbisolutioncommand" for project "P/soa"
+[11.05.2018 23:51:02.422 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Internal error while reading topic extensions from remote server SAXParseException(Символы "--" в комментарии недопустимы.) Details...
+org.xml.sax.SAXParseException: Символы "--" в комментарии недопустимы.
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.help.internal.dynamic.DocumentReader.read(DocumentReader.java:56)
+	at org.eclipse.help.internal.dynamic.DocumentReader.read(DocumentReader.java:44)
+	at org.eclipse.help.internal.base.remote.RemoteExtensionProvider.getContentExtensions(RemoteExtensionProvider.java:55)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.loadExtensions(ContentExtensionManager.java:100)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.getExtensions(ContentExtensionManager.java:68)
+	at org.eclipse.help.internal.dynamic.ExtensionResolver.resolveExtension(ExtensionResolver.java:61)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handleExtension(ExtensionHandler.java:62)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handle(ExtensionHandler.java:46)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:57)
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:213)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:85)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.findHelpContext(ContextHelpPart.java:474)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.createContextHelp(ContextHelpPart.java:454)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.handleActivation(ContextHelpPart.java:277)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.setFormInput(ContextHelpPart.java:607)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.RelatedTopicsPart.setFormInput(RelatedTopicsPart.java:165)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1124)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1110)
+	at org.eclipse.help.ui.internal.views.HelpView.handlePartActivation(HelpView.java:135)
+	at org.eclipse.help.ui.internal.views.HelpView.hook(HelpView.java:304)
+	at org.eclipse.help.ui.internal.views.HelpView.partOpened(HelpView.java:279)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WWinPartService$1.partOpened(WWinPartService.java:52)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WorkbenchPagePartList.firePartOpened(WorkbenchPagePartList.java:34)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:227)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:200)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:37)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:374)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:609)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2131)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1062)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3773)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3770)
+	at org.eclipse.help.ui.internal.DefaultHelpUI.displayDynamicHelp(DefaultHelpUI.java:151)
+	at org.eclipse.ui.internal.help.WorkbenchHelpSystem.displayDynamicHelp(WorkbenchHelpSystem.java:857)
+	at com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective.createInitialLayout(BePerspective.java:77)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:805)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:67)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.ChangeToPerspectiveMenu.run(ChangeToPerspectiveMenu.java:91)
+	at org.eclipse.ui.actions.PerspectiveMenu.run(PerspectiveMenu.java:358)
+	at org.eclipse.ui.actions.OpenPerspectiveAction.runWithEvent(OpenPerspectiveAction.java:78)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:51:03.929 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Internal error while reading topic extensions from remote server SAXParseException(Символы "--" в комментарии недопустимы.) Details...
+org.xml.sax.SAXParseException: Символы "--" в комментарии недопустимы.
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(Unknown Source)
+	at org.eclipse.help.internal.dynamic.DocumentReader.read(DocumentReader.java:56)
+	at org.eclipse.help.internal.dynamic.DocumentReader.read(DocumentReader.java:44)
+	at org.eclipse.help.internal.base.remote.RemoteExtensionProvider.getContentExtensions(RemoteExtensionProvider.java:55)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.loadExtensions(ContentExtensionManager.java:100)
+	at org.eclipse.help.internal.extension.ContentExtensionManager.getExtensions(ContentExtensionManager.java:68)
+	at org.eclipse.help.internal.dynamic.ExtensionResolver.resolveExtension(ExtensionResolver.java:61)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handleExtension(ExtensionHandler.java:62)
+	at org.eclipse.help.internal.dynamic.ExtensionHandler.handle(ExtensionHandler.java:46)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:44)
+	at org.eclipse.help.internal.dynamic.DocumentProcessor.process(DocumentProcessor.java:57)
+	at org.eclipse.help.internal.context.ContextFileProvider.loadContexts(ContextFileProvider.java:213)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContexts(ContextFileProvider.java:181)
+	at org.eclipse.help.internal.context.ContextFileProvider.getPluginContexts(ContextFileProvider.java:158)
+	at org.eclipse.help.internal.context.ContextFileProvider.getContext(ContextFileProvider.java:83)
+	at org.eclipse.help.internal.context.ContextManager.getContext(ContextManager.java:85)
+	at org.eclipse.help.HelpSystem.getContext(HelpSystem.java:49)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.findHelpContext(ContextHelpPart.java:474)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.createContextHelp(ContextHelpPart.java:454)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.handleActivation(ContextHelpPart.java:277)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.setFormInput(ContextHelpPart.java:607)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.RelatedTopicsPart.setFormInput(RelatedTopicsPart.java:165)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1124)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1110)
+	at org.eclipse.help.ui.internal.views.HelpView.handlePartActivation(HelpView.java:135)
+	at org.eclipse.help.ui.internal.views.HelpView.hook(HelpView.java:304)
+	at org.eclipse.help.ui.internal.views.HelpView.partOpened(HelpView.java:279)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WWinPartService$1.partOpened(WWinPartService.java:52)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WorkbenchPagePartList.firePartOpened(WorkbenchPagePartList.java:34)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:227)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:200)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:37)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:374)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:609)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2131)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1062)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3773)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3770)
+	at org.eclipse.help.ui.internal.DefaultHelpUI.displayDynamicHelp(DefaultHelpUI.java:151)
+	at org.eclipse.ui.internal.help.WorkbenchHelpSystem.displayDynamicHelp(WorkbenchHelpSystem.java:857)
+	at com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective.createInitialLayout(BePerspective.java:77)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:805)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:67)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.ChangeToPerspectiveMenu.run(ChangeToPerspectiveMenu.java:91)
+	at org.eclipse.ui.actions.PerspectiveMenu.run(PerspectiveMenu.java:358)
+	at org.eclipse.ui.actions.OpenPerspectiveAction.runWithEvent(OpenPerspectiveAction.java:78)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:51:04.290 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Error reading help table of contents file /"com.ibm.team.apt.tour.doc/tour_toc.xml" (skipping file) ClassCastException(org.eclipse.help.internal.UAElement incompatible with org.eclipse.help.internal.toc.Toc) Details...
+java.lang.ClassCastException: org.eclipse.help.internal.UAElement incompatible with org.eclipse.help.internal.toc.Toc
+	at org.eclipse.help.internal.toc.TocFileParser.parse(TocFileParser.java:33)
+	at org.eclipse.help.internal.toc.TocFileProvider.getTocContributions(TocFileProvider.java:45)
+	at org.eclipse.help.internal.toc.TocManager.getAndCacheTocContributions(TocManager.java:205)
+	at org.eclipse.help.internal.toc.TocManager.getTocContributionsForToc(TocManager.java:194)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:296)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:67)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.getTopicCategory(ContextHelpPart.java:568)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.formatHelpContext(ContextHelpPart.java:537)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.createContextHelp(ContextHelpPart.java:456)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.handleActivation(ContextHelpPart.java:277)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.setFormInput(ContextHelpPart.java:607)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.RelatedTopicsPart.setFormInput(RelatedTopicsPart.java:165)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1124)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1110)
+	at org.eclipse.help.ui.internal.views.HelpView.handlePartActivation(HelpView.java:135)
+	at org.eclipse.help.ui.internal.views.HelpView.hook(HelpView.java:304)
+	at org.eclipse.help.ui.internal.views.HelpView.partOpened(HelpView.java:279)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WWinPartService$1.partOpened(WWinPartService.java:52)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WorkbenchPagePartList.firePartOpened(WorkbenchPagePartList.java:34)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:227)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:200)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:37)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:374)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:609)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2131)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1062)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3773)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3770)
+	at org.eclipse.help.ui.internal.DefaultHelpUI.displayDynamicHelp(DefaultHelpUI.java:151)
+	at org.eclipse.ui.internal.help.WorkbenchHelpSystem.displayDynamicHelp(WorkbenchHelpSystem.java:857)
+	at com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective.createInitialLayout(BePerspective.java:77)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:805)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:67)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.ChangeToPerspectiveMenu.run(ChangeToPerspectiveMenu.java:91)
+	at org.eclipse.ui.actions.PerspectiveMenu.run(PerspectiveMenu.java:358)
+	at org.eclipse.ui.actions.OpenPerspectiveAction.runWithEvent(OpenPerspectiveAction.java:78)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:51:04.566 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Error reading help table of contents file /"com.ibm.team.scm.tour.doc/tour_toc.xml" (skipping file) ClassCastException(org.eclipse.help.internal.UAElement incompatible with org.eclipse.help.internal.toc.Toc) Details...
+java.lang.ClassCastException: org.eclipse.help.internal.UAElement incompatible with org.eclipse.help.internal.toc.Toc
+	at org.eclipse.help.internal.toc.TocFileParser.parse(TocFileParser.java:33)
+	at org.eclipse.help.internal.toc.TocFileProvider.getTocContributions(TocFileProvider.java:45)
+	at org.eclipse.help.internal.toc.TocManager.getAndCacheTocContributions(TocManager.java:205)
+	at org.eclipse.help.internal.toc.TocManager.getTocContributionsForToc(TocManager.java:194)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:296)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:67)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.getTopicCategory(ContextHelpPart.java:568)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.formatHelpContext(ContextHelpPart.java:537)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.createContextHelp(ContextHelpPart.java:456)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.handleActivation(ContextHelpPart.java:277)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.setFormInput(ContextHelpPart.java:607)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.RelatedTopicsPart.setFormInput(RelatedTopicsPart.java:165)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1124)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1110)
+	at org.eclipse.help.ui.internal.views.HelpView.handlePartActivation(HelpView.java:135)
+	at org.eclipse.help.ui.internal.views.HelpView.hook(HelpView.java:304)
+	at org.eclipse.help.ui.internal.views.HelpView.partOpened(HelpView.java:279)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WWinPartService$1.partOpened(WWinPartService.java:52)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WorkbenchPagePartList.firePartOpened(WorkbenchPagePartList.java:34)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:227)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:200)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:37)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:374)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:609)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2131)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1062)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3773)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3770)
+	at org.eclipse.help.ui.internal.DefaultHelpUI.displayDynamicHelp(DefaultHelpUI.java:151)
+	at org.eclipse.ui.internal.help.WorkbenchHelpSystem.displayDynamicHelp(WorkbenchHelpSystem.java:857)
+	at com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective.createInitialLayout(BePerspective.java:77)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:805)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:67)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.ChangeToPerspectiveMenu.run(ChangeToPerspectiveMenu.java:91)
+	at org.eclipse.ui.actions.PerspectiveMenu.run(PerspectiveMenu.java:358)
+	at org.eclipse.ui.actions.OpenPerspectiveAction.runWithEvent(OpenPerspectiveAction.java:78)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:51:08.149 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Internal error while reading TOC contents from remote server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/toc?lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/toc?lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteTocProvider.getTocContributions(RemoteTocProvider.java:85)
+	at org.eclipse.help.internal.toc.TocManager.getAndCacheTocContributions(TocManager.java:205)
+	at org.eclipse.help.internal.toc.TocManager.getTocContributionsForToc(TocManager.java:194)
+	at org.eclipse.help.internal.toc.TocManager.getRootTocContributions(TocManager.java:296)
+	at org.eclipse.help.internal.toc.TocManager.getTocs(TocManager.java:67)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.getTopicCategory(ContextHelpPart.java:568)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.formatHelpContext(ContextHelpPart.java:537)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.createContextHelp(ContextHelpPart.java:456)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.handleActivation(ContextHelpPart.java:277)
+	at org.eclipse.help.ui.internal.views.ContextHelpPart.setFormInput(ContextHelpPart.java:607)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.RelatedTopicsPart.setFormInput(RelatedTopicsPart.java:165)
+	at org.eclipse.ui.forms.ManagedForm.setInput(ManagedForm.java:239)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1124)
+	at org.eclipse.help.ui.internal.views.ReusableHelpPart.update(ReusableHelpPart.java:1110)
+	at org.eclipse.help.ui.internal.views.HelpView.handlePartActivation(HelpView.java:135)
+	at org.eclipse.help.ui.internal.views.HelpView.hook(HelpView.java:304)
+	at org.eclipse.help.ui.internal.views.HelpView.partOpened(HelpView.java:279)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WWinPartService$1.partOpened(WWinPartService.java:52)
+	at org.eclipse.ui.internal.PartListenerList2$5.run(PartListenerList2.java:128)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.PartListenerList2.fireEvent(PartListenerList2.java:53)
+	at org.eclipse.ui.internal.PartListenerList2.firePartOpened(PartListenerList2.java:126)
+	at org.eclipse.ui.internal.PartService.firePartOpened(PartService.java:279)
+	at org.eclipse.ui.internal.WorkbenchPagePartList.firePartOpened(WorkbenchPagePartList.java:34)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:227)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:200)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:37)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:374)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:609)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2131)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1062)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3773)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3770)
+	at org.eclipse.help.ui.internal.DefaultHelpUI.displayDynamicHelp(DefaultHelpUI.java:151)
+	at org.eclipse.ui.internal.help.WorkbenchHelpSystem.displayDynamicHelp(WorkbenchHelpSystem.java:857)
+	at com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective.createInitialLayout(BePerspective.java:77)
+	at org.eclipse.ui.internal.Perspective.loadPredefinedPersp(Perspective.java:805)
+	at org.eclipse.ui.internal.Perspective.createPresentation(Perspective.java:259)
+	at org.eclipse.ui.internal.Perspective.<init>(Perspective.java:147)
+	at org.eclipse.ui.internal.tweaklets.Workbench3xImplementation.createPerspective(Workbench3xImplementation.java:55)
+	at org.eclipse.ui.internal.WorkbenchPage.createPerspective(WorkbenchPage.java:1633)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1025)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1016)
+	at org.eclipse.ui.internal.WorkbenchPage$18.run(WorkbenchPage.java:3667)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3665)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.openPerspective(ShowPerspectiveHandler.java:152)
+	at org.eclipse.ui.handlers.ShowPerspectiveHandler.execute(ShowPerspectiveHandler.java:67)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.ChangeToPerspectiveMenu.run(ChangeToPerspectiveMenu.java:91)
+	at org.eclipse.ui.actions.PerspectiveMenu.run(PerspectiveMenu.java:358)
+	at org.eclipse.ui.actions.OpenPerspectiveAction.runWithEvent(OpenPerspectiveAction.java:78)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:51:08.287 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Help, ID: org.eclipse.help.ui.HelpView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:08.342 MSD] 0000001e bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Help index declared, but missing for plugin com.ibm.etools.struts.portlet.standard.examples. <No exception provided, stack trace is implied> Details...
+java.lang.Exception
+	at com.ibm.bpm.common.history.History.logExceptionWrapped(History.java:340)
+	at com.ibm.bpm.common.history.History.logException(History.java:322)
+	at com.ibm.wbit.ui.GeneralUITracing$6.logging(GeneralUITracing.java:270)
+	at org.eclipse.core.internal.runtime.RuntimeLog.log(RuntimeLog.java:95)
+	at org.eclipse.core.internal.runtime.InternalPlatform.log(InternalPlatform.java:669)
+	at org.eclipse.core.internal.runtime.Log.log(Log.java:56)
+	at org.eclipse.help.internal.base.HelpBasePlugin.logError(HelpBasePlugin.java:72)
+	at org.eclipse.help.internal.search.PluginIndex.resolve(PluginIndex.java:125)
+	at org.eclipse.help.internal.search.PluginIndex.getPaths(PluginIndex.java:227)
+	at org.eclipse.help.internal.search.PrebuiltIndexes.trim(PrebuiltIndexes.java:46)
+	at org.eclipse.help.internal.search.PrebuiltIndexes.getIndexes(PrebuiltIndexes.java:54)
+	at org.eclipse.help.internal.search.IndexingOperation.mergeIndexes(IndexingOperation.java:544)
+	at org.eclipse.help.internal.search.IndexingOperation.addNewDocuments(IndexingOperation.java:152)
+	at org.eclipse.help.internal.search.IndexingOperation.execute(IndexingOperation.java:106)
+	at org.eclipse.help.internal.search.LocalSearchManager.updateIndex(LocalSearchManager.java:624)
+	at org.eclipse.help.internal.search.LocalSearchManager.ensureIndexUpdated(LocalSearchManager.java:598)
+	at org.eclipse.help.internal.search.federated.IndexerJob.run(IndexerJob.java:31)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:51:08.344 MSD] 0000001e bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Help index declared, but missing for plugin com.ibm.etools.struts.portlet.examples. <No exception provided, stack trace is implied> Details...
+java.lang.Exception
+	at com.ibm.bpm.common.history.History.logExceptionWrapped(History.java:340)
+	at com.ibm.bpm.common.history.History.logException(History.java:322)
+	at com.ibm.wbit.ui.GeneralUITracing$6.logging(GeneralUITracing.java:270)
+	at org.eclipse.core.internal.runtime.RuntimeLog.log(RuntimeLog.java:95)
+	at org.eclipse.core.internal.runtime.InternalPlatform.log(InternalPlatform.java:669)
+	at org.eclipse.core.internal.runtime.Log.log(Log.java:56)
+	at org.eclipse.help.internal.base.HelpBasePlugin.logError(HelpBasePlugin.java:72)
+	at org.eclipse.help.internal.search.PluginIndex.resolve(PluginIndex.java:125)
+	at org.eclipse.help.internal.search.PluginIndex.getPaths(PluginIndex.java:227)
+	at org.eclipse.help.internal.search.PrebuiltIndexes.trim(PrebuiltIndexes.java:46)
+	at org.eclipse.help.internal.search.PrebuiltIndexes.getIndexes(PrebuiltIndexes.java:54)
+	at org.eclipse.help.internal.search.IndexingOperation.mergeIndexes(IndexingOperation.java:544)
+	at org.eclipse.help.internal.search.IndexingOperation.addNewDocuments(IndexingOperation.java:152)
+	at org.eclipse.help.internal.search.IndexingOperation.execute(IndexingOperation.java:106)
+	at org.eclipse.help.internal.search.LocalSearchManager.updateIndex(LocalSearchManager.java:624)
+	at org.eclipse.help.internal.search.LocalSearchManager.ensureIndexUpdated(LocalSearchManager.java:598)
+	at org.eclipse.help.internal.search.federated.IndexerJob.run(IndexerJob.java:31)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:51:08.381 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Business Integration, ID: com.ibm.wbit.ui.WBIPerspective
+[11.05.2018 23:51:08.383 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Help, ID: org.eclipse.help.ui.HelpView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:08.401 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:09.461 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Project Explorer, ID: com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:09.475 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Outline, ID: org.eclipse.ui.views.ContentOutline, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:09.504 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Monitoring Flow, ID: com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:09.538 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:09.563 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:51:09.757 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:12.067 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Web Browser, ID: com.ibm.etools.miniwelcome.browser.editor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:51:12.105 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Web Browser, ID: com.ibm.etools.miniwelcome.browser.editor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:51:12.105 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:15.061 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:15.087 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:51:15.089 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Technology Quickstarts, ID: com.ibm.etools.miniwelcome.browser.editor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:51:16.724 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:51:16.735 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Help, ID: org.eclipse.help.ui.HelpView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:51:16.739 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Getting Started - IBM WebSphere Integration Developer 7.0, ID: com.ibm.bpm.gettingstarted.editor.GettingStartedEditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:52:08.171 MSD] 0000001e bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Help documentation could not be indexed completely. <No exception provided, stack trace is implied> Details...
+java.lang.Exception
+	at com.ibm.bpm.common.history.History.logExceptionWrapped(History.java:340)
+	at com.ibm.bpm.common.history.History.logException(History.java:322)
+	at com.ibm.wbit.ui.GeneralUITracing$6.logging(GeneralUITracing.java:270)
+	at org.eclipse.core.internal.runtime.RuntimeLog.log(RuntimeLog.java:95)
+	at org.eclipse.core.internal.runtime.InternalPlatform.log(InternalPlatform.java:669)
+	at org.eclipse.core.internal.runtime.Log.log(Log.java:56)
+	at org.eclipse.help.internal.base.HelpBasePlugin.logStatus(HelpBasePlugin.java:76)
+	at org.eclipse.help.internal.search.IndexingOperation.addDocuments(IndexingOperation.java:267)
+	at org.eclipse.help.internal.search.IndexingOperation.addNewDocuments(IndexingOperation.java:159)
+	at org.eclipse.help.internal.search.IndexingOperation.execute(IndexingOperation.java:106)
+	at org.eclipse.help.internal.search.LocalSearchManager.updateIndex(LocalSearchManager.java:624)
+	at org.eclipse.help.internal.search.LocalSearchManager.ensureIndexUpdated(LocalSearchManager.java:598)
+	at org.eclipse.help.internal.search.federated.IndexerJob.run(IndexerJob.java:31)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:52:11.992 MSD] 00000057 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%47%65%74%74%69%6e%67%20%53%74%61%72%74%65%64%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%47%65%74%74%69%6e%67%20%53%74%61%72%74%65%64%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:52:21.407 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Project Explorer, ID: com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:52:24.290 MSD] 0000005f bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%50%72%6f%6a%65%63%74%20%45%78%70%6c%6f%72%65%72&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%50%72%6f%6a%65%63%74%20%45%78%70%6c%6f%72%65%72&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:52:50.560 MSD] 00000001 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG Unhandled event loop exception NullPointerException(null) Details...
+java.lang.NullPointerException
+	at com.ibm.wbit.modeler.pd.ui.wizard.ImportedPDFileLocationPage.computePageComplete(ImportedPDFileLocationPage.java:175)
+	at com.ibm.wbit.modeler.pd.ui.wizard.ImportedPDFileLocationPage.handleUpdatedFileName(ImportedPDFileLocationPage.java:163)
+	at com.ibm.wbit.modeler.pd.ui.wizard.ImportedPDFileLocationPage.handleBrowseForFileButtonPressed(ImportedPDFileLocationPage.java:147)
+	at com.ibm.wbit.modeler.pd.ui.wizard.ImportedPDFileLocationPage.handleEvent(ImportedPDFileLocationPage.java:211)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at org.eclipse.ui.internal.handlers.WizardHandler$Import.executeHandler(WizardHandler.java:146)
+	at org.eclipse.ui.internal.handlers.WizardHandler.execute(WizardHandler.java:273)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.internal.actions.CommandAction.runWithEvent(CommandAction.java:157)
+	at org.eclipse.ui.internal.actions.CommandAction.run(CommandAction.java:171)
+	at org.eclipse.ui.actions.ImportResourcesAction.run(ImportResourcesAction.java:97)
+	at org.eclipse.ui.actions.BaseSelectionListenerAction.runWithEvent(BaseSelectionListenerAction.java:168)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3840)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3439)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2384)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2348)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2200)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:495)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:490)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:48)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:37)
+	at java.lang.reflect.Method.invoke(Method.java:600)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+[11.05.2018 23:53:02.193 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: Business Integration, ID: com.ibm.wbit.ui.WBIPerspective
+[11.05.2018 23:53:02.196 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Business Integration, ID: com.ibm.wbit.ui.logicalview.WBILogicalView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.201 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Task Flows, ID: com.ibm.wbit.taskflow.ui.views.TaskFlowView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.203 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:53:02.207 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Project Explorer, ID: com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.209 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Outline, ID: org.eclipse.ui.views.ContentOutline, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.209 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Monitoring Flow, ID: com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.210 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Problems, ID: org.eclipse.ui.views.ProblemView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.211 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Server Logs, ID: com.ibm.wbit.comptest.ui.view.HorizontalTraceView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.213 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Help, ID: org.eclipse.help.ui.HelpView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:53:02.216 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Window closed.  Name: IBM WebSphere Integration Developer 7.0 - D:\Work\Weblogic_project\CompositManager\GetCopmositesInfo
+[11.05.2018 23:53:02.665 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Workbench session ended
+[11.05.2018 23:55:38.980 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Workbench session started
+[11.05.2018 23:55:38.988 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Product name: IBM WebSphere Integration Developer 7.0, Product ID: com.ibm.wbit.feature.ide, Product version: 7.0.0
+[11.05.2018 23:55:40.233 MSD] 00000017 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%50%72%6f%6a%65%63%74%20%45%78%70%6c%6f%72%65%72&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%50%72%6f%6a%65%63%74%20%45%78%70%6c%6f%72%65%72&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:55:52.754 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:55:53.099 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:53.210 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Problems, ID: org.eclipse.ui.views.ProblemView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:53.246 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:55:53.285 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Problems, ID: org.eclipse.ui.views.ProblemView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:53.369 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:55:55.903 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Services, ID: com.ibm.ccl.ws.finder.ui.view.services, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:55.945 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Services, ID: com.ibm.ccl.ws.finder.ui.view.services, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:56.215 MSD] 0000001b bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%50%72%6f%62%6c%65%6d%73%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%50%72%6f%62%6c%65%6d%73%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:55:57.830 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:55:59.069 MSD] 0000001b bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%65%72%76%69%63%65%73%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%65%72%76%69%63%65%73%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:02.157 MSD] 0000001b bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:14.165 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:56:14.195 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Monitoring Flow, ID: com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:16.615 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:56:16.646 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:16.724 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: Business Monitoring, ID: com.ibm.wbimonitor.xml.editor.ui.perspective.BePerspective
+[11.05.2018 23:56:16.729 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Project Explorer, ID: com.ibm.wbimonitor.xml.editor.ui.views.BeExplorerTreeEditorView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:16.731 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Monitoring Flow, ID: com.ibm.wbimonitor.xml.editor.ui.views.FlowView.id, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:17.113 MSD] 0000001c bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%4d%6f%6e%69%74%6f%72%69%6e%67%20%46%6c%6f%77&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%4d%6f%6e%69%74%6f%72%69%6e%67%20%46%6c%6f%77&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:19.376 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: soa - Solution Diagram, ID: com.ibm.wbit.ui.solutioneditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:56:19.406 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: soa - Solution Diagram, ID: com.ibm.wbit.ui.solutioneditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:56:19.406 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:56:19.467 MSD] 0000001c bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:22.440 MSD] 0000001c bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%6f%6c%75%74%69%6f%6e%20%45%64%69%74%6f%72%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%6f%6c%75%74%69%6f%6e%20%45%64%69%74%6f%72%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:22.491 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:25.399 MSD] 00000027 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:40.548 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:56:40.561 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: soa - Solution Diagram, ID: com.ibm.wbit.ui.solutioneditor, Type: org.eclipse.ui.internal.EditorReference
+[11.05.2018 23:56:40.655 MSD] 0000001b bpmHist       I [com.ibm.wbit.command.builder.CommandBuilder:doBuild(CommandBuilder.java:431)] BUILD Starting command "com.ibm.wbit.project.wbisolutioncommand" for project "P/soa" with build type "incremental validation and code gen" Details...
+Properties = {wbit.builder.globaldeltaprocessed=false, wbit.index.reindex.files=[], wbit.build.isClean=false, wbit.build.kind=9, wbit.build.level=3}
+Delta = [{L/soa/solution.graphml,2}]
+[11.05.2018 23:56:40.661 MSD] 0000001b bpmHist       I [com.ibm.wbit.command.builder.CommandBuilder:doBuild(CommandBuilder.java:609)] BUILD Ending command "com.ibm.wbit.project.wbisolutioncommand" for project "P/soa"
+[11.05.2018 23:56:44.202 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Services, ID: com.ibm.ccl.ws.finder.ui.view.services, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:46.695 MSD] 0000001e bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%65%72%76%69%63%65%73%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%53%65%72%76%69%63%65%73%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:47.462 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:47.496 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:49.079 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:51.493 MSD] 00000013 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:54.398 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: Java, ID: org.eclipse.jdt.ui.JavaPerspective
+[11.05.2018 23:56:54.594 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Package Explorer, ID: org.eclipse.jdt.ui.PackageExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:54.633 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Java, ID: org.eclipse.jdt.ui.JavaPerspective
+[11.05.2018 23:56:54.691 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Package Explorer, ID: org.eclipse.jdt.ui.PackageExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:54.713 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Java, ID: org.eclipse.jdt.ui.JavaPerspective
+[11.05.2018 23:56:57.599 MSD] 0000002a bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%61%63%6b%61%67%65%20%45%78%70%6c%6f%72%65%72&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%61%63%6b%61%67%65%20%45%78%70%6c%6f%72%65%72&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:56:57.619 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Hierarchy, ID: org.eclipse.jdt.ui.TypeHierarchy, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:57.656 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Hierarchy, ID: org.eclipse.jdt.ui.TypeHierarchy, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:59.181 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: My Work, ID: com.ibm.team.apt.internal.ui.myWorkView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:56:59.219 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: My Work, ID: com.ibm.team.apt.internal.ui.myWorkView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:00.196 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Team Artifacts, ID: com.ibm.team.process.rcp.ui.teamArtifactsNavigator, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:00.536 MSD] 00000024 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%48%69%65%72%61%72%63%68%79%20%76%69%65%77&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%48%69%65%72%61%72%63%68%79%20%76%69%65%77&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:57:01.377 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:01.445 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:02.586 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Package Explorer, ID: org.eclipse.jdt.ui.PackageExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:05.403 MSD] 0000001f bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%61%63%6b%61%67%65%20%45%78%70%6c%6f%72%65%72&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%61%63%6b%61%67%65%20%45%78%70%6c%6f%72%65%72&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:57:05.887 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Java EE, ID: org.eclipse.jst.j2ee.J2EEPerspective
+[11.05.2018 23:57:05.924 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Enterprise Explorer, ID: com.ibm.etools.ui.navigator.SDExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:05.978 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective closed.  Name: Java, ID: org.eclipse.jdt.ui.JavaPerspective
+[11.05.2018 23:57:05.984 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Package Explorer, ID: org.eclipse.jdt.ui.PackageExplorer, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:05.991 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Hierarchy, ID: org.eclipse.jdt.ui.TypeHierarchy, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:05.994 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part closed.  Name: Team Central, ID: com.ibm.magnolia.TeamCentral, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:08.184 MSD] 00000028 bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%22%45%6e%74%65%72%70%72%69%73%65%20%45%78%70%6c%6f%72%65%72%20%76%69%65%77%22&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+[11.05.2018 23:57:16.466 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective opened.  Name: Java Browsing, ID: org.eclipse.jdt.ui.JavaBrowsingPerspective
+[11.05.2018 23:57:16.498 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Projects, ID: org.eclipse.jdt.ui.ProjectsView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:16.537 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Packages, ID: org.eclipse.jdt.ui.PackagesView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:16.557 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Types, ID: org.eclipse.jdt.ui.TypesView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:16.603 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part opened.  Name: Members, ID: org.eclipse.jdt.ui.MembersView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:16.621 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective activated.  Name: Java Browsing, ID: org.eclipse.jdt.ui.JavaBrowsingPerspective
+[11.05.2018 23:57:16.660 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Part activated.  Name: Projects, ID: org.eclipse.jdt.ui.ProjectsView, Type: org.eclipse.ui.internal.ViewReference
+[11.05.2018 23:57:16.693 MSD] 00000001 bpmHist       I [com.ibm.wbit.ui.GeneralUITracing:writeToHistory(GeneralUITracing.java:375)] GENERAL_UI Perspective changed.  Name: Java Browsing, ID: org.eclipse.jdt.ui.JavaBrowsingPerspective
+[11.05.2018 23:57:19.824 MSD] 0000003a bpmHist       E [com.ibm.wbit.ui.GeneralUITracing$6:logging(GeneralUITracing.java:270)] FROM_ECLIPSE_ERROR_LOG I/O error while trying to contact the remote help server FileNotFoundException(http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%72%6f%6a%65%63%74%73%20%76%69%65%77&lang=ru_RU) Details...
+java.io.FileNotFoundException: http://www.ibm.com/support/knowledgecenter/api/redirect/radhelp/v7r5/search?phrase=%41%62%6f%75%74%20%50%72%6f%6a%65%63%74%73%20%76%69%65%77&lang=ru_RU
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1306)
+	at java.net.URL.openStream(URL.java:1011)
+	at org.eclipse.help.internal.base.remote.RemoteSearchManager.search(RemoteSearchManager.java:59)
+	at org.eclipse.help.internal.search.SearchManager$2.run(SearchManager.java:64)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
