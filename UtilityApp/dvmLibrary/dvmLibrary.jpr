@@ -85,10 +85,10 @@
    <hash n="oracle.ide.model.ResourcePaths">
       <hash n="resourcesContentSet">
          <list n="pattern-filters">
-            <string v="+*"/>
+            <string v="+**"/>
          </list>
          <list n="url-path">
-            <url path="."/>
+            <url path="META-INF/"/>
          </list>
       </hash>
    </hash>
@@ -130,14 +130,13 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
+                              <value n="pattern" v="META-INF/"/>
+                           </hash>
+                           <hash>
                               <value n="pattern" v="ru/"/>
                            </hash>
                            <hash>
                               <value n="pattern" v="**"/>
-                              <value n="type" v="1"/>
-                           </hash>
-                           <hash>
-                              <value n="pattern" v="META-INF/"/>
                               <value n="type" v="1"/>
                            </hash>
                            <hash>

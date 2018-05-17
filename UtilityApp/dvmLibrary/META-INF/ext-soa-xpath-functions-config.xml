@@ -8,7 +8,7 @@
                      xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
                      xmlns:neo="http://www.oracle.com/XSL/Transform/java/ru.neoflex.soa.utils.dvm.dvmCustom">
     <function name="neo:lookupValue">
-        <className>ru.neoflex.soa.utils.dvm.dvmCustom</className>
+        <className>ru.neoflex.soa.utils.dvm.dvmCustom$LookupValue</className>
         <return type="string"/>
         <params>
             <param name="dvmLocation" type="string" wizardEnabled="true"/>

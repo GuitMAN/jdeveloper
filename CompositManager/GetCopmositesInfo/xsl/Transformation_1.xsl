@@ -37,6 +37,7 @@
                 xmlns:socket="http://www.oracle.com/XSL/Transform/java/oracle.tip.adapter.socket.ProtocolTranslator"
                 xmlns:client="http://xmlns.oracle.com/GetCompositesInfo/GetCompositesInfo/GetCompositeInfo"
                 xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+                xmlns:neo="http://www.oracle.com/XSL/Transform/java/ru.neoflex.soa.utils.dvm.dvmCustom"
                 exclude-result-prefixes="xsi xsl plnk xsd wsdl client bpws xp20 mhdr bpel oraext dvm hwf med ids bpm xdk xref ora socket ldap">
   <xsl:template match="/">
     <client:processResponse>
@@ -49,7 +50,7 @@
 					  <xsl:value-of select="@state"/>
 					</client:State>
 					<client:Mode>
-					  <xsl:value-of select="@mode"/>
+					  <xsl:value-of select="neo:lookupValue(@mode)"/>
 					</client:Mode>
 					<client:Revision>
                                             <xsl:value-of select="substring-after(@dn, '!')" />
@@ -60,6 +61,7 @@
 					<client:DeployedTime>
                                             <xsl:value-of select="composite/@deployedTime"/>
 					</client:DeployedTime>  
+                                        
 				</client:Composite>
 			</xsl:for-each>
     </client:processResponse>
