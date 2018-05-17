@@ -18,7 +18,6 @@ import oracle.integration.platform.blocks.xpath.XPathContext;
 
 import oracle.tip.dvm.DVMExtFunctions;
 import oracle.tip.dvm.DVMManagerImpl;
-
 import oracle.tip.dvm.entity.DVMRTObject;
 import oracle.tip.dvm.exception.DVMException;
 import oracle.tip.dvm.exception.DVMValidationException;

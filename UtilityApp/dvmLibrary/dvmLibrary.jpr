@@ -130,14 +130,18 @@
                      <hash n="filters">
                         <list n="rules">
                            <hash>
-                              <value n="pattern" v="ext-soa-xpath-functions-config.xml"/>
-                           </hash>
-                           <hash>
                               <value n="pattern" v="ru/"/>
                            </hash>
                            <hash>
                               <value n="pattern" v="**"/>
                               <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="META-INF/"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="ru/"/>
                            </hash>
                            <hash>
                               <value n="pattern" v="WEB-INF/temp/**"/>
@@ -211,9 +215,6 @@
                               <value n="pattern" v="**/*.jxt"/>
                               <value n="type" v="1"/>
                            </hash>
-                           <hash>
-                              <value n="pattern" v="**"/>
-                           </hash>
                         </list>
                      </hash>
                      <value n="internalName" v="project-output"/>
@@ -239,6 +240,7 @@
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
+         <list n="constituent-sets"/>
          <list n="pattern-filters">
             <string v="+**"/>
          </list>

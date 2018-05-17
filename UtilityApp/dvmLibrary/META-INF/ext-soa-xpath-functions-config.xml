@@ -6,9 +6,9 @@
                      xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
                      xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
                      xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
-                     xmlns:hello="http://www.oracle.com/XSL/Transform/java/com.room.xpath.sample.SOACustomXpathTest">
+                     xmlns:neo="http://www.oracle.com/XSL/Transform/java/ru.neoflex.soa.utils.dvm.dvmCustom">
     <function name="neo:lookupValue">
-        <className>rru.neoflex.soa.utils.dvm.dvmLibrary</className>
+        <className>ru.neoflex.soa.utils.dvm.dvmCustom</className>
         <return type="string"/>
         <params>
             <param name="dvmLocation" type="string" wizardEnabled="true"/>
