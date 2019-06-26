@@ -1,35 +1,9 @@
 package ru.app;
 
 import java.io.File;
-
-import java.io.IOException;
-import java.io.StringWriter;
-
-import java.net.URL;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-
-
-
-
 
 
 public class DVMTools {
@@ -40,8 +14,11 @@ public class DVMTools {
         super();
     }
 
+    /**
+     * Возвращает класс Dvm.
+     * @param dvmLoc - путь к файлу DVM
+     */
     Dvm LoadDVMFile(String docLoc) {
-
 
         Dvm customer = null;
 

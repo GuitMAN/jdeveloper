@@ -15,6 +15,8 @@ import java.util.UUID;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import javax.xml.xpath.XPathFunctionException;
+
 import oracle.fabric.common.MetadataManager;
 import oracle.fabric.common.dvm.DVM;
 import oracle.fabric.common.dvm.DVMManager;

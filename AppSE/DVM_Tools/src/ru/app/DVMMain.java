@@ -1,12 +1,5 @@
 package ru.app;
 
-import java.util.ArrayList;
-import java.util.List;
-
-//import oracle.tip.dvm.entity.DVMRTObject;
-//import oracle.fabric.common.dvm.DVM;
-
-
 public class DVMMain {
 
     public static void main(String[] args) throws Exception {
