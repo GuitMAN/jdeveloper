@@ -17,9 +17,17 @@
       <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.mds.internal.dt.ide.migrator.MDSConfigMigratorHelper" v="11.1.1.0.5313"/>
    </hash>
+   <list n="contentSets">
+      <string v="oracle.mds.internal.dt.ide.appresources.MDSAppResourceCSProvider/MDSAppContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ADFContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
+   </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="../../../NeoFlex_Middle/FMW_11/Application/SOAStatusWeb/SOAStatusWeb.jpr"/></hash>
       <hash><url n="URL" path="DVM_test/DVM_test.jpr"/></hash>
+      <hash><url n="URL" path="DVM_Tools/DVM_Tools.jpr"/></hash>
       <hash><url n="URL" path="DVMValid/DVMValid.jpr"/></hash>
    </list>
    <hash n="oracle.mds.internal.dt.ide.CustOptions">
