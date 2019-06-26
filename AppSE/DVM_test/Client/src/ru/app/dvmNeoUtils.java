@@ -15,6 +15,8 @@ import java.util.UUID;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import javax.xml.xpath.XPathFunctionException;
+
 import oracle.fabric.common.MetadataManager;
 import oracle.fabric.common.dvm.DVM;
 import oracle.fabric.common.dvm.DVMManager;
@@ -92,7 +94,8 @@ public class dvmNeoUtils {
             MetadataManager mdm = null;
             DVMRTObject obj;
 
-            try { /*
+            try {
+              /*
                if (this.mTestMetadataMgr_new == null)
              {
                     Object ctx;
@@ -165,8 +168,9 @@ public class dvmNeoUtils {
             System.out.println(CLASS_NAME + ".customValidateDVM. " + dvm.getDVMDocument());
             int num_rows = 0;
             boolean error = false;
-            XMLDocument dvmDocument = null;
-            dvmDocument = (XMLDocument)dvm.getDVMDocument();
+      XMLDocument dvmDocument;
+      dvmDocument = null;
+      dvmDocument = (XMLDocument)dvm.getDVMDocument();
             if (dvmDocument == null) {
                 throw new DVMValidationException(1510, null, null);
             }
@@ -410,14 +414,15 @@ public class dvmNeoUtils {
 
         }
 
+
         public String lookupValue(String dvmLoc, String srcColumnName, String srcValue, String tgtColumnName,
                                   String defaultValue, String... qualifiers) throws DVMException {
             // mLogger.fine("The input parameters for dvm:lookupValue are " + dvmLoc + "," + srcColumnName + "," + srcValue + "," + tgtColumnName + "and qualifiers are ");
-            if (qualifiers != null) {
+          /*  if (qualifiers != null) {
                 StringBuilder logq = new StringBuilder();
                 for (int i = 0; i < qualifiers.length; i++) {
                     logq.append("," + qualifiers[i]);
-                }
+         F       }
                 //    mLogger.fine("Qualifiers: " + logq.toString());
             } else {
                 //   mLogger.fine("Qualifiers: " + null);
@@ -425,7 +430,7 @@ public class dvmNeoUtils {
             if (defaultValue == null) {
                 defaultValue = "";
             }
-
+*/
             DVMRTObject obj;
             obj = getDVMRTObject(dvmLoc);
             if ((qualifiers != null) && (qualifiers.length % 2 > 0)) {
